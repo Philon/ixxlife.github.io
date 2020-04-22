@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>测试规定行为，而非次要行为 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/22">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/22</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">测试规定行为，而非次要行为</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_80/" target="_blank" rel="noopener">Test for Required Behavior, not Incidental Behavior</a></p>
+<p>测试的一个常见陷阱就是假设你所测试的恰好都是实现的。第一眼看上去，这种观点像是一种美德而非陷阱。然而，换一种说法后，问题就凸显出来了：测试的一种常见陷阱就是将测试硬性地结合到实现的具体细节上，这些细节是附带条件的，与功能预期无关。</p>
+<p>当测试被强行关联到次要实现时，为了让实现内容其符合规定行为而作出的修改，可能会导致测试失败，从而导致失败判定。程序员对此的典型反应就是重写测试或重写代码。如果某个失败判定实质上是个正确判定，通常都是害怕、纠结、怀疑共同作用的结果。它具有将附加行为状态升高至必要行为的效果。重写测试时，程序员会重新聚焦测试于必要行为（这是好的），或者粗暴地迁就测试而重新实现（这是不好的）。测试去要足够精确，但也要准确。</p>
+<p>例如，Java的String.compareTo或者C的strcmp有三种比较方式，会产生三种必然的结果：如果左边小于右边就是负值，如果左边大于右边就是正值，如果两边相等就会零。这种比较风格运用了大量的API，包括C中的qsort比较器以及Java中的compareTo比较接口。尽管具体的-1和+1常被用在实现里，以表示小于或大于，但程序员经常会错误地假设这些值就相当于确切的需求，因此公开的固化了这些假设来编写测试。</p>
+<p>类似的测试问题还会发生在断言空格、精确的单词、文本格式，以及其它附加部分。除非你正在写，比如提供了可配置格式的XML生成器，空格对结果不重要。同样的，在UI控制时将按钮和标签硬性绑定在一起会降低这些附加功能的可修改和可完善性。那么实现中的微调和格式中无关紧要的修改突然就会变成构建的破坏者。</p>
+<p>采用白盒测试的单元测试法，过拟合通常也是个问题。白盒测试是运用代码的数据结构来明确测试用例的需求。白盒测试典型的失败模式就是用代码本身的动作来最终断言代码的动作。简单重术已经显而易见的代码是毫无价值的，并且还会导致错误的进度和安全感。</p>
+<p>为了高效，测试要做的是“声明合同义务”而非“鹦鹉学舌般再实现一遍”。它们需要丢到黑盒中单元测试，用实际执行情况来描述约定的接口。所以，测试行为要向规定行为看齐。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/测试/">测试</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/81/">严谨而具体地测试</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/79/">运用代码分析工具</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

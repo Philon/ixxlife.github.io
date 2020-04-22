@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>进程间通信影响应用响应时间 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/06/06">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/06/06</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">进程间通信影响应用响应时间</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_41/" target="_blank" rel="noopener">Inter-Process Communication Affects Application Response Time</a></p>
+<p>响应时间对软件的可用性至关重要。等待一些软件系统响应会让人心烦，尤其是当我们与软件交互时遇到循环重复的刺激和响应。我们会觉得这个软件是在浪费时间，还影响我们的生产率。然后，因为响应时间短而被赞赏的情况却很少，尤其是当代的应用。很多关于性能管理的文献仍然聚焦于数据结构和算法，问题是在某些情况下可能有用，但在当今的多层企业级架构的应用中，不大可能改善性能。</p>
+<p>当性能成为应用程序的一个问题时，我个人的经验是，检查数据结构和算法并不能改善现状。响应时间更多依赖于无数个远程进程间通信(IPC)行为。尽管存在本地瓶颈，但大量的远程IPC才站主导地位。每个远程IPC都会对总体产生一些不容小觑的延迟，每个单独的延迟都会累加起来，尤其在它们按顺序运行时特别明显。</p>
+<p>最佳案例就是应用对象-关系映射的程序中采用“波纹加载”。波纹加载描述了多个数据库调用的执行顺序，以选择用于构建对象图所需的数据(看一下Martin Fowler’s的《企业级应用架构模式》中的懒加载)。当数据库客户端是呈现中间应用服务器的网页时，这些数据库就会在单线程中被频繁地顺序调用。每个小延迟的积累，汇集成巨大的响应时间。甚至是一个数据库仅花10ms，一个页面需要调用1000次(虽然不常见)，就能展现出将近10秒钟的响应时间。另一个例子是WEB服务的调用，来自浏览器的HTTP请求，分布式对象调用，请求应答消息，以及在自定义网络协议上的数据交互。越多的远程IPC所需的响应就越多，响应时间也就越长。</p>
+<p>有一小部分相对明确且众所周知的策略可以降低远程IPC每次处理的数量。其中之一是简约原则，优化两个进程间的接口，以便于用最小的交互来交换各自手上的目标数据。另一个策略是尽可能并发IPC，以便于让总体响应时间由最长延迟的IPC驱动。第三个策略是缓存之前的IPC结果，以便于用本地缓存来代替之后的IPC请求响应。</p>
+<p>当你在设置一个应用程序的时候，要警惕每个IPC响应延迟的数量。在分析低性能的应用程序时，我发现IPC与通信的比例经常是数千比一。不论通过缓存或并发或其他技术，请降低这个比例，这将比改变数据结构或调整排序算法要更有效。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/技术/">技术</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/易中天中华史5-6/">春秋战国-《易中天中华史：卷5-6》</a>
+            
+            
+            <a class="next" rel="next" href="/books/易中天中华史1-4/">我们的信仰-《易中天中华史：卷1-4》读书笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

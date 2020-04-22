@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>了解你的IDE | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/06/29">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/06/29</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">了解你的IDE</h1>
+        </header>
+
+        <div class="post-content">
+            <p>1980年代，我们的编程环境没有比文本编辑器更好的了…如果我们幸运的话。现如今是被认为理所当然的语法高亮，是一种奢侈品，不是每个人都能享用的。漂亮打印器为了把我们的代码格式化好看，通常不得不运行外部工具来纠正间隔。调试器也是单独的程序，用于逐步调试代码，但需要使用很多隐秘的快捷键。</p>
+<p>来到1990年代，为程序员提供更好和更实用的工具，驱动着公司们开始挖掘潜在收入。继承开发环境(IDE)把编译器、调试器、漂亮打印器、以及其他工具整合进之前编辑器。在此期间，菜单概念和鼠标也开始流行起来，这就意味着开发者不再需要掌握那些隐秘的组合键。他们通过菜单就可以非常容易地选择他们的命令。</p>
+<p>21世纪，IDE已经很普遍了，公司们为了获取其他市场份额甚至免费赠送它们。现代IDE都具备一组令人赞叹的功能。我最喜欢的就是自动重构，特别是“提取方法”，我可以在方法中选择和转换一个代码块。重构工具将提取所有方法需要的参数，让修改代码变得非常简单。我的IDE甚至会检测其他的代码块是否能够替换成此方法，然后问我是否也将它们替换。</p>
+<p>现代IDE另一个惊人的功能是可以在公司内部强制风格样式。例如Java，一些程序员开始将所有参数都设置为final(在我看来，这是浪费时间)。总之，自从它们有了样式规则，我就需要在IDE中设置它：不然我会收到任何关于non-final的警告。样式规则也可以用于找出可能的bug，比如比较自动装箱对象，确保引用的一致性，又或者，使用==会参考自动装箱的引用对象原始值。</p>
+<p>不幸的是，现代IDE不再需要我们花精力去学习怎样使用它们。我在Unix平台完成第一个C程序时，不得不花点时间学习如何使用vi编辑器，因为它的学习曲线很陡。几年之后来看，这些时间花得很值。我甚至是用vi来起草的这篇文章。现代IDE学习曲线非常平滑，结果就是我们对其背后大量工具的基本用法上，再也得不到进步。</p>
+<p>我学习IDE的首要任务是记住快捷键。当我手指放在键盘上敲代码时，用鼠标切换导航菜单时会中断敲代码，所以我会按下Ctrl+Shift+I来内联变量防止动作流被打断。这些中断会导致不必要的上下文切换，如果每件事都用这种笨办法，那会让我生产力非常低。同样的规则也可以用于键盘技能：学习快捷键模式，你不会后悔这次早期投资。</p>
+<p>最后，作为一个程序员，我们拥有久经考验的Unix工具，来帮助我们操作代码。例如在代码审查期间，我要关注一个程序员是否有大量相同的类命名，我可以通过find、sed、sort、uniq以及grep等工具非常简单地实现，就像这样：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name <span class="string">"*.java"</span> | sed <span class="string">'s/.*\///'</span> | sort | uniq -c | grep -v <span class="string">"^ *1 "</span> | sort -r</span><br></pre></td></tr></table></figure>
+
+<p>我们请一个管道工到家里来，是因为我们需要的是它的喷灯。所以让我们花点时间学习如何更高效地使用我们的IDE。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/开发/">开发</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/46/">了解你的限制</a>
+            
+            
+            <a class="next" rel="next" href="/books/易中天中华史10-12/">三国魏晋南北朝-《易中天中华史：卷10-12》</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

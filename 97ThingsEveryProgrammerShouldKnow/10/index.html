@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>谨慎选择你的工具 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2018/12/28">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2018/12/28</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">谨慎选择你的工具</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_10/" target="_blank" rel="noopener">原文链接</a></p>
+<p>现代应用程序很少从零开始构建。它们大多会整合市面上已存在的工具——组件、库、框架——主要有这么几个好的理由：</p>
+<ul>
+<li>应用程序的规模、复杂性和复杂程度都在增长，但开发它们的时间反而越来越短。所以让开发人员专注于写更多业务领域代码，少搞基础设施，可以更好地利用他们的时间和智慧。</li>
+<li>相比于一揽子开发，广泛地采用组件和框架能使bug更少。</li>
+<li>有很多免费且高质量的软件可以从网上获取，这就意味着更低的开发成本和更高的可能性找到那些符合自己兴趣和专长的开发人员。</li>
+<li>软件的生产和维护属于劳动密集型工作，所以选择购买可能要比自己开发划算得多。</li>
+</ul>
+<p>无论如何，为你的应用程序选择一款趁手的工具还是相当棘手的事情，需要深思熟虑。事实上当做出选择时，需要牢记这么几件事：</p>
+<ul>
+<li>不同的工具可以依赖不同的情景假设——比如周围基础设施、控制模型、数据模型、通信协议等。这些都可能导致程序和工具间的架构错配。错配又会进一步让你想要破解和变通，结果写了很多完全没必要却很复杂的代码。</li>
+<li>不同的工具有不同的生命周期，当工具增加新的功能、改变设计、甚至是bug修复导致和其他工具不兼容，此时要升级它们其中之一，可能会变成一个极困难且耗时的任务。工具越多，问题也会变得越多！</li>
+<li>一些工具需要相当多的配置。通常通过一个或多个XML文件，这些文件会很快失控。最终这个程序看上去就像全部由XML加上几行奇怪的其他语言的代码写成的。这个配置的复杂度将大幅提升程序的维护和扩展难度。</li>
+<li>当代码严重依赖供应商产品到一定程度受的限于他们，可能会被供应商锁定：可维护性、性能、迭代能力、价格等。</li>
+<li>如果你打算使用免费软件，你最好搞清楚它不是真的免费。你可能需要购买商业技术支持，这可并不便宜啊。</li>
+<li>许可证条款很重要，即便是自由软件也一样。举个例子，一些公司是禁止使用任何GNU许可证发布的软件的，因为它的病毒性质——即，用它开发的软件，必须连源码一起发布。</li>
+</ul>
+<p>我个人关于缓解以上问题的策略是，刚开始仅采用绝对必要的工具。通常最开始应该把重点放在为了移除那些需要从最底层的开发任务(和问题)，例如，采用中间件取代原始套接字的方式开发分布式程序。然后按需增加。我更倾向于通过接口和分层的方式把外部工具和业务领域对象分离开来，所以当我要解决某些痛点时，可以选择改变工具。这种方法有个好处，我通常可以得到一个更小的应用程序，且对外部工具的使用也比原先少。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/11/">编写领域语言</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/09/">责怪他人前，先检查自己的代码</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

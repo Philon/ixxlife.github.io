@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>责怪他人前，先检查自己的代码 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2018/12/27">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2018/12/27</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">责怪他人前，先检查自己的代码</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_09/" target="_blank" rel="noopener">原文链接</a></p>
+<p>开发者——至我们所有人！是否经常焦虑自己的代码被否定。不存在的，就算有，也肯定是编译器的错。</p>
+<p>而实际情况是一段代码出错几乎(一万个几乎)不可能是由于编译器、解释器、OS、应用服务、数据库、内存管理器，或任何系统级的软件导致的。你信或者不信，bug就在那里，只是没你想的那么普遍。</p>
+<p>我有次是真遇到这种情况，编译器错误地优化了循环变量，但在此之前我已经在脑瓜里意淫过无数遍(就是编译器的错)。我浪费了大把的时间，都把时间花在意淫里，然而事后证明就是自己的错时，又感觉自己多么愚昧。</p>
+<p>假设一个工具被广泛使用，且成熟应用于各技术栈当中，那只可能有很少的情况下应该去质疑它的质量。当然，除非它刚发布，或者用的人很少，再或者下载量小，0.1版本，开源软件等情况下，确实有可能找到很多质疑点。(同样，商业软件的alpha版本也会被质疑)。</p>
+<p>编译器级别的bug如此罕见，你其实可以更好地花时间和精力去找到错误，而不仅仅是为了证明是编译器的错。利用所有可用的调试手段，隔离问题，存根调用，包围式打击(测试)；检查所有调用约定、共享库、版本号；和别人解释；找出堆栈破损以及变量类型不匹配的地方；尝试在不同机器及不同构建配置中重新跑这段代码，比如debug和release版本；</p>
+<p>质疑你自己的假设和他人的假设。工具出自不同厂商之手，就会有不同的情景假设来构建它们——同一个厂商的不同工具也可能。当其他人在报告这个问题你就没必要重复了，去看看他们在做什么。他们可能正在做一些你从未想过或不按套路走的事情。</p>
+<p>如果有bug却无法定位问题的时候，个人往往会认为问题出在编译器，并把时间用来查找堆栈破损。如果经过跟踪调试后解决了该问题，那就确定无疑了。</p>
+<p>其他代码中的bug引发的多线程问题可以把你头发都急白了。所有建议都赞同，简单的代码在多线程系统里将变得不简单。调试和单元测试在查找一致性错误时会变得不可靠，所以请保持简单朴素的设计。</p>
+<p>所以，先别急着去怪编译器，记住夏洛克·福尔摩斯的一句话：“排除一切不合理，无论剩下什么，无论多么不可能，那就是真相”。更喜欢Dirk Gently的另一句话：“排除一切的不可能，无论剩下什么，无论多么不合理，那就是真相”。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/10/">谨慎选择你的工具</a>
+            
+            
+            <a class="next" rel="next" href="/books/写作是最好的自我投资/">巨婴时代，如何写作</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

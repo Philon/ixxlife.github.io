@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>只有代码会说实话 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/11/24">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/11/24</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">只有代码会说实话</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_62/" target="_blank" rel="noopener">Only the Code Tells the Truth</a></p>
+<p>程序的最终语义是给出可执行代码。如果它只有一段二进制码，就会非常难读懂！但如果你的程序是典型的商业软件开发、开源项目、或者动态解释语言的代码，它就应该可读。当你在阅读源码时，程序的意图就应该浮现出来。为了搞懂程序要做什么，最终你肯定要阅读源码。大多数精确的规范文档甚至都无法告诉你全部的真相：毕竟它无法容纳程序实际处理的全部细节，仅仅是高层次的需求分析。一份设计文档可能抓得住一部分设计规划，但它缺乏实现的必要细节。这些文档可能与当前的实现内容失去同步…或者就干脆放弃掉了，从一开始就没写过。而源码可能是唯一剩下的东西。</p>
+<p>基于这一点，问一下自己要如何清爽地告诉你或者其他程序猿，你的代码要做什么。</p>
+<p>你可能会说：“噢，我的注释就可以告诉你想要知道的任何内容。”但请记住，注释不是运行代码。它们会存在于文档一样形式的错误。流传着一种说法，注释理所当然是件好事，一些程序猿就不假思索地写越来越多的注释，甚至重复解释那些琐碎的已经很明确的代码。这对于阐明你的代码，完全是错误的。</p>
+<p>如果你的代码需要注释，考虑重构它以免除注释。大量的注释会扰乱屏幕空间，甚至可能被IDE自动隐藏掉。如果你想要解释某个变更，那就在版本控制系统签入消息，而不是代码里。</p>
+<p>你要做些什么才能让代码尽可能清晰地表达“真相”？争取一个好名字。结构化代码以内聚功能，选择简单的命名。解耦代码以实现正交性。编写自动测试来解释和检查接口的行为意图。当你学到更简约的代码或更好的解决方案时，果断重构。让你的代码尽可能地易于理解和阅读。</p>
+<p>对待你的代码要像对待其他创作一样，如一首诗、一篇散文、一个博客、或是重要的email。仔细制作你要表达的内容，使其做它该做的，并尽可能直接传达出它正在做的事情；即便你离开后，它也能传达出你的意图。请记住，有用的代码会比预期使用更长时间。今后的维护者会感激你，如果你是维护者，并且你所处理的代码并不能轻易说明事实，请积极地应用上述准则。在代码中建立理智，并让自己保持理智。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/开发/">开发</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/现实不似你所见/">《现实不似你所见》读书笔记</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/61/">一个二进制</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

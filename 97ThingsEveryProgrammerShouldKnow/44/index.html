@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>掌握两种以上的编程语言 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/06/20">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/06/20</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">掌握两种以上的编程语言</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_44/" target="_blank" rel="noopener">Know Well More than Two Programming Languages</a></p>
+<p>编程人员心理上都达成一个共识很长时间了，那就是编程专业技能的高低，与程序员所知道的不同编程范例的数量直接相关。这里说的知道不是简单了解，或者略懂略懂，而是能真正的编程。</p>
+<p>每个程序员开始采用一门语言编程后。这门语言就会影响程序员对软件的思考方式。如果他们仅停留在这门语言，不管有多少年的编程经验，他们都将只会这门语言。一个只会一门语言的程序员，他的思维将被这门语言彻底限制住。</p>
+<p>程序员学习第二门语言将会是一种挑战，尤其是当这门语言的计算模型与之前的大相径庭。C、Pascal、Fortran，都有相似的计算模型。选择从Fortran转到C带来的挑战并不会太多。从C或Fortran转到C++或Ada所带来的挑战主要是编程思想。从C++转到Haskell是一次很有意义的改变，当然其挑战也很有意义。从C转到Prolog将会带来非常明确的挑战。</p>
+<p>我们可以列举一些计算机编程范式：面向过程、面向对象、函数式、逻辑式、数据流，等等。在两个不同范式间切换，就会产生最大的挑战。</p>
+<p>为何这些挑战是好的呢？这与我们思考对算法实现、风格、适合的实现模式相关。其中，交叉受益是专业的核心。适用于一门语言的解决问题的风格，或许拿另一门语言就行不通了。尝试不同的风格，从一门语言到另一门语言，才能真正教会我们这两种语言，以及问题是如何被解决的。</p>
+<p>采用不同的编程语言交叉受益将会带来巨大的影响。或许最为明显的就是采用命令式语言实现的系统中增加了或正在增加很多表达式声明。任何精通函数式编程的人都能轻松地适应声明式，即便是使用C这样的语言也如此。采用声明式方案一般会让程序更短或更易于理解。例如C++，几乎是为了表达式声明，肯定会全力支持泛型编程。</p>
+<p>说了这么多，每个程序员都应该掌握至少两种不同的编程范式，理想情况下应该掌握上述五种。程序员始终应该对学习新语言感兴趣，最好从陌生的范式学习。即使他们的日常工作中使用相同的编程语言，当一个人能够从其他范式中交叉受益时，为这门语言带来的进步也是不容小觑的。雇主应该考虑到这点，并为员工学习当前未使用的语言留出培训预算空间，作为进步的一种方式，该语言要使用起来。</p>
+<p>即便已经开始了，一个礼拜的培训课程是不足以学习一门新语言的：它通常需要几个月的实践，哪怕是兼职，也是为了获得一门语言真正意义上的工作知识。方言的使用，不仅仅是语法和计算模型，这一点很重要。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/学习/">学习</a>
+                
+                    <a href="/tags/编程/">编程</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/易中天中华史10-12/">三国魏晋南北朝-《易中天中华史：卷10-12》</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/43/">理解如何使用命令行工具</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

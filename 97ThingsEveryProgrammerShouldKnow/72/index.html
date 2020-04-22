@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>经常重新发明轮子 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/06">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/06</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">经常重新发明轮子</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_72/" target="_blank" rel="noopener">Reinvent the Wheel Often</a></p>
+<p><em>仅使用已存在的事物——就是在重新发明轮子…</em></p>
+<p>你是否时常听到这种或类似的声音？确定你有！每个开发者或学生都会经常听到类似的评论。为什么呢？为什么重新发明轮子就这么愁眉不展？因为，很多时候，现有的代码是有效的。它已经通过了某种质量控制和严格的测试，并被成功地应用。此外，相较于使用现有的产品或代码库，把时间和精力投入到重新发明是不大可能有回报的。你还应该重新发明轮子么？为什么？什么时候？</p>
+<p>或许你看过一些有关软件开发模式的刊物或软件设计书籍。先让这些书去睡觉吧，不管它们包含了多么精彩的内容。观看航海电影和真的去航海是非常不同的，正如使用现有代码对应了从头设计一个属于自己的软件，（需要）测试它、破坏它、修复它，然后逐步完善它。</p>
+<p>重新发明轮子并不仅仅是代码从哪构建的练习：它是为了充分了解现有不同组件的内部工作原理。你知道内存管理机制？虚拟页呢？你能自己实现这些吗？什么是双向链表？动态数组类？ODBC客户端？你能写出一个你喜欢的流行图形界面吗？你会创建属于自己的web浏览器插件吗？你知道何时写一个多线程系统与多线程本身？如何决定使用文件数据库还是内存数据库呢？</p>
+<p>大部分开发者根本没有自己创造过这些核心软件实现的类型，对其如何工作的也未必了然于胸。其结果就是这类软件看起来不过是个会运行的神秘黑盒。浅尝辄止是看不到潜藏在下方的危险的。不更生层次的了解软件开发将限制你创造出色作品的能力。</p>
+<p>重新发明轮子并碰壁要比一用到底更有价值。通过试错学到的教训会有感性的成分，是阅读技术书籍无法给予的。</p>
+<p>学习书本和实践至关重要，但要成为一个伟大的程序员则更多的要从实践中总结经验。重新发明轮子对开发者的教育和技能，就如同健身队举重运动员一样重要。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/73/">抵住单例模式的诱惑</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/71/">阅读人文科学</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

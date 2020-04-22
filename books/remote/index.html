@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>谈谈远程办公 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/19">
+            
+            
+                <a class="post-category" href="/categories/读书/">读书</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/19</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">谈谈远程办公</h1>
+        </header>
+
+        <div class="post-content">
+            <p>2020年的春节，一场战“疫”把大量人员扣留家中，无数公司启动居家办公模式，梦寐以求的好日子终于来啦！于是…上班族们崩溃了，根本不习惯，毫无效率可言。看来事实证明，远程工作终归是痴人说梦。那么，真是这样么？</p>
+<p>我倒是觉得，主要是思维习惯停留在集中式办公模式，不论管理层还是普通员工，都不可能做到短期内立即切换到远程办公的思维模式。就好像一个吃惯鲜甜口味的上海人，突然带他去吃一顿麻辣火锅，他并大可能感受到其中的美味。</p>
+<p>可以这么说，大部分坐在写字楼里所谓的白领阶层都具备远程工作的条件，因为他们工作中90%的活动和产出都是在电脑上完成的。换句话说，这群人，打开电脑，就能工作。</p>
+<p>远程办公有太多好处，最突出的莫过于不用把生命浪费在通勤路上，工作时间和环境都有巨大的弹性。但一个从小受集中式办公影响的人，如果他想切换到远程办公，我觉得至少要有以下三方面的认识。</p>
+<p><strong>效率：异步协作与沟通</strong></p>
+<p>就拿“讨论问题”来说。我们会习惯于当面讨论，你一言我一语，这样会很快得出结论，然后投入干活，这是我们认为这很“高效”。反之，通过邮件或聊天软件的沟通，不及时，半天得不到结果，所以它很“低效”。</p>
+<p>但这根本是两码事！当面讨论是同步的，邮件讨论是异步的。而且，直接用同步和异步来衡量效率也是种愚蠢的错误。<strong>评判效率要以事情的结果为标准，而非过程</strong>。</p>
+<p>面对面沟通时，双方都会进入口语化状态，因为要及时回复，思维就比较跳跃，想到什么说什么。一个未经缜密思考的决策，你能说的很完善？</p>
+<p>邮件或聊天软件的沟通则相对会正式些，而且人们在发送之前拥有充足的思考时间（吵架时除外😂），此时他对某个决策的观点会有一定的想法，这种讨论的结果更有说服力，并且可作为双方的备忘纪要。</p>
+<p>再者，我们认为集中办公“高效”的原因还有一点——及时性。我有一个想法，立刻就能召集人过来讨论，马上就能论证结果。反之，如果我把自己的想法发到聊天群里，半天没人理，如果我是领导，那多半只能得到几个敷衍的“赞”。</p>
+<p>可事实呢，诸如视频编辑、程序员、设计师、文案这种知识创作型人才，他们需要足够安静的环境和时间来思考。<strong>在办公室里，打断一个人的成本太低了</strong>，屁大的事情也会被拉去开个短会，等你回来后会发现，自己的思路全被打乱了。</p>
+<p>此外，我们往往会觉得那些重要且复杂的事情只有聚在一起才能完成。可事实上呢？普及数十亿设备的Linux操作系统，mysql数据库…伟大的开源软件大多了数不过来。但它们都是汇集了全球成千上万个程序员的思想，讽刺的是这些程序员分布在不同时区，素未谋面，仅仅靠“留言板”式的交流一起工作，而且大多不要工资。</p>
+<p>你还觉得异步协作与沟通的效率低吗？</p>
+<p><strong>人才：自律牛人的胜利</strong></p>
+<p>相比于集中式办公，远程办公在招揽人才方面似乎有天然的优势，因为它不受地域的限制。换句话说，如果你住在一个三线城市，同样能雇佣一线城市的众多人才。反之，如果你相中的某个大牛就喜欢“隐居”，你也犯不着三顾茅庐。</p>
+<p>但，远程办公对人才是极为敏感的。远程办公的员工必须具备两个基本素质：自驱力和较好的协作能力。</p>
+<p>我们都知道，在办公室里总会有一堆“闲人”和一堆“看起来很忙的人”。不论他们人缘有多么好，这些人不适合远程，他们是低效的，在公司被监督着也能划水摸鱼，你还指望他在家的时候兢兢业业？</p>
+<p>但还会有一帮人，他们属于没事找事型，可以自发地完成工作，给自己制定学习任务并真的完成。说白了，这群人可以从工作中找到快乐，就像为Linux开源做贡献的程序员一样。</p>
+<p>一个自律的人，你不需要话太多精力去盯着他，直接给他需求目标，然后等着拿结果，这样的合作关系不好么？</p>
+<p><strong>管理：老毛病与新问题</strong></p>
+<p>远程办公时代，我们必须摒弃很多旧观念和习惯。比如上下班要打卡，事情必须当面聊，审批要有领导签字，要是不盯着员工他们就会偷懒，坐办公室里才叫工作…其实，这些都是工业时代初期管理流水线的思维模式。它是面向过程的监督式管理。用这种观念去管一帮知识创作的人，搞不好会适得其反。</p>
+<p>事实上已经有非常多的软件工具可以把这些任务从线下搬到线上，但这也仅仅是一些方法而已。棘手的是我们的观念——总觉得员工会偷懒，必须监控着。</p>
+<p>这种对员工不放心不信任的想法，让管理者即使用上新工具后产生了很多滑稽的现象。比如让员工在家打卡，动不动开个视频会议，写工作汇报，想法设法找点无关紧要的小事给他们做。这种行为并不是为了工作本身，而是为了宣扬权利。说到底就一句话：“我付了工资，又看不见他，不能让他闲着！”</p>
+<p>然而呢，远程办公应该是以结果为导向，充分发挥异步协作与沟通的积极面，让员工用自己喜欢的方式施展才华。只要他把活干得漂亮，你管他是坐着还是躺着！再有，如果以事情的结果来评价员工的能力，那群“小白”和“忙人”也会很快浮出水面。</p>
+<p><strong>凡事都有两面性</strong></p>
+<p>不过我们也要清楚，远程办公会带来很多弊端：</p>
+<ul>
+<li>人是社交动物，长期独处一室会让人精神出问题的，还是尽量组织个聚会吧。</li>
+<li>长期久坐伤身，为了避免中年油腻，多鼓励员工运动吧。</li>
+<li>工作生活不分家，容易思维混乱，鼓励他们做一些仪式感的事情，暗示自己：我在工作，还是在生活。</li>
+<li>每个城市的工资标准不同，不能因为他住在三线城市就给他那边的待遇，应当公平公正！</li>
+<li>人一旦失去监督都会犯懒，工作文化变得更重要，考验你领导力的时候到了！</li>
+<li>狂人也很多，干起活来没日没夜，要提醒他们劳逸结合。</li>
+</ul>
+<hr>
+<p>最近看到大家激烈地吐槽远程办公，所以想深入了解这个新鲜的老玩意儿。便读了《重来2：更为简单高效的远程工作方式》。由衷地感叹，未来是个体的时代，未来是创意的时代，未来是信息的时代。或者说，未来已来。</p>
+<p>我们所看到的远程工作没有那么美好，那是因为我们早已习惯了现实世界的生活。但，趋势来了，你难道就打算这么看着？</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/管理/">管理</a>
+                
+                    <a href="/tags/创业/">创业</a>
+                
+                    <a href="/tags/远程办公/">远程办公</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/77/">从Yes开始</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/76/">单一职责原则</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

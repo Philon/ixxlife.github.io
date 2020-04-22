@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>从Yes开始 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/19">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/19</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">从Yes开始</h1>
+        </header>
+
+        <div class="post-content">
+            <p>原文：<a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_77/" target="_blank" rel="noopener">Start from Yes</a></p>
+<p>最近，我到杂果店里买“毛豆”（我对蔬菜种类只是大概了解）。我也无法确定这玩意是在蔬菜区，还是冷藏区，或者罐头区。我放弃了，找了个店员来帮我。结果她也不知道。</p>
+<p>这个店员本可以给我其他答复。比如她可以让我一脸懵逼的去别处看看，或者给我个模糊的区域，甚至干脆告诉我他们不卖这个。但她没有，她想抓住机遇一样对待这次询问，争取找出答案帮助顾客。她找来了其他店员并在很短时间内给了我可靠选项——在冷藏区。</p>
+<p>在这种情况下，店员看了下请求，然后基于“我们能解决问题并给予满意答复”的前提开始行动的。她从yes开始，而非no。</p>
+<p>当我头一次当上技术主管角色的时候，我觉得我的工作就是将那些来自产品经理和商业分析的可笑需求挡在门外，以保护我美丽的软件。我发起的很多谈话，都是将请求视作否定，而非允许。</p>
+<p>某一刻，我突然顿悟，或许有不同的方式来工作，只需要把我的观念从no倒转为从yes开始。事实上，我开始相信，从yes开始是一个技术领导者的基本素养。</p>
+<p>这个简单的变化彻底改变了我的工作方式。事实证明，有非常多的机会说出yes。当某个人和你说：“呐，如果我们将所有的窗口都做成半透明的，那这app确实就想蜜蜂的膝盖一样！”，你肯定会把它当个笑话给驳回了。当它通常用“为什么？”来开头更好。通常情况下，由于某些必然的原因，人们会要求圆形、半透明的窗口放在第一眼的位置。例如，你可能和一个新的大客户签订了圆形半透明窗口的委托书。</p>
+<p>通常，你会发现当你了解的请求的前因后果，新世界的大门就打开了。常见的就是以其他方式利用现有产品来完成请求，不用干活就可以说yes：“事实上，在用户偏好设置里，你可以下载并切换到圆形半透明窗口的皮肤”。</p>
+<p>有时候其他人会有一些简单的想法与你的产品视角不同。我发现通常这对于转过来问自己“为什么？”会有帮助。有时候说出原因的行为会清楚的表明你的第一反应是没有道理的。否则，你需要提高一下格局来引导关键决策者。记住，这一切的目标是为了对他人说出yes并使其正常运转，不仅仅对他有利，对你和你的团队也是如此。</p>
+<p>如果你能对功能请求与现有产品的冲突给出强有力的解释，那么你很可能对是否构建正确的产品进行高效的谈话。不论谈话是否结束，每个人关注的都是哪些是产品的本质，哪些不是。</p>
+<p>从yes开始意味着和同事一起工作，而不是与他们为敌。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/设计模式/">设计模式</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/78/">退一步，然后自动化、自动化、自动化</a>
+            
+            
+            <a class="next" rel="next" href="/books/remote/">谈谈远程办公</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>一：环境准备 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/03/23">
+            
+            
+                <a class="post-category" href="/categories/ARM-Linux驱动开发/">ARM-Linux驱动开发</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/03/23</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">一：环境准备</h1>
+        </header>
+
+        <div class="post-content">
+            <p>问：作为嵌入式软件工程师，你会写驱动吗？<br>答：会呀，我会控制gpio输出把LED点亮！😂</p>
+<p>我想这是我扎根嵌入式软件开发多年的尴尬之处——不太会写驱动！所以，我决定系统地学习一下这个领域，一来是工作需要弥补我在驱动层的空白，二来自己也想全面了解Linux内核机制。基本上我主要通过《Linux设备驱动开发详解，基于最新的Linux4.0内核》以及《Linux设备驱动程序》作为主要参考教材(毕竟手上就这两本书)。</p>
+<p><em>废话结束</em></p>
+<hr>
+<p>为了避免繁琐地硬件环境搭建，学习过程尽可能基于虚拟的arm开发板，既能保证环境统一，又能快速上手👍。</p>
+<p>另外，我个人的“战果”全部放在git仓库：<a href="https://github.com/philon/varm" target="_blank" rel="noopener">github/philon/varm</a></p>
+<p><strong>个人开发环境：</strong></p>
+<ul>
+<li>宿主机：Ubuntu 18.04</li>
+<li>开发板：qemu+vexpress-a9</li>
+<li>编辑器：visual studio code</li>
+<li>编译器：arm-linux-gnueabihf-gcc</li>
+</ul>
+<p>关于如何安装Linux虚拟机以及交叉编译环境的搭建这里就不写了，网上教程一大堆。所以从现在开始，阅读下文的前提是：Linux、arm-linux-gcc、各种源码编辑器环境已就绪。</p>
+<p>好，下面亲手动手，来做一块arm开发板😅。</p>
+<h2 id="ARM虚拟机——QEMU"><a href="#ARM虚拟机——QEMU" class="headerlink" title="ARM虚拟机——QEMU"></a>ARM虚拟机——QEMU</h2><p><a href="https://www.qemu.org" target="_blank" rel="noopener">QEMU</a>是一款免费开源且跨平台的虚拟机，可以虚拟各种架构的处理器，和vmware/virtualbox不同，我们更喜欢用它来仿真ARM环境，即一款ARM虚拟机。</p>
+<p><strong>第一步：下载并安装qemu</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># macOS用户</span></span><br><span class="line">$ brew install qemu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Ubuntu用户</span></span><br><span class="line">$ sudo apt-get install qemu</span><br><span class="line"></span><br><span class="line"><span class="comment"># Windows用户麻烦把门口的小黄车挪一挪</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步：选择一款arm</strong></p>
+<p>装好后可以通过以下命令qemu支持哪些arm处理器(开发板)：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ qemu-system-arm -M <span class="built_in">help</span></span><br><span class="line">akita                Sharp SL-C1000 (Akita) PDA (PXA270)</span><br><span class="line">ast2500-evb          Aspeed AST2500 EVB (ARM1176)</span><br><span class="line">borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)</span><br><span class="line">...</span><br><span class="line">vexpress-a15         ARM Versatile Express <span class="keyword">for</span> Cortex-A15</span><br><span class="line">vexpress-a9          ARM Versatile Express <span class="keyword">for</span> Cortex-A9 <span class="comment"># 👈没错就它了</span></span><br><span class="line">...</span><br><span class="line">witherspoon-bmc      OpenPOWER Witherspoon BMC (ARM1176)</span><br><span class="line">xilinx-zynq-a9       Xilinx Zynq Platform Baseboard <span class="keyword">for</span> Cortex-A9</span><br><span class="line">z2                   Zipit Z2 (PXA27x)</span><br></pre></td></tr></table></figure>
+
+<p>选中自己喜欢的“硬件”环境后，理论上就可以“上电”了，不过且慢——<strong>操作系统还没装呢</strong>！所以接下来很重要的一步就是制作自己的Linux系统镜像。</p>
+<h2 id="制作Linux系统镜像"><a href="#制作Linux系统镜像" class="headerlink" title="制作Linux系统镜像"></a>制作Linux系统镜像</h2><p>做嵌入式Linux的人都知道，一个完整的嵌入式Linux操作系统基本分为三大块：</p>
+<ul>
+<li>u-boot：上电初始化并引导内核</li>
+<li>kernel：Linux内核</li>
+<li>rootfs：根文件系统，busybox</li>
+</ul>
+<p>由于qemu可以直接引导内核，所以这里暂且略过u-boot的移植。其它两个源码建议选择“稳定版”，别给自己找麻烦。</p>
+<p><strong>第一步：移植内核</strong></p>
+<p>从<a href="https://www.kernel.org" target="_blank" rel="noopener">linux内核官网</a>下载源码并解压(我嘞个去！Linux都步入5.0时代了，果断下载)，然后根据以下命令移植：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 0. 可能需要安装flex、bsion，如果之前没装的话，否则编译镜像时会出错</span></span><br><span class="line">$ sudo apt install flex bison</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 解压源码并进入目录</span></span><br><span class="line">~/varm/os$ tar xf linux-5.0.3.tar.xz &amp;&amp; <span class="built_in">cd</span> linux-5.0.3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 将内核设置为vexpress的配置，即vexpress-a9开发板</span></span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- vexpress_defconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 编译内核镜像zImage</span></span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage -j8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 编译其它驱动模块，制作rootfs时候要用</span></span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules -j8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 编译设备树</span></span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- dtbs -j8</span><br></pre></td></tr></table></figure>
+
+<p>根据上述命令完成kernel移植之后，所有需要的镜像及其相关文件全部放在<code>&lt;kernel_dir&gt;/arch/arm/boot</code>中：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># zImage和dts就是真正需要的东西</span></span><br><span class="line">~/varm/os/linux-5.0.3$ ls arch/arm/boot/</span><br><span class="line">Image               bootp               deflate_xip_data.sh install.sh</span><br><span class="line">Makefile            compressed          dts                 zImage</span><br><span class="line"></span><br><span class="line"><span class="comment"># 为了之后操作方便，我把它们放到varm/os目录下</span></span><br><span class="line">~/varm/os/linux-5.0.3$ cp -rf arch/arm/boot/zImage .. <span class="comment"># 内核镜像</span></span><br><span class="line">~/varm/os/linux-5.0.3$ cp -f arch/arm/boot/dts/vexpress-v2p-ca9.dtb .. <span class="comment"># 设备树描述</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第二步：启动内核</strong></p>
+<p>既然有了内核镜像文件，就可以先小试牛刀了，qemu走起！</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/varm/os/linux-5.0.3$ <span class="built_in">cd</span> ..</span><br><span class="line">~/varm/os$ qemu-system-arm -M vexpress-a9 -m 512M -kernel zImage -dtb vexpress-v2p-ca9.dtb -nographic</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2019/03/23/5c96479700132.png" alt></p>
+<p>可以看到kernel被成功启动了，但由于没有文件系统，内核向你抛出了一个异常。<br>此外，上述命令比较长，简单解释下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">qemu-system-arm \ <span class="comment"># 虚拟机启动</span></span><br><span class="line">-M vexpress-a9 \ <span class="comment"># 指定开发板为vexpress-a9</span></span><br><span class="line">-m 512M \ <span class="comment"># 配置虚拟机内存为512M</span></span><br><span class="line">-kernel zImage \ <span class="comment"># 指定内核镜像文件</span></span><br><span class="line">-dtb vexpress-v2p-ca9.dtb \ <span class="comment"># 指定设备树文件</span></span><br><span class="line">-nographic \ <span class="comment"># 不需要图形界面(LCD)</span></span><br></pre></td></tr></table></figure>
+
+<p>还有一点，quem启动后是一个独立进程，所有的Ctrl+C和其他中断信号都会被这个进程来接，程序无法关闭，最好的办法是新建一个终端，用kill来杀！</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ killall qemu-system-arm</span><br><span class="line"><span class="comment"># 也可以是ps先看qemu的pid，在用kill &lt;pid&gt;来杀，我只是觉得那样麻烦</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第三步：移植busybox</strong></p>
+<p>同样先从<a href="https://busybox.net" target="_blank" rel="noopener">busybox官网</a>把源码包下载下来，然后开始移植：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 解压源码并进入目录</span></span><br><span class="line">~/varm/os$ tar xf busybox-1.30.1.tar.bz2 &amp;&amp; <span class="built_in">cd</span> busybox-1.30.1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 选择默认配置</span></span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- defconfig</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 编译busybox</span></span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j8</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 安装busybox到./_install目录</span></span><br><span class="line">make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- install</span><br><span class="line"></span><br><span class="line"><span class="comment"># 顺利完成上述步骤后，可以在`busybox/_install`</span></span><br><span class="line"><span class="comment"># 目录下看到各种`usr lib bin`之类的文件系统结构</span></span><br><span class="line"><span class="comment"># 这就是rootfs的雏形了，现在还需要在此基础上做些加工</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 为了方便之后操作，一样将_install目录放到varm/os下，并重命名为rootfs</span></span><br><span class="line">~/varm/os/busybox-1.30.1$ mv _install ../rootfs</span><br></pre></td></tr></table></figure>
+
+<p><strong>第四步：制作根文件系统rootfs</strong></p>
+<p>busybox已经生成了linux常用的一些命令和简单的目录结构，现在还差两个东西：</p>
+<ul>
+<li>busybox的命令执行是依赖于交叉编译工具的动态库的，所以要把动态库放入rootfs</li>
+<li>需要给文件系统一些默认的设备描述符，否则你想让它往哪输出</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 拷贝根文件系统的“必需品”到rootfs目录</span></span><br><span class="line">~/varm/os/busybox-1.30.1$ <span class="built_in">cd</span> ..</span><br><span class="line">~/varm/os$ mkdir rootfs/lib <span class="comment"># 创建系统库文件存放目录</span></span><br><span class="line">~/varm/os$ cp -P /usr/arm-linux-gnueabihf/lib/*.so* rootfs/lib <span class="comment"># 拷贝gcc动态库</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 创建设备目录以及4个tty终端和调试串口</span></span><br><span class="line">~/varm/os$ mkdir rootfs/dev <span class="comment"># 创建设备描述符目录</span></span><br><span class="line">~/varm/os$ <span class="keyword">for</span> i <span class="keyword">in</span> 1 2 3 4; <span class="keyword">do</span> sudo mknod rootfs/dev/tty<span class="variable">$i</span> c 4 <span class="variable">$i</span>; <span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>第五步：创建rootfs镜像</strong></p>
+<p>所谓镜像可以理解为一张虚拟的光盘，存放操作系统。但玩过树莓派的同学应该都知道它的存储其实就是一个SD卡，那好，我们就创建一张虚拟的SD卡给qemu加载。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 生成镜像文件(虚拟SD卡)，且大小为32M</span></span><br><span class="line">$ dd <span class="keyword">if</span>=/dev/zero of=rootfs.ext3 bs=1M count=32 <span class="comment"># 创建一个32M的空文件</span></span><br><span class="line">$ mkfs.ext3 rootfs.ext3 <span class="comment"># 将该文件格式化为ext3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 挂在镜像到/mnt目录，并将rootfs目录导入其中</span></span><br><span class="line">$ sudo mount -o loop rootfs.ext3 /mnt</span><br><span class="line">$ sudo cp -r rootfs/* /mnt</span><br><span class="line">$ sudo umount /mnt</span><br></pre></td></tr></table></figure>
+
+<p>现在整个rootfs.ext3镜像制作完成，再加上zImage内核镜像，<del>可以起飞了</del>可以开机正常加载了，重新调整一下qemu的启动命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/varm/os$ qemu-system-arm -M vexpress-a9 -m 512M -kernel zImage -dtb vexpress-v2p-ca9.dtb -sd rootfs.ext3 -nographic -append <span class="string">"root=/dev/mmcblk0 console=ttyAMA0"</span></span><br></pre></td></tr></table></figure>
+
+<p>上边的命令大体上和内核启动时一样，主要是增加了<code>-sd rootfs.ext3</code>文件系统的SD卡和对应分区，以确保内核能正确加载文件系统。经过一分钟左右的等待，我们的最小Linux系统成功运行起来了😄：</p>
+<p><img src="https://i.loli.net/2019/03/23/5c9649750ea24.png" alt></p>
+<p>如果顺利的话内核会成功挂在文件系统，从此可以愉快玩耍了。以上就是整个ArmLinux的虚拟机搭建过程，目前位置整个环境基本OK，但在真正写代码之前还有些事情要做，总之等遇到了再查缺补漏。</p>
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ul>
+<li>QEMU是一款虚拟机，可以虚拟常见的通用处理器架构，包括ARM，支持很多开发板模拟</li>
+<li>vexpress-a9是ARM官方出的一款开发板</li>
+<li>QEMU可以直接引导内核，因此可以不用移植u-boot</li>
+</ul>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/ARM/">ARM</a>
+                
+                    <a href="/tags/Linux/">Linux</a>
+                
+                    <a href="/tags/驱动开发/">驱动开发</a>
+                
+                    <a href="/tags/嵌入式/">嵌入式</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/创业维艰/">生命即挣扎——《创业维艰》读后感</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/33/">浮点数不是实数</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

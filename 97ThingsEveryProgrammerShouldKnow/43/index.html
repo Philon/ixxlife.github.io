@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>理解如何使用命令行工具 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/06/17">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/06/17</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">理解如何使用命令行工具</h1>
+        </header>
+
+        <div class="post-content">
+            <p>现如今，很多软件开发工具都被打包成集成开发环境(IDE)。微软的VisualStudio以及开源的Eclipse就是两个非常主流的案例，尽管还有很多其他的。IDE有很多让人喜爱的地方。不仅仅是它们简单易用，还包括它们能不需要程序员去考虑很多构建的细节过程。</p>
+<p>易于使用，然而，这也算个缺点。具体来说，一个工具如果容易上手，是因为它替你做了决策，并在后台自动完成了大量的事情。如此依赖，如果你从来都只用某个IDE作为开发环境，那你永远都无法完全理解这个工具到底做了些什么。你点击一个按钮，魔法开始了，然后一个可执行文件就这么出现在工程文件夹下。</p>
+<p>用命令行构建工具来工作，当你的工程编译时，你可以学到很多有关这些工具具体做了什么。编写自己的构建脚本(Makefile)有助于理解生成可执行文件的所有步骤(编译、组装、链接等等)。在命令行下尝试使用这些工具也是一种非常有价值的学习经验。刚开始使用命令行构建工具时，你可以选择像是GCC这样的开源命令行工具，也可以是IDE专门提供的那一套。当你全部尝试一遍后就会发现，好的IDE只是一套集成了命令行工具的前端界面。</p>
+<p>除了提高你对编译过程的理解，相对于IDE，使用命令行工具还会带来一些更简单有效的地方。例如，在查找替换时，<code>grep</code>和<code>sed</code>所提供的功能，往往要比在IDE中查找要有用得多。命令行工具原生支持脚本，它允许自动完成任务，例如按计划每日构建，创建多版本工程，运行测试套件。在IDE中，由于构建选项往往是通过图形界面对话框制定的，并通过鼠标单击来调用，所以要实现此类自动化就会变得非常困难(如果不是不可能的话)。</p>
+<p>且慢。不是说IDE的存在让开发更简单，进一步提高程序员的生产力么？是的！这项建议不是说你应该停止使用IDE。而是说你应该“看看引擎盖之下”，并了解IDE到底为你做了些什么。最好的方式你学习命令行工具，然后，当你再反过来使用IDE时，就可以更好的理解它的所作所为，你也能更好的控制构建过程。另一方面，一旦你掌握了命令行工具，体验过它的强大和灵活之后，你就会发现自己喜欢命令行胜过IDE。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/技术/">技术</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/44/">掌握两种以上的编程语言</a>
+            
+            
+            <a class="next" rel="next" href="/books/易中天中华史7-9/">秦汉-《易中天中华史：卷7-9》</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

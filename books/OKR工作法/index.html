@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>抱歉，OKR不是KPI的升级版 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/24">
+            
+            
+                <a class="post-category" href="/categories/读书/">读书</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/24</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">抱歉，OKR不是KPI的升级版</h1>
+        </header>
+
+        <div class="post-content">
+            <p>你可能听过这样的言论：“别用KPI了，现在大公司都流行OKR”。这主要源于我们太了解KPI以及太不了解OKR了。</p>
+<ul>
+<li>KPI：关键绩效指标，即你创造了多少价值，就拿多少钱。</li>
+<li>OKR：Objective（富有挑战的目标）、KeyResult（关键结果），即一种目标管理和推进手段。</li>
+</ul>
+<p>说白了，OKR是给团队做目标管理用的，KPI是给团队“分赃”用的，压根不是一回事。</p>
+<p>《OKR工作法：谷歌、领英等公司的高绩效秘籍》一书详述了OKR这种目标管理方法。当然，其叙述内容比较特别——是以小说的形式，所以读起来不那么枯燥乏味。</p>
+<p><strong>OKR笔记一：如何制定目标</strong></p>
+<p>如果按照OKR的标准，“目标”这两字可能很多人都会理解错，我们先来看几个“坏目标”：</p>
+<ul>
+<li>公司今年产值过1000万</li>
+<li>五年内A股上市</li>
+<li>发展10万个新用户</li>
+</ul>
+<p>再来看几个“好目标”：</p>
+<ul>
+<li>让天下没有难做的生意</li>
+<li>连接全世界</li>
+<li>为人类社会做贡献</li>
+<li>构建万物互联的智能世界</li>
+</ul>
+<p>你可能会觉得，好的目标就是那种宏大、遥不可及、含糊其辞的说法。而那些结果明确且具体的说法反而是坏目标。其实不然！不要混淆目标和指标，这是OKR要注意的第一点，否则就真成了KPI了。</p>
+<p>上面几个好目标是公司层级的（你也可以把它叫做使命愿景），如果是小团队或部门级的目标，诸如“项目交付让甲方爸爸点赞”、“开发快乐又有意义的游戏”。</p>
+<p>目标是面向整个团队的，所以应该是直指人心的，挑逗人的肾上腺素，每个人对它的理解不同，但大方向是一致的。此外，小团队的目标不必太正式，可以根据团队的语言风格确定目标的措辞。</p>
+<p><strong>OKR笔记二：什么是关键结果</strong></p>
+<p>空有目标是不够的，你还得想办法推进它。这就要靠关键结果指标。但是要注意，和KPI不同的是，这里的指标是用于评价目标推进的情况，以及团队整体的士气，而不是判定个人的业绩好坏。</p>
+<p>和项目管理中的“事无巨细”恰好相反，关键结果应该聚焦那些影响目标存亡的部分，一般来说不会超过三条。比如“开发快乐又有意义的游戏”，可以这样制定第一季度关键结果：</p>
+<ul>
+<li>v1.0版本上线 (7/10)</li>
+<li>至少推广10万个新用户 (5/10)</li>
+<li>玩家好评率70% (4/10)</li>
+</ul>
+<p>注意，每个关键结果后边括号内的分值表示：如果要完成该项指标，团队的把握有几成，我把它叫做“团队信心值”。它可以反向衡量你的这个目标设置是否合理，一般来说，评估结果在50%是最为理想的——有挑战，但加把劲儿也能完成。</p>
+<p><strong>OKR笔记三：四象限法</strong></p>
+<p>找一张A4纸，把它对折两次（或者直接画个十字），然后分别在1、2、3、4象限内写入OKR目标和关键结果、状态、本周事物、未来一个月的计划。如下图：</p>
+<p><img src="https://i.loli.net/2020/02/24/xqazISrFY7NHJUE.png" alt></p>
+<p>四象限法是为了让目标和指标具备可执行性，并像念经一样灌到每个团队成员的脑子里。也就是说，这张纸每周一开例会都要用，都要更新，到周五的时候大家在拿着这张纸复盘一下。如果达成了目标，最好组织个简单庆祝。</p>
+<p>OKR最怕的就是：信誓旦旦立个flag，然后，就没有然后了。</p>
+<p><strong>OKR笔记四：坑</strong></p>
+<p>第一次使用OKR大概率会失败，因为团队会掉入一些常见陷阱：</p>
+<ul>
+<li>事无巨细，把目标和结果说得太多太杂，人都会这样，貌似不把一件事情100%还原就是不甘心。结果就是你和你的团队反而分散的注意力。</li>
+<li>没有执行，OKR很想是个人冲动下的承诺，往往不会用行动兑现。如果团队不定期复盘跟进，什么宏大目标都毫无意义了。</li>
+<li>把所有事情都调至最高优先级，这就等同于没有优先级。一周能完成的事情并不多，每件事都紧急的话，团队就会陷入懵逼状态。</li>
+<li>关键结果过高或过低，太简单的事情没有成就感，太困难的事情打击士气。充分评估或让团队整体评价这些指标，50%为宜。</li>
+</ul>
+<p><strong>总结</strong></p>
+<p>如果你个人、团队、公司不知所措的时候，OKR可能会适用。它的作用是目标管理，组织中的每个人都知道：我们想做什么，我们将做什么，我们正在做什么。让进度可见，让参与者获得成就感。</p>
+<p>OKR的初衷是确立目标并逐步推进，如果把它沦为单纯的考核工具，那就太不值了。</p>
+<hr>
+<p>PS：以下内容纯属娱乐</p>
+<p>看完了OKR，内心汹涌澎湃，想要实操一把…</p>
+<p>我本来想假设自己是一个传销头目，为团队制定OKR，连愿景我都想好了，叫<strong>人人皆下线</strong>。后面感觉容易进小黑屋就放弃了。</p>
+<p>我又把自己假想成一个负责熟人社交网络的产品经理，表演开始：</p>
+<p>目标：朋友，不止于点赞（干翻微信）</p>
+<p>关键结果1: 用户好评率70%（6/10）<br>关键结果2: 线下聚会订单数超过5000（4/10）<br>关键结果3:城市日活用户10w+ （5/10）</p>
+<p>本周工作：<br>P1:雇佣1000号水军制造舆论<br>P1:调研90、00后线下聚会习惯<br>P1:准备内测朋友圈“好物交换”功能<br>P2:拿下“XXX桌游吧”合作渠道<br>P2:与“XXX电竞宿舍”老板洽谈</p>
+<p>本月计划：<br>成功炮制微信聊天要收费谣言<br>培养用户线上租借闲置物品给朋友的习惯<br>完成1000笔线上预约线下聚会的订单  </p>
+<p>😂😂😂😂</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/项目管理/">项目管理</a>
+                
+                    <a href="/tags/管理/">管理</a>
+                
+                    <a href="/tags/OKR/">OKR</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/82/">在你睡觉（以及周末）时测试</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/81/">严谨而具体地测试</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

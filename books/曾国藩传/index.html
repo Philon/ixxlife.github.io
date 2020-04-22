@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>一个愤青的自我修养 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/10">
+            
+            
+                <a class="post-category" href="/categories/读书/">读书</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/10</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">一个愤青的自我修养</h1>
+        </header>
+
+        <div class="post-content">
+            <p>早在很多年前，曾国藩这个名字就如雷贯耳。当然，我听到的情况是，人们歌颂他“尚拙”的作风与“结硬寨打呆仗”的军事思想。总之就是不去投机取巧，一门心思脚踏实地把自己的基础打扎实，以达到无招胜有招，战无不胜的境界。</p>
+<p>脚踏实地——当然是政治正确的口号，但试问有几个人会真的贯彻执行。我之前从未读过曾国藩相关书籍，但是听到他这种精神后，自然对其产生迷之崇拜。就像一个愤青面对自己的祖国，总是一副恨铁不成钢的样子。往深了，也说不来为什么，就只能人云亦云地喊喊口号罢了。</p>
+<p>所以我想认真了解一下这个人，便通读了张宏杰这本《曾国藩传》。坦白讲，对于读过那么几本书的我而言，能识别出出作者在本书中有浓烈的个人主观色彩，但这并不影响它成为一本好书，也不影响我对曾国藩个人的判断。</p>
+<h2 id="我眼中的曾国藩"><a href="#我眼中的曾国藩" class="headerlink" title="我眼中的曾国藩"></a>我眼中的曾国藩</h2><p>我觉得，曾国藩的伟大在于——平易近人。</p>
+<p>怎么说呢？</p>
+<p>你要是从后往前看，会看到曾国藩面对晚清颓势，力挽狂澜，创湘军、灭太平、兴百姓、办洋务，近乎以一人之力为当朝续命五十年。同时，他朋友门生遍天下，且多是社会中流砥柱，无不对他敬佩有加。此外，他修养极高，毕生弘扬儒理思想，身先士卒，又在权盛至极时甘于为朝廷做出牺牲。正所谓立德立功立言三不朽，他全做到了，堪称完人。</p>
+<p>这样的人，不免让人觉得太遥远，我平民百姓只配瞻仰，哪能相提并论。</p>
+<p>但你要是从前往后看，会发现曾国藩出身一般，顶多算现在所谓的中产阶级家庭，无背景无权势只能啃老。而且天资平庸，当年的“高考”考了七八次才考上。上了大学（翰林院）后，抽烟喝酒打牌，喜欢看人杀头，调戏美女，混日子。刚踏入社会（当官和创建湘军）后，对政府当局各种愤恨，直骂皇帝、弹劾同事、抱怨家人，总喜欢站在道德的制高点贬低他人来抬高自己，为人处事总要摆出一副舍我其谁的姿态。</p>
+<p>这样的人，其实离我们挺近的。可如果把他的故事说成是“屌丝逆袭”，又好像不伦不类。</p>
+<p>曾国藩并没有给我一种励志的感觉，反而是结局本该如此。</p>
+<p>读书不行，那么就拼命学习嘛；<br>考试不行，那就钻研应试技巧嘛；<br>没有学问，那就读圣贤书嘛；<br>品行不端，那就严于律己嘛；<br>要打仗了，那就征战沙场嘛；<br>朝廷迂腐，那我不学就是了嘛；<br>受人排挤，那就善于人下嘛；<br>上司无能，那自己争点气嘛；<br>遭人妒忌，别往心里去嘛；</p>
+<p>总之一句话——错了，那就改嘛！</p>
+<p>是啊，知错能改，善莫大焉。问题是“知错”不易呀，试问有几个人能做到常自省，又有几个人听得进他人的忠言。即便真的意识到自身问题了，又有多少人贯彻“能改”。就好像“吸烟有害健康”对烟民而言，不过是句正确的废话。</p>
+<p>一边自我感觉良好，一边得过且过。或许这就是为什么曾国藩能成为圣人，而我们只能沦为平庸的原因吧。</p>
+<p>观其一生，曾国藩的伟大就在于此。他身先士卒，用自己的一言一行，在那个腐朽的王朝，没落的年代里，为这个古老的文明再次竖起灯塔，让那些优秀的思想得以继续在这片土地传承。</p>
+<h2 id="从愤青到圣贤"><a href="#从愤青到圣贤" class="headerlink" title="从愤青到圣贤"></a>从愤青到圣贤</h2><blockquote>
+<p>晚清以来，有一个规律性现象，那就是在对外交往中，凡是主张强硬，甚至主张“蛮不讲理”的人，通常都会获得民众的热烈欢呼，被称为“民族英雄”“扬我国威”。而主张和洋人“讲理”“妥协”的，几乎都会被骂卖国，被称为汉奸，声名尽毁。</p>
+</blockquote>
+<p>书中这段评价很有意思，哪怕放到现在也未必过时。愤青的逻辑其实不在于政治正确，而是情绪宣泄。为了发泄自己的“爱国”情绪，所做之事一样蛮不讲理。</p>
+<p>曾国藩年轻时候的表现却是像个愤青。他理直气壮地批评皇帝，压迫同僚，为人处事一根筋，只为证明自己是对的。当然，这也比现在的“键盘侠”要高级一点，至少人家是真刀真枪的干！</p>
+<p>后来在官场上被别人玩得头破血流，方才恍然大悟。自己从前凡事据理力争，且不说容易得罪人，就是那种得理不饶人的态度，也无形中伤害了很多想对他好的人。所以他后来变得恭谦礼让，能够体谅别人的难处，能居人于下。“于理”的同时兼顾“于情”。但这只是其一。</p>
+<p>曾国藩是个高级愤青，他可不是一介匹夫。在“救国”方面他有战略、有目标、有思想、有行动。只不过前些年忽略了自身环境和游戏规则。现在他已得要领，这也是为何在官场上他选择同流合污，却不自甘堕落的原因。他需要借助整个清政府体系的力量，但不是为了肥自己，而是为了兴国家！</p>
+<h2 id="关于“尚拙”"><a href="#关于“尚拙”" class="headerlink" title="关于“尚拙”"></a>关于“尚拙”</h2><p>其实我个人的价值观是很能接受尚拙的，毕竟我也是这么要求自己的。简单来说，就是用一些看似笨拙的方法去完成那些重要的事情，骨子里就是不要想着耍小聪明，脚踏实地才是正道。尚拙精神非常值得推崇，但要小心，小心人性，稍不注意就会本末倒置。因为尚拙有一个很致命的前提，就是你的格局是否高。</p>
+<p><strong>难以戒掉的既得利益</strong></p>
+<p>人本能会追求及时满足，要达成某个目的，渴求马上达到。可惜决定一个人命运的往往是那些需要“慢慢消化”的小事。</p>
+<p>这就好像跑步减肥一样，累死累活一天下来毫无变化，明天也是，后天也是，人就会放弃，去追逐那些轻松速效减肥之法。</p>
+<p>再如工作中大谈人脉、选择、技巧等，而忽略了最基本的认真做事原则。学习上质疑读书无用，挑挑拣拣，只想学习那些马上看见成效的拳脚功夫，不肯修炼内力。</p>
+<p>总之，尚拙需要一颗持之以恒的心，每天看似不重要且朴实的坚持，久而久之就会变得非同凡响。</p>
+<p><strong>用勤劳来掩盖懒惰</strong></p>
+<p>人本能会躺在舒适区，你可能觉得自己很努力，但那不过是无脑的机械重复罢了。</p>
+<p>这就像奉行资历主义的人，以为只要工作年限够就会升职加薪。又或者只会墨守成规按流程办事，出多少力气都行，但别让自己动脑子，只做自己会的，永远不去探索自己未知的。</p>
+<p>其实这种状态是很容易让人舒服的，生活一帆风顺，无忧无虑。可惜经不起半点风霜。</p>
+<p>总之，尚拙需要一颗“天天向上”的心，经常自省，挑战自我，渐进式的努力才是有意义的。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/传记/">传记</a>
+                
+                    <a href="/tags/历史/">历史</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/74/">脏代码炸弹搅乱性能之道路</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/73/">抵住单例模式的诱惑</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

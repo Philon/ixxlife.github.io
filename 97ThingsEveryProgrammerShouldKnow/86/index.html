@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>两个错误导致一个正确（而且难以修复） | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/03/09">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/03/09</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">两个错误导致一个正确（而且难以修复）</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_86/" target="_blank" rel="noopener">Two Wrongs Can Make a Right (and Are Difficult to Fix)</a></p>
+<p>代码时不会说谎的，但它会自相矛盾。有些矛盾还会导致“这怎么可能跑得起来？”的时刻。</p>
+<p>在一次采访中，阿波罗11号月球模块的首席设计师，Allan Klumpp透露，控制引擎的软件有个会导致着陆舱不稳定的bug。然而，另一个bug却弥补了它，在这些bug被发现并修复之前，软件都被应用于阿波罗11和12号登月。</p>
+<p>设想一个函数会返回其完成状态。假设它本该返回true的时候却返回了false。继续假设刚好调用此函数的地方忽略了该返回值。它就会一直正常工作，直到某天某人注意到这里缺失检查，才会修改它。</p>
+<p>再设想一个将状态存储为XML的程序。假设将原文本来应该是TimeToDie的节点写成了TimeToLive。若代码编辑器和阅读器都接纳了该错误，那每件事都看起来还好。但如果其中一方修复了，或者一个全新的应用程序读到此文档，代码的对称性就被打破了。</p>
+<p>当代码中两个缺陷产生了一个可见错误时，按部就班地修复错误可能会导致自身崩溃。开发者得到一个bug反馈，找出缺陷并修复到，然后重新测试。然而反馈中的错误依然出现，因为第二个缺陷还在起作用。所以又把第一个修复已出，继续检查代码知道发现第二个隐藏bug，再次修复。可惜第一个bug又回来了，反馈的错误依然存在，再次回滚第二个修复。以此循环，此刻的开发者已全然不顾两个可能的修复结果，继续寻找第三处让程序不工作的地方。</p>
+<p>两个代码间相互作用下只出现一个可见错误，不仅让问题难以修复，还容易让开发者陷入死胡同，只能发现他们早起尝试的正确答案。</p>
+<p>这不仅仅是在代码中才会发生：问题也会存在于编写必要的文档中。它会病毒式地从一个地方扩撒到其它地方。代码中的错误会在文档中的描述错误的到弥补。</p>
+<p>它同样会在人群中扩散：当用户学会了程序说“左键”其实意味着“右键”的时候，他们就会调整自己相应的行文。他们甚至会将其传递给新用户：“记住，当程序说‘点击左键’，它的真实意图是让你点击右键”。bug就这样因为用户的再培训突然间被修复了。</p>
+<p>单个错误可以很容易标记并修复。但由多种原因引起的问题就需要多种变换，修复难度更高。关于这部分，是因为简单的问题人们倾向于快点修复它们，而更为困难的问题会记录下来延后处理。</p>
+<p>对于如何处理由交叉缺陷引发的故障，没有简单的建议。要意识到这种可能性，要有清晰的头脑，并愿意考虑所有的可能性。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/87/">为你的朋友“乌班图”编程</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/85/">两个脑袋常常比一个好</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

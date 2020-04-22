@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>你的客户言非其意 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/03/23">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/03/23</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">你的客户言非其意</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_97/" target="_blank" rel="noopener">Your Customers Do not Mean What They Say</a></p>
+<p>我从来没有遇到过一个客户能够开心地告诉我他们想要什么——通常都是陷入细节里。问题在于客户不总是告诉你完整的真相。他们一般也不会撒谎，但他们所说的是客户术语，而非开发术语。他们使用自己术语和上下文。他们忽略了重要的细节。他们假设你已经在他们公司呆过20年，可以像他们一样。事实上很多客户根本不知道他们最想要的到底是什么，事情就会更复杂。有些人可能掌握了“全局”，但他们很难有效地传递出自己的愿景细节。其他人可能对整体愿景关注的少一些，但他们知道自己不想要的是什么。所以，你怎么可能将一个软件项目交付给一个无法告诉你自己内心想法的业主呢？非常简单。很他们更多地互动。</p>
+<p>尽早邀请你的客户，并经常邀请他们。不要简单地用他们的词汇重复他们告诉你的想法：他们和你说的并非他们的意思。我就经常在和他们的交谈中通过交换单词并观察他们的反应来实施此建议。你会惊讶术语“顾客”和术语“客户”会有多少种全然不同的含义。和你说他在软件中想要什么的家伙会使用可交换的术语，并预计你能更上他所说的内容。但你完全迷糊了，编写的软件也会受到影响。</p>
+<p>在你定出你所理解的对方需求之前，和你的客户进行多次主题讨论。尝试和他们复述两到三次这些问题。告诉他们事情之前或主题之后你都能获得更好的信息。尽可能，有多个人在独立的对话中和你交流相同的主题。他们几乎都会通过和你讲述不同的故事，揭露了相关事实的不同面。两个人和你交流的相同主题常常会自相矛盾。你成功的最佳机遇是在你开始那个超级复杂软件设计前，先把差异消除掉。</p>
+<p>在你们的交谈中采用视觉辅助。可以像会议中使用白板一样简单，可以像设计初期使用可视化模型一样简单，可以像设计功能原型一样复杂。众所周知，在交谈中采用视觉辅助能够帮助我们增加注意力范围及信息留存率。为了你的项目成功，要利用好这一事实。</p>
+<p>在以前的生涯中，我曾是个在团队里制作酷炫项目的“多媒体程序员”。我们的一位客户非常详细地描述了她对项目的看法和感受。在设计讨论会上将演示文稿的配色方案确定为黑色背景。一旦确定后，团队的图形设计师就抓紧制作了数百份图形文件。花费了大量时间来确定最终产品。次日我们向客户展示了自己的劳动成果，却得到了意想不到的答案。当她看到该产品后，她明确了对配色的用词：“当我说黑色的时候，我的意思是白色”。所以你看吧，它从来不是黑白分明的。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/设计/">设计</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/白夜行/">读《白夜行》</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/96/">你得关注代码</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

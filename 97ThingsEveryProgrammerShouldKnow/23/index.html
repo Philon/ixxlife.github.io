@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>领域专用语言 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/02/03">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/02/03</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">领域专用语言</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_23/" target="_blank" rel="noopener">Domain-Specific Languages</a></p>
+<blockquote>
+<p>译注：我看标题以为本节的内容是说要注重客户/业务方的领域术语，但其实不是，本节所说的领域语言是指：前端、后端、数据库、桌面软件等不同的开发领域，所使用的不同的语言</p>
+</blockquote>
+<p>不论何时你听到任何领域内的专家在讨论，可以是国际象棋选手，幼儿教师，或者保险代理人，你都能发现他们的词汇与日常用语有很大的不同。这是领域专用语言(DSLs)的一部分：一个特定领域内的特殊词汇，用来描述领域内特定的某件事情。</p>
+<p>在软件世界里，DSLs是通过一种语言写成的一些可执行表达式，专门用在一个领域中，这种语言具备有限的词汇和语法，可读、可理解，并希望领域专家可以编写。针对开发者和科学家的软件DSLs已经存在很长时间了。例如，可以从配置文件中找到Unix的“小语种”，而通过LISP宏创建的语言就是一些更古老的例子了。</p>
+<p>DSLs通常根据内部或外部来分类：</p>
+<ul>
+<li><strong>内部DSLs</strong>通过一种通用的编程语言编写，使其语法看起来更像是自然语言。相比于其他不用这种方式的语言(如Java)，这可以更方便给语言提供更多语法糖和格式化的可能性(例如Ruby和Scalar)。很多内部DSL打包了现有的API、库、或者业务代码，然后提供一个封装来减少对某些功能的诡异访问。只需要运行(run)它们就可以直接执行(excutable)。根据实现和领域，它们被用于构建数据结构，定义依赖，运行处理或任务，和其他系统通信，或者校验用户输入。内部DSL语法受限于它的宿主语言(<strong>译注：host language应该是指用于编写DSL的基础语言——母语</strong>)。有很多模式——例如，表达式构建器、方法链、以及注解——能够帮你把宿主语言转换为你的DSL。如果宿主语言不需要重新编译，那DSL可以很快被领域专家拿来做开发。</li>
+<li><strong>外部DSLs</strong>是文本或图形化表达式语言——尽管文本DSLs要比图形化的更常见。文本表达式可能通过如词法/语法分析器、模型转换器、生成器，或者任何后期处理类型的工具链进行处理。外部DSL主要用于读入内部模型，作为进一步处理的基础。它用来定义一个语法很有用(例如EGNF——译注：<a href="https://zh.wikipedia.org/wiki/%E6%89%A9%E5%B1%95%E5%B7%B4%E7%A7%91%E6%96%AF%E8%8C%83%E5%BC%8F" target="_blank" rel="noopener">扩展巴科斯范式</a>)。一个语法提供工具链生成部分的起点(例如编辑器、可视化、解析器、生成器)。对于一个简单的DSL来说，手工做的分析器可能足够了——用于创建实例、正则表达式。但如果要求太多，自定义的解析器就会变得很笨，所以查看专为语言语法和DSL工作而设计的工具是有意义的——例如，<a href="https://de.wikipedia.org/wiki/OpenArchitectureWare" target="_blank" rel="noopener">openArchitectureWare</a>、<a href="https://www.ibm.com/developerworks/cn/java/j-lo-antlr/index.html" target="_blank" rel="noopener">Antlr</a>、<a href="https://en.wikipedia.org/wiki/SableCC" target="_blank" rel="noopener">SableCC</a>、<a href="https://www.andromda.org" target="_blank" rel="noopener">AndroMDA</a>。把外部DSLs定义为XML方言也很常见，尽管读起来经常有问题——尤其对没有技术基础的读者而言。</li>
+</ul>
+<p>你必须始终考虑你DSL的目标受众。他们是开发者、管理人员、商业消费者、或者终端用户？你不得不去调整语言的技术门槛、可用的工具、语法帮助(如智能感知)、早期校验、可视化、以及代表目标受众。通过隐藏技术细节，DSL可以让用户无需在开发人员的帮助下根据需求自主调整系统。它可以加速开发，因为在初始化语言框架到位后就存在分散工作的可能。现有的表达式和语法也有不同的迁移路径。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/GoInAction/chapter3/">三：包与工具链</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/21/">辨别来自技术中的业务异常</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

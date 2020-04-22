@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>越穷越见鬼 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/01/06">
+            
+            
+                <a class="post-category" href="/categories/读书/">读书</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/01/06</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">越穷越见鬼</h1>
+        </header>
+
+        <div class="post-content">
+            <blockquote>
+<p>凡是少的，就连他所有的，也要夺过来。凡是多的，还要给他，叫他多多益善——《新约·马太福音》</p>
+</blockquote>
+<p>我是个穷人吗？不知道…</p>
+<p>我有一份还算体面的工作，一个还算安稳的家庭。当然，我还是一个负债百万的房奴。生活里没有太多糟心的事，但也不敢去奢望那些人生巅峰。</p>
+<p>我倾向于认为自己是一个穷人，理由很简单：我没有富人思维。</p>
+<p>正是出于此，我翻开了这本《<strong>贫穷的本质，我们为什么摆脱不了贫穷</strong>》，本书由2019年诺贝尔经济学将得主所著。当然，书中并没有太多宏大的经济论调，但说不上为什么，总是给我一种非常死板的感受，或许是经济学家都喜欢算帐吧😁。</p>
+<p>既然没有富人思维，那至少应该要理解一下什么是穷人思维，客观地认识自己，这就是我阅读本书的目的。不过在读完前半部分后才发现，作者所说的穷人和我没太大关系。</p>
+<p>作者研究的对象，是那些每天生活费不足0.99美元的穷苦人家（那是真穷啊），对于这些人的生活境遇，书中给出了一个总结——贫穷陷阱。</p>
+<h2 id="什么是贫穷陷阱"><a href="#什么是贫穷陷阱" class="headerlink" title="什么是贫穷陷阱"></a>什么是贫穷陷阱</h2><p>当一个人或家庭非常贫困时，他们不得不想尽办法榨干每一分钱用于基本的生活开销，以至于根本不可能留有剩余，作为明天讨生活的本钱。</p>
+<p>就好比一个人每天至少吃两个馒头才有力气干活，而他的收入只够每天买一个馒头，导致他越来越没力气，越没力气干活挣的就越少，挣的越少馒头就更少，恶性循环…营养不了的他随之生病了，又没钱看病。</p>
+<p>越穷越见鬼！</p>
+<h2 id="有多少人处于贫穷陷阱"><a href="#有多少人处于贫穷陷阱" class="headerlink" title="有多少人处于贫穷陷阱"></a>有多少人处于贫穷陷阱</h2><p>如前文所说，每天生活费不到0.99美元的人就处在陷阱当中，作为还能上个网看看新闻的我们而言，一天折合人民币6、7块钱的开支确实难以想象——这种人应该是极少数吧？</p>
+<p>10亿！是的，全球约有10亿人在贫困线上挣扎着。</p>
+<p>当然，生在当下的中国，对这个数字的吃惊是可以理解的，毕竟想要过上一天不足10块钱的日子还是比较难的，因为国家有各种低保和特殊群体照顾。所以这些人普遍集中在一些亚非极度落后地区，或者中东战乱国家。</p>
+<p>对于他们的境遇我深表同情，只可惜眼泪无法填饱肚子，让世间不再有饥饿是全人类共同的目标。但，10个亿呀，试问有谁能解决这么多张吃饭的嘴，以及贫穷给他们带来的连锁反应。</p>
+<h2 id="穷人为什么穷"><a href="#穷人为什么穷" class="headerlink" title="穷人为什么穷"></a>穷人为什么穷</h2><p>本书用10个章节从不同面阐述了贫穷的原因，我大致总结了一下：</p>
+<ul>
+<li>吃不饱饭，导致发育迟缓，输在起跑线上</li>
+<li>卫生习惯差，导致非常容易生病，又没有价美物廉的医疗资源</li>
+<li>没有良好的教育环境，老师不负责，孩子不听话，家长不在乎</li>
+<li>就业难度极高，只能打临工，工资低，基本处于半失业状态</li>
+<li>连做小生意的本钱都没有，也无法从银行贷款，只能借高利贷</li>
+<li>没有存钱意识，或者说压根就没钱可存</li>
+<li>没有风险意识，一旦来个小的天灾人祸，基本就是毁灭性打击</li>
+<li>政府政策落后，加之公职人员的贪腐，进一步恶化生存环境</li>
+</ul>
+<p>由此可见，穷，是一个非常复杂的命题。俗话说救急不救穷，毕竟穷是由多方面因素共同作用的结果，救10个人可以，救10亿…</p>
+<p>那穷人就真的无药可救了？</p>
+<h2 id="穷人之所以穷"><a href="#穷人之所以穷" class="headerlink" title="穷人之所以穷"></a>穷人之所以穷</h2><p>当然，我们会习惯性的开始骂爹骂娘，把责任都推给执政者的不作为。但我读完本书后觉得，贫穷似乎更多源于人的主观思想——短视！</p>
+<p>不过这种短视并非穷人的专属，而是人性使然。<strong>我们往往只看得到投资的直接回报，所以很少选择具有间接但高价值回报的投资</strong>。</p>
+<p>书中在描述穷人境遇时引入了很多案例，比如：</p>
+<p>政府为了抵抗疟疾，向民众发放蚊帐，可蚊帐再便宜穷人也不买，如果免费了吧，他们把蚊帐改成丝巾抹布之类的。不得不继续投入资金去宣传教育。</p>
+<p>如果某个人突然打工挣了一点钱，够他勉强吃半个月天了，但实际上他会去买更高级的食物烟酒，或者消费娱乐，不出两三天钱就花光了。</p>
+<p>穷人喜欢生更多小孩，认为东方不亮西方亮，然而随着家庭人口的增加导致生活水平的骤降，每个小孩分得的资源就会更少，进一步恶化小孩的成长空间。</p>
+<p>穷人似乎不太在乎孩子的学业，认为那是学校的事情，而老师又觉得既然家长都不关心，我又瞎操心个毛，喝茶看报吧。</p>
+<p>一般情况下，穷人不大可能主动接种疫苗，但他们会想尽办法凑钱治病。他们也不太会给自己的耕地买保险，如果恰好今年丰收，更是会觉得保险费打水漂了。</p>
+<p>穷人可以精打细算到榨干每一分钱，但主要用于生活支出，很少考虑把它当作来年做事的本钱。他们也会在被逼无奈时去找民间贷款，高额的利息进一步恶化了他们的生活条件。</p>
+<p>真的，穷不可怕，可怕的是穷人心态！</p>
+<p>但是，还是要强调，本书研究的对象都是那些落后地区或战争国家，他们生来就比别人落后一大截，他们需要花费比发达国家多出10倍的努力恐怕都无法勉强赶上那里的人民。更何况，很多时候的选择，都是人性使然。</p>
+<p>如果我们单纯从第三方的角度去审视穷人，甚至某些国家的论调，都会觉得，环境那么恶劣，自身还不努力，烂泥扶不上墙——没救了！</p>
+<p>中国人说：授人以鱼不如授人以渔。</p>
+<p>要让10亿人脱离贫穷陷阱，纯粹的发钱或者慈善事业显然是不够的。中国曾经也穷过，但中国人的理念就是勤劳致富、自强不息，所以这个国家很快变强大起来。</p>
+<p>脱贫，靠政府推动和政策支持是必不可少的，在改善穷人生活环境的同时，不论政策引导，或是宣传教育，让穷人真正认识到贫穷的本质除了客观条件，还有自身原因也是非常重要的。</p>
+<p>（😒为什么我会写出如此…那啥…的一段话）</p>
+<h2 id="我是穷人吗？"><a href="#我是穷人吗？" class="headerlink" title="我是穷人吗？"></a>我是穷人吗？</h2><p>我是！看完这本书后，这个答案已经非常明确了。</p>
+<p>不仅如此，从思维上来说，我和那些穷人也有很多相似的地方。不同的是那些他们的贫穷更多是环境导致的。而导致我的贫穷是…</p>
+<p>哎～😂</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/思维/">思维</a>
+                
+                    <a href="/tags/经济学/">经济学</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/63/">拥有（或重构）构建器</a>
+            
+            
+            <a class="next" rel="next" href="/books/从一到无穷大/">《从一到无穷大》读书笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

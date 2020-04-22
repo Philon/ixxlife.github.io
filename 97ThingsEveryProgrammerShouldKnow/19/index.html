@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>便利不是一种能力 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/01/22">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/01/22</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">便利不是一种能力</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_19/" target="_blank" rel="noopener">原文链接</a></p>
+<p>有关优秀API设计的重要与挑战已经说过很多了。一步到位很难，以后改起来更难。有点像把小孩举起来。经验丰富的程序员会认识到，好的API遵循统一的抽象层次，展现出一致性和对称性，并形成富有表达力的语言词汇表。唉，要意识到，知道原则并不会自动转化为合适的行为。吃甜食对你并不好。</p>
+<p>我想获取的是一个特定的API设计’策略，’而不是站在高处讲道，我一次又一次遇到：便利的论证。它最典型的就是以以下“洞察”之一开头：</p>
+<ul>
+<li>我不希望其他类必须单独调用两次才能完成这件事。</li>
+<li>如果新的方法几乎和现在的一样，为什么我还要实现它呢？我仅仅想添加一个简单的选择判断。</li>
+<li>看吧，很简单：如果第二个字符串参数是以“.txt”结尾，这个方法就可以自动假设，第一个参数是一个文件名，因此我根本不需要两种方法。</li>
+</ul>
+<p>想法是好的，但这种参数容易在代码调用API时降低可读性。一个方法的调用会像这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parser.processNodes(text, false)</span><br></pre></td></tr></table></figure>
+
+<p>不了解如何实现的情况下实际上是毫无意义的，或者至少要查看下文档。这个方法更像是为了实现者的方便而设计的，而不是调用者的方便——“我不希望调用者必须单独调用两次”可以被理解为“我不想代码被分成两个方法”。如果这是为了对抗乏味、笨拙和尴尬，这些便利本质上来说也没什么错。无论如何，如果我们进一步仔细思考，解决这些症状应该是高效的、统一的且优雅的，而便利性不是必须的。APIs被认为是将复杂性隐藏在其下，所以我们可切实地期望良好的API设计需要一些努力。一个长的方法肯定会比经过一系列深思熟虑的操作更容易编写，但他会更容易使用吗？</p>
+<p>API作为一种语言的比喻可以指导我们在这些情况下做出更好的设计决策。API应该提供一种富有表达力的语言，给予下一层充足的词汇表以问答有用的问题。这并不意味着它应该为每个可能有价值的问题都提供确切的方法或动词。一个多样的词汇表能让我们精妙地表达意境。例如：我们倾向于用run来代替walk(true)，哪怕是它们本质上是一回事，仅仅是速度上的不同。一个统一且深思熟虑的API词汇可以在下一层上生动表达且易于理解。更重要是，可组合的词汇表允许程序员以你可能没有预料到的方式使用API——确实，API为用户带来了极大的便利！下次你想把一些事情归并到API方法时，请记住，英语是不存在这样一个单词的<code>MakeUpYourRoomBeQuietAndDoYourHomeWork</code>，尽管这种频繁请求方式看起来很便利。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/GoInAction/chapter2/">二：从入门到放弃</a>
+            
+            
+            <a class="next" rel="next" href="/books/创意/">《创意，未来工作方式》-读后感</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

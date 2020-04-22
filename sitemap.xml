@@ -562,13 +562,6 @@
   </url>
   
   <url>
-    <loc>https://ixx.life/GoInAction/chapter1/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.489Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://ixx.life/GoInAction/chapter2/</loc>
     
     <lastmod>2020-04-14T09:34:24.489Z</lastmod>
@@ -605,6 +598,13 @@
   
   <url>
     <loc>https://ixx.life/GoInAction/chapter7/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.489Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ixx.life/GoInAction/chapter1/</loc>
     
     <lastmod>2020-04-14T09:34:24.489Z</lastmod>
     
@@ -842,6 +842,27 @@
   </url>
   
   <url>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/82/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.485Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/84/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.485Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/83/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.485Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/85/</loc>
     
     <lastmod>2020-04-14T09:34:24.485Z</lastmod>
@@ -885,27 +906,6 @@
   
   <url>
     <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/91/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.485Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/84/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.485Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/83/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.485Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/82/</loc>
     
     <lastmod>2020-04-14T09:34:24.485Z</lastmod>
     
@@ -1024,27 +1024,6 @@
   </url>
   
   <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/39/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.481Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/40/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.481Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/41/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.481Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/42/</loc>
     
     <lastmod>2020-04-14T09:34:24.481Z</lastmod>
@@ -1088,6 +1067,27 @@
   
   <url>
     <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/48/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.481Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/40/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.481Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/41/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.481Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/39/</loc>
     
     <lastmod>2020-04-14T09:34:24.481Z</lastmod>
     
@@ -1213,21 +1213,7 @@
   </url>
   
   <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/21/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.477Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/22/</loc>
-    
-    <lastmod>2020-04-14T09:34:24.477Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/20/</loc>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/18/</loc>
     
     <lastmod>2020-04-14T09:34:24.477Z</lastmod>
     
@@ -1241,7 +1227,21 @@
   </url>
   
   <url>
-    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/18/</loc>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/20/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.477Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/21/</loc>
+    
+    <lastmod>2020-04-14T09:34:24.477Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://ixx.life/97ThingsEveryProgrammerShouldKnow/22/</loc>
     
     <lastmod>2020-04-14T09:34:24.477Z</lastmod>
     

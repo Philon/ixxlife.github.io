@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>不要僵直钉死你的程序 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/02/21">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/02/21</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">不要僵直钉死你的程序</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_28/" target="_blank" rel="noopener">Don’t Nail Your Program into the Upright Position</a></p>
+<p>我有次写了一个C++恶搞比赛，我讽刺地建议了以下的异常处理策略：</p>
+<blockquote>
+<p>凭借遍布我们整个代码库的<code>try...catch</code>的结构，我们有时能够阻止程序的终止。我们把这种状态认为是“直立钉尸”。</p>
+</blockquote>
+<p>尽管我的草率，实际上我还是总结了从这位祥林嫂(Dame Bitter Experience——或者叫艰苦岁月女？🥵)膝上学到的一课。</p>
+<p>这是我们自制的C++库，是应用程序的一个基类。多年以后它被千“猿”所指：没有谁的手是干净的。它包含的代码把任何事情的异常都做了避开处理。通过Yossarian的<a href="https://en.wikipedia.org/wiki/Catch-22" target="_blank" rel="noopener">第22条军规(Catch-22)</a>作为指导，我们决定，或者说倾向于这个类的一个实例要么总是活着，要么赶紧死掉。(<em>决定</em>暗示更多想法，而不仅仅是进入这只怪物的结构)</p>
+<p>为此，我们把多个异常交织在一起处理。我们把Windows的结构化异常与原生的类型混合在一起处理(记住C++中的<strong>try..</strong>except？我都没有)。当有意外抛出时，我们尝试再次调用，更难压入参数。回头看，我喜欢把一个<code>try...catch</code>处理写到另一个catch语句中，鬼使神差的让我可能从原本良好做法的高速公路走到了一条支路，进入一条芳香四溢但很不健康的疯狂车道。然而，这很可能是事后诸葛亮。</p>
+<p>不用说，程序无论何时出错了，基本都是因为这个类，它们的消失就像是在码头的黑手党遇害者，只留下没用的气泡，鬼才知道发生了什么，尽管据说转储例程会记录这场灾难。最终——很长的最终——我们盘点了所做的事情，并因此感到羞愧。我们用一个小巧且健壮的报告机制替换了这个肮脏的家伙。但这是十分让人崩溃的。</p>
+<p>我不会打扰你——去确认还有谁会向我们一样蠢——但我最近在线上和一个家伙讨论问题，他的学术职称表明他应该很牛逼。我们一起讨论了Java代码关于远程传输。如果代码失败了，他认为，应该在原地捕获并阻止异常。(“接下来做什么？” 我问。“拿去做夜宵么？”)</p>
+<p>他引用了UI设计师的法则：<strong>永远不要让用户看到异常报告</strong>(大写)，看似好像解决了问题，但这些大写的和任何内容又是什么。我想知道他是否会对这段代码负责：就是大量ATM机中的一台蓝屏了的照片，并造成了永久性创伤。无论如何，如果你见到了他，点头、微笑、不用声张，就像你走向这道门一样。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/GoInAction/chapter6/">六：并发</a>
+            
+            
+            <a class="next" rel="next" href="/books/自私的基因/">《自私的基因》读书笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

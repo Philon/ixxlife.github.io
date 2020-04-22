@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>《现实不似你所见》读书笔记 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/12/04">
+            
+            
+                <a class="post-category" href="/categories/读书/">读书</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/12/04</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">《现实不似你所见》读书笔记</h1>
+        </header>
+
+        <div class="post-content">
+            <h2 id="简单书评"><a href="#简单书评" class="headerlink" title="简单书评"></a>简单书评</h2><p>首先要声明，本书是我断断续续读完的。所以在内容衔接上可能有所“断片”。但总体而言，不论是作者引入了很多哲学思辨或是历史典故，我觉得并没有起到点睛之笔的作用，反而稍显累赘。此外，文中难免充斥着不小的篇幅关于物理公式和专业的逻辑推理，作为科普读物来说（或者就我个人而言）读起来稍显吃力。</p>
+<p>本书作为《七堂极简物理课》的进阶版，更多的是体现在专业性的角度。毋庸置疑，书中确实在很多物理层面上更加深入地展开讨论，但恰恰是这些有深度的内容，让像我这样的小白只能感叹——望成莫及。</p>
+<p>总而言之，我对本书的评价不算太高。然而对于豆瓣评分9+以上，我只能说，主要因为我智力水平有限。它要求读者有一定的物理基础，否则仅凭想象，很难对量子物理有一个感性的认知。</p>
+<p>不论如何，如果让我读起来发懵的书本，我认为还是整理成读书笔记比较好。</p>
+<h2 id="有限感官"><a href="#有限感官" class="headerlink" title="有限感官"></a>有限感官</h2><p>我们对现实的理解取决于我们具备什么样的感官，包括视觉、嗅觉、味觉、听觉、触觉等。但你必须知道，这些感觉是有范围限制的，比如我们能看到，又不能完全看到，因为在可见光之外，还有更多频率的电磁波（光既是电磁波）；再比如声音，我们能听到，又不能完全听到，因为人耳能感知的声音频率就那么一小段。同理，酸甜苦辣咸之外，可能还有人类无法品尝的美味。</p>
+<p>好在人类善于利用工具，可以通过不同的设备仪器探测到那些我们无法感知的事物。但…如果这些工具的感知能力也到了极限呢？</p>
+<p>是的，本书围绕二十世纪物理界最重要的两个理论展开讨论：</p>
+<ul>
+<li><strong>广义相对论</strong>重新定义了引力、时间和空间，它的研究对象很大，超过了人类已知的世界，超出了人类可想象的维度。</li>
+<li><strong>量子理论</strong>彻底颠覆了经典物理学，它的研究对象很小，小到比已知的最小粒子还要小上亿倍，小到同时存在又不存在，小到人类根本不可能观测到。</li>
+</ul>
+<p>虽然它们已经超出了人类有限的感官，但从理论出发，在实践中证明，这两个理论对现代科学，包括天体物理、核能、航空航天、计算机、通信等大部分领域都有极高的应用价值。然而讽刺的是这两个理论却是自相矛盾的。</p>
+<p>很可能，二者的矛盾依旧源自人类的有限感官——其实不过是同一件事物的不同面罢了。科学家希望能有一种大统一的理论来让二者和睦相处，目前比较主流的是<strong>弦理论</strong>和<strong>圈量子理论</strong>。</p>
+<p>本书的作者显然是圈量子理论的拥护者，换句话说，本文以及本书都是在描述圈量子理论，目前它仅仅是一种观点。（别太较真！）</p>
+<h2 id="时间和空间是同一种东西"><a href="#时间和空间是同一种东西" class="headerlink" title="时间和空间是同一种东西"></a>时间和空间是同一种东西</h2><p>传统意义上，我们会把时间、空间看作是两个独立且客观的事物。我们会觉得不论物质如何运动或者相互作用，因为它们“被包含在”时间和空间当中。空间是绝对独立的，时间亦是如此。但根据爱因斯坦的广义相对论：时间和空间是同一种东西，统称为“时空”。</p>
+<p>时空也并非独立客观的，尽管物体存在于时空中，但时空会因物体的质量被扭曲——这便是万有引力的本质。</p>
+<p>一个有趣的假想：越靠近大质量天体的地方，时空密度越高，时间就会越慢。如果一对双胞胎，哥哥住在山脚，弟弟住在山顶，多年之后，哥哥会比弟弟还年轻。</p>
+<p>当然，这也只能是假想，因为地球的质量没那么大，如果能在黑洞上做这个实验，那就真的是“一日不见如隔三秋”啦。</p>
+<p>but，圈量子理论认为：<strong>这个世界根本不存在所谓的时间</strong>。当然也没有所谓的真空，因为“空间”本身就是一种存在，它才是万物的根本，构成空间的是一种叫“空间量子”的东东。</p>
+<p>空间量子相互作用所产生的事件，被称为“物质”。什么意思呢？就像海浪，浪再大再猛烈再真实，它也只是无数水分子集体行为的结果，世上本没有浪，一部分水“跳”起来，浪就有了。所以，我们这个世界的万事万物可能是空间量子相互作用的结果。同理，物质的行为也会反过来影响空间量子——大质量的天体可以扭曲空间。</p>
+<h2 id="事件与概率"><a href="#事件与概率" class="headerlink" title="事件与概率"></a>事件与概率</h2><p>在量子世界中，是不存在“平滑连续”概念的，总有个最小粒度，一份一份地传递。在空间量子中亦是如此。</p>
+<p>我1秒钟走了1米，这其中可能存在某0.00000001秒走了0.00000001米，当然这个值可以继续往下分，但有一个最小值——1.6x10-³³厘米。这是普朗克长度，它很短，但不为0。假如人类能做一把量子尺，上面的刻度精度也只能到这个极限，因为这是空间的最小单位，否则它属于时空。我无法想象，一种事物没有空间、没有时间、没有质量、没有能量、没有信息，什么都没有，凭什么它还存在？</p>
+<p>好了，明确万事万物是不可无限分割的，才便于我们把物理公式中的时间变量t给拽走。</p>
+<p>传统观念里，我们会认为“粒子”是构成物质的基础，不论它是电子、原子、夸克或者其他。但正如前文所说，圈量子认为，这些粒子其实是空间量子的集体行为事件（或者说作用结果），就像海面上的浪一样。</p>
+<p>按照量子理论继续推导就会得出：粒子（物质）并非永恒的，它以什么形式存在或不存在只是个“概率”问题。而量子的行为是非连续的，是一个接着一个，称为“事件”，所以物质的运动其实是无数个短暂的瞬间。    </p>
+<p>这一切就像是看动画片，你以为它是连续的，其实它是一帧一帧的。这一切都和时间无关，动画播放的速度只取决于每帧之间的间隔，不论间隔多久，从一帧刷新到下一帧总是一瞬间的事。我们所存在的空间也是这样，空间量子总是一个事件接着一个事件在触发，这一切都不需要时间的参与。换句话说，宇宙中并不存在一个绝对统一的时间维度。</p>
+<p>好了，本书我能吸纳的内容也就这么多，关于其他如：圈量子的形态、量子黑洞、万物皆比特等，实在是云里雾里。待我智商充值后，再来好好消化吧。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/科普/">科普</a>
+                
+                    <a href="/tags/物理/">物理</a>
+                
+                    <a href="/tags/量子/">量子</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/从一到无穷大/">《从一到无穷大》读书笔记</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/62/">只有代码会说实话</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

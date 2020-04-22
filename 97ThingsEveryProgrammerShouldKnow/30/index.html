@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>不要重复自我 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/03/02">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/03/02</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">不要重复自我</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_30/" target="_blank" rel="noopener">Don’t Repeat Yourself</a></p>
+<p>编程的所有原则中，不要重复自我(DRY)或许是最基本的原则之一。该原则被Andy Hunt和Dave Thomas的《程序员修炼之道》一书中提出，便成了很多为知名软件开发的最佳实践和设计模式的基础。开发人员学习辨认副本，并理解如何通过适当的实践和抽象来消除这些重复，相比于一直被传染多余的重复代码的应用程序，可以产出更简洁的代码。</p>
+<h2 id="复制是种浪费"><a href="#复制是种浪费" class="headerlink" title="复制是种浪费"></a>复制是种浪费</h2><p>应用程序的代码中的每行代码都将会维护，也将会成为潜在的bug。重复会使代码库不必要的臃肿，结果让bug有机可乘，并增加系统的耦合度。重复的臃肿加入系统也会让开发者难以彻底理解系统全貌而，还有一点可以确定，另外为了确保它们能正常工作，修改了某处的逻辑也需要修改另一处的复制。DRY需要“系统内每处的知识都必须具有单一、明确、权威的表示”。</p>
+<h2 id="过程中的重复要自动化"><a href="#过程中的重复要自动化" class="headerlink" title="过程中的重复要自动化"></a>过程中的重复要自动化</h2><p>很多软件开发中的流程都是简单而重复的自动化。DRY原则适用于这些应用程序源码中的上下文。手动测试太慢了，容易出错，也很难重复操作，所以如果可能的话，自动化测试套件应该被用起来。如果手动进行软件集成可能会耗时且容易出错，因此构建过程应尽可能频繁地运行，理想情况下每次签入(代码库)时都跑一遍。只要存在能被自动化的痛苦的人工流程，都应该被自动化和标准化。其目标是确保仅有唯一的方式来完成任务，并且要尽可能做到无痛。</p>
+<h2 id="逻辑中的重复要抽象"><a href="#逻辑中的重复要抽象" class="headerlink" title="逻辑中的重复要抽象"></a>逻辑中的重复要抽象</h2><p>逻辑中的重复会有很多形式。复制粘贴if-then或switch-case逻辑是最容易检查并纠正的。很多设计模式都有明确的目标，要降低或消除应用程序中的重复。如果一个对象在使用前需要同时具备几个事情的发生，就可以用抽象工厂或者工厂方法来完成。如果一个对象的行为会有很多可能的变化，这些行为就可以通过策略模式来注入，要好于大量的if-then结构。事实上，设计模式本身的制定是为了降低常见问题带来的重复，并讨论这些解决方案。此外，DRY可以适用于数据结构，如数据库模式，从而更规范。</p>
+<h2 id="一个原则问题"><a href="#一个原则问题" class="headerlink" title="一个原则问题"></a>一个原则问题</h2><p>其它的软件原则也和DRY相关。<strong>有且仅有一次原则</strong>，仅适用于代码功能行为，可以被认为是DRY的一个子集。<strong>开闭原则</strong>，“软件中的实体应对扩展开放，对修改封闭”的情况，仅在遵循DRY时才能在实践中起作用。同样众所周知的<strong>单一职责原则</strong>，需要一个类“只有一个改变原因”依赖于DRY。</p>
+<p>当遵循结构、逻辑、流程、以及函数时，DRY原则能为开发人员提供基本指导，并帮助创建更简单，更易于维护，更高质量的应用。尽管有一些情况下，必须用重复来满足性能或其它需求(例如数据库中的非规范化数据)，它应该被直接用于解决实际而非想象的问题。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/GoInAction/chapter7/">七：并发模式</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/29/">不要依赖“魔法出现”</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

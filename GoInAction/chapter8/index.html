@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>八：标准库 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/03/09">
+            
+            
+                <a class="post-category" href="/categories/《GO语言实战》学习笔记/">《GO语言实战》学习笔记</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/03/09</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">八：标准库</h1>
+        </header>
+
+        <div class="post-content">
+            <p>什么是GO语言的标准库？就是放在<code>$GOROOT//usr/local/go/pkg</code>目录下的那些文件，它们由GO语言社区共同维护的，经过良好设计，确保代码稳定且易用。每次发布GO的新版本时，都会将这些库打包成<code>.a</code>静态库文件。</p>
+<p>标准库中有非常多的基本功能，不用在为业务开发而重新造轮子，比如我们最熟悉的fmt，以及log、json、http、网络、图像处理、加密算法等等。</p>
+<p>本章仅对log、json、io三个包的调用方式及基本原理做总结，乍一看可能会觉得本章只是带着你了解一下几个函数的基本用法，别不以为然，我个人的理解，本章最最最精华的内容就是最后那句话——<strong>阅读标准库的代码时熟悉GO语言习惯的好方法</strong>。</p>
+<p>所以，没事多看看官方文档：<a href="http://golang.org/pkg/" target="_blank" rel="noopener">http://golang.org/pkg/</a></p>
+<h2 id="定制自己的Logger"><a href="#定制自己的Logger" class="headerlink" title="定制自己的Logger"></a>定制自己的Logger</h2><p>日志是每个程序开发最常用的功能了，一般来说C/C++/Java/C#都会有第三方的日志框架实现，用起来都挺顺手。不过，GO语言标准库中已经包含了日志框架——log包，不用再满世界地去比较到底哪个框架好用了。</p>
+<p>先来看看log包的基本用法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">引用自 golang.org/src/log/log.go</span></span><br><span class="line"><span class="comment">const (</span></span><br><span class="line"><span class="comment">Ldate         = 1 &lt;&lt; iota     // 日期: 2009/01/23</span></span><br><span class="line"><span class="comment">Ltime                         // 时间: 01:23:23</span></span><br><span class="line"><span class="comment">Lmicroseconds                 // 毫秒级时间: 01:23:23.123123.  覆盖 Ltime.</span></span><br><span class="line"><span class="comment">Llongfile                     // 完整的源码文件路径及行号: /a/b/c/d.go:23</span></span><br><span class="line"><span class="comment">Lshortfile                    // 短路径及行号: d.go:23. 会覆盖 Llongfile</span></span><br><span class="line"><span class="comment">LUTC                          // 如果设置了Ldata或Ltime，采用UTC取代本地时区</span></span><br><span class="line"><span class="comment">LstdFlags     = Ldate | Ltime // 标准日志初始值</span></span><br><span class="line"><span class="comment">)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化后，所有直接调用log包的日志输出都会受影响</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="comment">// 设置日志的前缀信息</span></span><br><span class="line">  log.SetPrefix(<span class="string">"[LogPrefix] "</span>)</span><br><span class="line">  <span class="comment">// 设置日志的中段标示，参考上边的注释</span></span><br><span class="line">  log.SetFlags(log.Ldate | log.Lmicroseconds | log.Lshortfile)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上边的代码很简单(前提是忽略掉注释部分)，在init函数中先初始化log的基本格式，就是在输出到屏幕时的样式。</p>
+<p>调用更简单：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"log"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  log.Println(<span class="string">"hello world"</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ------------以下是程序输出--------------</span></span><br><span class="line">[LogPrefix] <span class="number">2019</span>/<span class="number">03</span>/<span class="number">09</span> <span class="number">14</span>:<span class="number">34</span>:<span class="number">06.763601</span> main.<span class="keyword">go</span>:<span class="number">6</span>: hello world</span><br></pre></td></tr></table></figure>
+
+<p>init函数中，log被设置了前缀<code>[LogPrefix]</code>以及中间部分的完整时间日志+文件名及行号，所以一个简单的helloworld日志信息前会自动追加很多有效调试信息。</p>
+<p>这里只需要记住一点，log包一旦被设置，全局有效！</p>
+<p>那么问题来了，如果我需要两种以上不同的日志格式怎么办？答——<strong>log.Logger</strong>。</p>
+<p>先定义一套自己的Logger规则：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">  Trace   *log.Logger <span class="comment">// 普通跟踪调试信息</span></span><br><span class="line">  Info    *log.Logger <span class="comment">// 特殊信息</span></span><br><span class="line">  Warning *log.Logger <span class="comment">// 警告日志</span></span><br><span class="line">  Error   *log.Logger <span class="comment">// 错误日志(输出到文件)</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>如上，定义了4个logger对象，分别用于：</p>
+<ul>
+<li>普通信息：程序正式发布时，该部分不再输出</li>
+<li>特殊信息：总是打印到屏幕上</li>
+<li>警告：类似于“特殊信息”，你要愿意，也可以修改其字体颜色</li>
+<li>错误：同时将日志打印到屏幕，保存至文件</li>
+</ul>
+<p>有了这4套机制的需求后，再来看看它们是如何被实现的：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">  file, err := os.OpenFile(<span class="string">"error.log"</span>, os.O_CREATE|os.O_WRONLY|os.O_APPEND, <span class="number">0666</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalln(<span class="string">"Failed to open error file: "</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因为ioutil.Discard，所有通过Trace打印的日志都不会输出</span></span><br><span class="line">    Trace = log.New(ioutil.Discard, <span class="string">"TRACE: "</span>, log.Ldate|log.Ltime|log.Lshortfile)</span><br><span class="line">    Info = log.New(os.Stdout, <span class="string">"INFO: "</span>, log.Ldate|log.Ltime|log.Lshortfile)</span><br><span class="line">    Warning = log.New(os.Stdout, <span class="string">"WARNING: "</span>, log.Ldate|log.Ltime|log.Lshortfile)</span><br><span class="line">    <span class="comment">// io.MultiWriter表示多种输出渠道，即同时打印到屏幕和文件</span></span><br><span class="line">    Error = log.New(io.MultiWriter(file, os.Stderr), <span class="string">"ERROR: "</span>, log.Ldate|log.Ltime|log.Llongfile)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>核心只有一个：<code>log.New(out io.Writer, prefix string, flag int)</code>函数，会根据参数设置好logger的输出目的地、前缀信息、日志标示等，并将其返回。</p>
+<p>留意一下，<code>Trace</code>这个logger的输出对象是<code>ioutil.Discard</code>，其实就是不输出的意思；而另一处logger的对象Error关于<code>io.MultiWriter()</code>表示多目标输出，可以看到，既要输出到file，还要输出到stderr。</p>
+<p>好了，至于这4个logger的调用方式嘛，和标准库中的log是一模一样的。</p>
+<h2 id="从Github上获取用户信息"><a href="#从Github上获取用户信息" class="headerlink" title="从Github上获取用户信息"></a>从Github上获取用户信息</h2><p>为了学习调用GO的标准库进行json编解码，书中是用Google的API请求来举例……所以我觉得还是用GitHub来演示，效果会好一点。<del>anyway</del> anywhere，只要明白json序列化和反序列化即可。</p>
+<h3 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h3><p>先用浏览器随便GET个用户信息试试，比如就我自己的地址：<a href="https://api.github.com/users/philon" target="_blank" rel="noopener">https://api.github.com/users/philon</a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"login"</span>: <span class="string">"Philon"</span>,</span><br><span class="line">  <span class="attr">"id"</span>: <span class="number">2968783</span>,</span><br><span class="line">  <span class="attr">"node_id"</span>: <span class="string">"MDQ6VXNlcjI5Njg3ODM="</span>,</span><br><span class="line">  <span class="attr">"avatar_url"</span>: <span class="string">"https://avatars0.githubusercontent.com/u/2968783?v=4"</span>,</span><br><span class="line">  <span class="attr">"gravatar_id"</span>: <span class="string">""</span>,</span><br><span class="line">  <span class="attr">"url"</span>: <span class="string">"https://api.github.com/users/Philon"</span>,</span><br><span class="line">  ...</span><br><span class="line">  "public_repos": 4,</span><br><span class="line">  "public_gists": 0,</span><br><span class="line">  "followers": 15,</span><br><span class="line">  "following": 0,</span><br><span class="line">  "created_at": "2012-12-05T06:28:25Z",</span><br><span class="line">  "updated_at": "2019-03-06T12:47:11Z"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>多句嘴，我觉得GitHub的RESTful设计得相当不错！</p>
+<p>可以看到GitHub返回了我的个人账户信息，并且是json格式，如果在GO程序中同样可以采用<code>http.Get()</code>函数获取到这些信息，只可惜get到的全部是一对字符串，如何将其变成一个便于处理和调用的数据结构呢？两种方式：</p>
+<p><strong>方式一、类型映射</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User Github用户账户信息</span></span><br><span class="line"><span class="comment">// 每个变量最后用反引号标示的字符串是——标签</span></span><br><span class="line"><span class="comment">// 标签可为之后的json.Decoder提供映射依据</span></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">  Login             <span class="keyword">string</span> <span class="string">`json:"login"`</span></span><br><span class="line">  ID                <span class="keyword">int64</span>  <span class="string">`json:"id"`</span></span><br><span class="line">  AvatarURL         <span class="keyword">string</span> <span class="string">`json:"avatar_url"`</span></span><br><span class="line">  GravatarID        <span class="keyword">string</span> <span class="string">`json:"gravatar_id"`</span></span><br><span class="line">  URL               <span class="keyword">string</span> <span class="string">`json:"url"`</span></span><br><span class="line">  HTMLURL           <span class="keyword">string</span> <span class="string">`json:"html_url"`</span></span><br><span class="line">  FollowersURL      <span class="keyword">string</span> <span class="string">`json:"followers_url"`</span></span><br><span class="line">  FollowingURL      <span class="keyword">string</span> <span class="string">`json:"following_url"`</span></span><br><span class="line">  GistsURL          <span class="keyword">string</span> <span class="string">`json:"gists_url"`</span></span><br><span class="line">  StarredURL        <span class="keyword">string</span> <span class="string">`json:"starred_url"`</span></span><br><span class="line">  SubscriptionsURL  <span class="keyword">string</span> <span class="string">`json:"subscriptions_url"`</span></span><br><span class="line">  OrganizationsURL  <span class="keyword">string</span> <span class="string">`json:"organizations_url"`</span></span><br><span class="line">  ReposURL          <span class="keyword">string</span> <span class="string">`json:"repos_url"`</span></span><br><span class="line">  EventsURL         <span class="keyword">string</span> <span class="string">`json:"events_url"`</span></span><br><span class="line">  RecievedEventsURL <span class="keyword">string</span> <span class="string">`json:"recieved_events_url"`</span></span><br><span class="line">  Type              <span class="keyword">string</span> <span class="string">`json:"type"`</span></span><br><span class="line">  SiteAdmin         <span class="keyword">bool</span>   <span class="string">`json:"site_admin"`</span></span><br><span class="line">  Name              <span class="keyword">string</span> <span class="string">`json:"name"`</span></span><br><span class="line">  Company           <span class="keyword">string</span> <span class="string">`json:"company"`</span></span><br><span class="line">  Blog              <span class="keyword">string</span> <span class="string">`json:"blog"`</span></span><br><span class="line">  Location          <span class="keyword">string</span> <span class="string">`json:"location"`</span></span><br><span class="line">  Email             <span class="keyword">string</span> <span class="string">`json:"email"`</span></span><br><span class="line">  Hireable          <span class="keyword">string</span> <span class="string">`json:"hireable"`</span></span><br><span class="line">  Bio               <span class="keyword">string</span> <span class="string">`json:"bio"`</span></span><br><span class="line">  PublicRepos       <span class="keyword">int32</span>  <span class="string">`json:"public_repos"`</span></span><br><span class="line">  PublicGists       <span class="keyword">int32</span>  <span class="string">`json:"public_gists"`</span></span><br><span class="line">  Followers         <span class="keyword">int32</span>  <span class="string">`json:"followers"`</span></span><br><span class="line">  Following         <span class="keyword">int32</span>  <span class="string">`json:"following"`</span></span><br><span class="line">  CreateAt          <span class="keyword">string</span> <span class="string">`json:"create_at"`</span></span><br><span class="line">  UpdateAt          <span class="keyword">string</span> <span class="string">`json:"update_at"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// DeserializeToType 获取用户信息，并反序列化为User类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DeserializeToType</span><span class="params">(name <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">  <span class="comment">// 根据用户名从GitHub获取对应用户的json信息</span></span><br><span class="line">  resp, err := http.Get(<span class="string">"https://api.github.com/users/"</span> + name)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  log.Println(<span class="string">"ERROR: "</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> user User</span><br><span class="line">  <span class="comment">// 通过Decode将响应内容反序列化为对象</span></span><br><span class="line">  err = json.NewDecoder(resp.Body).Decode(&amp;user)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">  log.Println(<span class="string">"ERROR: "</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Printf(<span class="string">"user: %v\n"</span>, user)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上的代码很长，但归根结底就两个部分：</p>
+<ol>
+<li>在struct类型定义中，通过<code>name type tag</code>的标准格式定义结构类型中的每个属性，注意最后反引号框起来的标签，它用于之后给json反序列化提供映射依据——如果仔细比对就会发现，每个tag中的名称都和GitHub响应返回的json中的键名严格一致。</li>
+<li>DeserializeToType函数其实就是具体的反序列化过程了，只需要记住<code>json.NewDecoder().Decode(&amp;user)</code>这个标准库中的函数即可，该函数会根据第1部分的tag将json数据解析后填入对象中。</li>
+</ol>
+<p><strong>方式二、字典映射</strong></p>
+<p>有的时候，其实没必要为每个json消息都定义类型，不然得累死，所以GO提供了一种更为灵活的方式——字典。还是以获取GitHub用户信息为例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">DeserializeToMap</span><span class="params">(name <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">  resp, err := http.Get(<span class="string">"https://api.github.com/users/"</span> + name)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalln(<span class="string">"ERROR: "</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">defer</span> resp.Body.Close()</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 读取响应Body并转化为[]byte数据结构</span></span><br><span class="line">  content, err := ioutil.ReadAll(resp.Body)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalln(<span class="string">"ERROR: "</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> user <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;</span><br><span class="line">  <span class="comment">// 通过Unmarshal将[]byte转换为字典</span></span><br><span class="line">  err = json.Unmarshal(content, &amp;user)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalln(<span class="string">"ERROR: "</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Println(<span class="string">"Username: "</span>, user[<span class="string">"login"</span>])</span><br><span class="line">  fmt.Println(<span class="string">"Followers: "</span>, user[<span class="string">"followers"</span>])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上述代码中，先通过<code>ioutil.ReadAll</code>将服务器端的响应读取出来并转换为<code>[]byte</code>字节流形式，然后在通过<code>json.Unmarshal</code>把这个字节流转换成<code>map[string]interface{}</code>的数据字典形式，注意字典的类型必须是这种，不要随意更换。</p>
+<p>如果要根据json中的键来获取值信息就非常简单了，就是上述代码的最后两行<code>user[&quot;key&quot;]</code>即可。</p>
+<h3 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h3><p>明白了反序列化的处理方式，还要懂得序列化，毕竟请求/应答不分家，那么如何将一个具体的数据结构转化为json字符串呢？方式只有一种<code>json.Marshal</code>，但要注意数据类型一般是两种：对象和字典。</p>
+<p>类型对象的序列化：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SerializeType</span><span class="params">()</span></span> &#123;</span><br><span class="line">  user := &amp;User&#123;</span><br><span class="line">    Login: <span class="string">"张三"</span>,</span><br><span class="line">    ID:    <span class="number">9527</span>,</span><br><span class="line">    URL:   <span class="string">"https://api.github.com/users/ZhangSan"</span>,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 带缩进格式的序列化，缩进为4个空格</span></span><br><span class="line">  data, err := json.MarshalIndent(user, <span class="string">""</span>, <span class="string">"    "</span>)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalln(<span class="string">"ERROR: "</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Println(<span class="keyword">string</span>(data))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码定义了一个<code>User</code>对象，并通过<code>json.MarshalIndent</code>非常容易就将其转换为data字节流，为了输出我们把它强转为string类型。</p>
+<p>留意一下，<code>func MarshalIndent(v interface{}, prefix, indent string)</code>函数是带格式化的转换，也就是说，默认情况下，json字符串其实没有空格和换行的，这个函数可以根据你的喜好从新将其格式化。</p>
+<p>字典的序列化：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SerializeMap</span><span class="params">()</span></span> &#123;</span><br><span class="line">  c := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>&#123;&#125;)</span><br><span class="line">  c[<span class="string">"name"</span>] = <span class="string">"张三"</span></span><br><span class="line">  c[<span class="string">"id"</span>] = <span class="number">9527</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 不带缩进格式化的序列化</span></span><br><span class="line">  data, err := json.Marshal(c)</span><br><span class="line">  <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    log.Fatalln(<span class="string">"ERROR: "</span>, err)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Println(<span class="keyword">string</span>(data))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>字典无需过多重复，和反序列化那部分基本一样。</p>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><p>关于<code>io.Reader</code>和<code>io.Writer</code>就我个人而言，没有太多值得牢记的地方，最多也就一句话：<strong>但凡实现io.Reader/Writer接口的类型，都可以被标准库中的io调用</strong>。</p>
+<p>以书中的例子来说：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123; </span><br><span class="line">  <span class="comment">// 创建一个Buffer值，并将一个字符串写入Buffer </span></span><br><span class="line">  <span class="comment">// 使用实现io.Writer的Write方法 </span></span><br><span class="line">  <span class="keyword">var</span> b bytes.Buffer</span><br><span class="line">  b.Write([]<span class="keyword">byte</span>(<span class="string">"Hello "</span>))</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 使用Fprintf来将一个字符串拼接到Buffer里 </span></span><br><span class="line">  <span class="comment">// 将bytes.Buffer的地址作为io.Writer类型值传入 </span></span><br><span class="line">  fmt.Fprintf(&amp;b, <span class="string">"World!"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 将Buffer的内容输出到标准输出设备 </span></span><br><span class="line">  <span class="comment">// 将os.File值的地址作为io.Writer类型值传入 </span></span><br><span class="line">  b.WriteTo(os.Stdout)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码中，首先Buffer类型实现了Write方法，所以变量b可以被标准的fmt.Fprintf接受。而<code>Buffer.WriteTo(*File)</code>函数是写到一个文件中，<code>os.Stdout</code>就是标准输出文件。</p>
+<p><code>Reader.Read()</code>接口几乎也是同样的道理，只要实现Read接口的类型，都可以被标准库接受。</p>
+<p>我觉得书中本章最开始的话也充分反映了GO语言的思想：<strong>GO开发者会比其它语言的开发者更依赖标准库里的包</strong>。为什么要非常熟悉GO语言的标准库，为什么要充分掌握其接口的实现原则。从上边的三个例子中就可以看出，每当我们需要增加新业务时，完全可以仅实现标准库中的某个接口，就可以近乎完美地衔接进整个GO生态。</p>
+<p>比如我为某个结构类型实现了<code>Writer.Write()</code>接口，我几乎可以肯定，这个类型同时“继承”了log、json包里的诸多功能。</p>
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ul>
+<li>标准库有特殊的保证，并且被社区广泛应用。</li>
+<li>使用标准库的包会让代码易于管理，更加受信任。</li>
+<li>标准库放在$GOROOT/pkg下，以静态库形式存放。</li>
+<li>log.Logger可以定制自己的日志形式。</li>
+<li>json包可以通过结构类型的标签，实现序列化和反序列化</li>
+<li>map[string]interface{}也可以用于json编解码</li>
+<li>接口允许代码组合已有的功能，得接口者得全标准库</li>
+<li>熟悉标准库！熟悉标准库！熟悉标准库！</li>
+</ul>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/GO语言/">GO语言</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/32/">封装行为，而不仅仅是状态</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/31/">别碰代码！</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

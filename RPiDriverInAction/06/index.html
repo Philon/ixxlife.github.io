@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>06：红外接收 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/10/08">
+            
+            
+                <a class="post-category" href="/categories/树莓派驱动开发实战/">树莓派驱动开发实战</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/10/08</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">06：红外接收</h1>
+        </header>
+
+        <div class="post-content">
+            <p>本文源码：<a href="https://github.com/Philon/rpi-drivers/tree/master/06-infrared" target="_blank" rel="noopener">https://github.com/Philon/rpi-drivers/tree/master/06-infrared</a></p>
+<p>由于我手上只有一个1838红外接收头和一个CAR-MP3遥控器，所以本文主要基于Linux内核实现红外NEC协议的解码。</p>
+<p>先来看看效果：</p>
+<iframe src="//player.bilibili.com/player.html?aid=70504618&cid=122149105&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width:600px;height:400px"> </iframe>
+
+<h2 id="红外通信原理"><a href="#红外通信原理" class="headerlink" title="红外通信原理"></a>红外通信原理</h2><p>呐，太专业的电路原理呢我就不展开讲了，反正也没人看。简单点说吧：</p>
+<p>反正就是有一对红外发射管和接收管组成，通过产生脉冲信号来传递信息。脉冲信号是什么？你可以理解为摩尔斯电码那种样子，就是1和0。</p>
+<p>红外通信在日常生活中主要应用于家电控制，例如电视、空调、投影等等。市面上比较常见的红外通信协议是NEC，所以就来研究以下NEC的解码。</p>
+<h2 id="NEC协议"><a href="#NEC协议" class="headerlink" title="NEC协议"></a>NEC协议</h2><p>在讲述NEC协议之前，先来看看下面这几行数据打印。这是我随便按了几下遥控器，抓取的红外原始数据。“横杠”表示有红外信号，“下划线”表示无信号。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line"><span class="comment">#                   9ms           4.5ms  0 0 0 0 0 0 0 0 1   1   1   1   1   1   1   1   0 0 0 1   0 0 0 0 1   1   1   0 1   1   1   1   1</span></span><br><span class="line">[  203.718032] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-_-_-___-_-_-_-_-___-___-___-_-___-___-___-___-_</span><br><span class="line">[  207.647870] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-_-___-___-___-_-_-_-___-___-_-_-_-___-___-___-_</span><br><span class="line">[  209.927802] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-___-_-___-___-_-___-_-___-_-___-_-_-___-_-___-_</span><br><span class="line">[  214.557679] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-___-_-_-_-_-___-_-___-_-___-___-___-___-_-___-_</span><br><span class="line">[  216.917629] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-___-_-_-___-_-___-_-___-_-___-___-_-___-_-___-_</span><br><span class="line">[  219.457571] -----------------_________-_-_-_-_-_-_-_-_-___-___-___-___-___-___-___-___-_-___-_-___-_-_-___-_-___-_-___-_-___-___-_-___-_</span><br></pre></td></tr></table></figure>
+
+<p>从上边的原始数据可以看出来，每个NEC红外协议很相似，以9毫秒的高电平、4.5毫秒的低电平开始，之后跟上一堆1和0，最后一部分才是不相同的地方。简直可以总结出NEC的协议格式是这样的：</p>
+<p><code>&lt;帧头9ms高+4.5低&gt;&lt;8位地址码&gt;&lt;8位地址码取反&gt;&lt;8位指令码&gt;&lt;8位指令码取反&gt;</code></p>
+<p>没错，就是这样的😁，不过需要注意，<strong>NEC协议采用PWM(脉宽调制)编码，一个脉冲周期表示一个bit，是0还是1取决于占空比</strong>。不信请看下图：</p>
+<p><img src="https://i.loli.net/2019/10/08/BQPUXCGspiTumE6.jpg" alt="NEC协议编码说明"></p>
+<p>⚠️我在程序中对接收到的数据取反，所以原始数据和上图的逻辑刚好相反。</p>
+<p>结合原始数据和图片可以总结出：</p>
+<ol>
+<li>协议帧头总是以9ms的高电平和4.5ms的低电平为一个脉冲周期</li>
+<li>协议内容的脉冲周期，‘<code>-___</code>’表示1，‘<code>-_</code>’表示0，且电平信号以560us为单位；</li>
+<li>9ms高电平和2.25ms的低电平表示重复码，即长按按键时触发</li>
+<li>帧间间隔为110ms</li>
+</ol>
+<h2 id="红外接收电路"><a href="#红外接收电路" class="headerlink" title="红外接收电路"></a>红外接收电路</h2><p><img src="https://i.loli.net/2019/10/08/aLufX8MJltyDCpF.png" alt="红外接收管树莓派接线图"></p>
+<p>如上图所示，红外接收管从左到右一共3个脚，分别是：地、3.3V、数据输出。所以供电就用树莓派自身的3.3V即可，而数据输出脚，我这里接的是GPIO18。</p>
+<h2 id="驱动实现"><a href="#驱动实现" class="headerlink" title="驱动实现"></a>驱动实现</h2><p>正如前文所述，NEC红外协议是高频脉冲信号，所以我用GPIO的中断来记录每一次脉冲信号及其时长。实现起来没什么太复杂的地方，大致流程为：</p>
+<ol>
+<li>申请并注册GPIO18的中断，务必是双边沿触发</li>
+<li>申请一个定时器用于超时断帧处理</li>
+<li>每次中断触发，都记录上升或者下降沿的状态及时长</li>
+<li>每当经过一个完整脉冲后，通过占空比判断数据类型</li>
+<li>每当记录了32个数据(一帧)后，处理协议指令</li>
+<li>我是直接把地址和指令推给用户层处理</li>
+</ol>
+<p>⚠️注意：以下代码有个很大的风险，为了简化程序，IRQ中断我并没有采取“底半部”来处理复杂的红外解码业务，如果业务逻辑进一步加大，可能会导致内核崩溃。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/uaccess.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/miscdevice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/gpio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/interrupt.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/timer.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/wait.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">"Dual BSD/GPL"</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">"Philon | https://ixx.life"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> gpio;</span><br><span class="line">  <span class="keyword">int</span> irq;</span><br><span class="line">  <span class="keyword">wait_queue_head_t</span> rwait;</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">timer_list</span> <span class="title">timer</span>;</span></span><br><span class="line">  u32     pulse;  <span class="comment">// 脉冲上升沿持续时长</span></span><br><span class="line">  u32     space;  <span class="comment">// 脉冲下降沿持续时长</span></span><br><span class="line">  <span class="keyword">size_t</span>  count;  <span class="comment">// 脉冲个数</span></span><br><span class="line">  u32     data;   <span class="comment">// 脉冲解码后的值</span></span><br><span class="line">&#125; ir;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> is_head(p, s) (p &gt; 8900 &amp;&amp; p <span class="meta-string">&lt; 9100 &amp;&amp; s &gt; 4400 &amp;&amp; s &lt; 4600)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> is_repeat(p, s) (p &gt; 8900 &amp;&amp; p <span class="meta-string">&lt; 9100 &amp;&amp; s &gt; 2150 &amp;&amp; s &lt; 2350)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> is_bfalse(p, s) (p &gt; 500 &amp;&amp; p <span class="meta-string">&lt; 650 &amp;&amp; s &gt; 500 &amp;&amp; s &lt; 650)</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> is_btrue(p, s) (p &gt; 500 &amp;&amp; p <span class="meta-string">&lt; 650 &amp;&amp; s &gt; 1500 &amp;&amp; s &lt; 1750)</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 红外接收函数(即GPIO18的双边沿中断处理函数)</span></span><br><span class="line"><span class="comment">// 记录GPIO每次中断是“上升还是下降”，以及持续的时长</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> irqreturn_t <span class="title">ir_rx</span><span class="params">(<span class="keyword">int</span> irq, <span class="keyword">void</span>* dev)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">ktime_t</span> last = <span class="number">0</span>;</span><br><span class="line">  u32 duration = (u32)ktime_to_us(ktime_get() - last);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ⚠️注意：1838红外头高低电平逻辑取反</span></span><br><span class="line">  <span class="keyword">if</span> (!gpio_get_value(ir.gpio)) &#123;</span><br><span class="line">    ir.space = duration;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 切换下降沿时，脉冲只有高电平部分，所以不做处理</span></span><br><span class="line">    ir.pulse = duration;</span><br><span class="line">    <span class="keyword">goto</span> irq_out;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (is_head(ir.pulse, ir.space)) &#123;</span><br><span class="line">    ir.count = ir.data = <span class="number">0</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (is_repeat(ir.pulse, ir.space)) &#123;</span><br><span class="line">    ir.count = <span class="number">32</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (is_btrue(ir.pulse, ir.space)) &#123;</span><br><span class="line">    ir.data |= <span class="number">1</span> &lt;&lt; ir.count++;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (is_bfalse(ir.pulse, ir.space)) &#123;</span><br><span class="line">    ir.data |= <span class="number">0</span> &lt;&lt; ir.count++;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">goto</span> irq_out;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (ir.count &gt;= <span class="number">32</span>) &#123;</span><br><span class="line">    wake_up(&amp;ir.rwait);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">irq_out:</span><br><span class="line">  mod_timer(&amp;ir.timer, jiffies + (HZ / <span class="number">10</span>));</span><br><span class="line">  last = ktime_get();</span><br><span class="line">  <span class="keyword">return</span> IRQ_HANDLED;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定时清除红外协议帧的相关信息，便于接收下一帧</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">clear_flag</span><span class="params">(struct timer_list *timer)</span> </span>&#123;</span><br><span class="line">  ir.pulse = <span class="number">0</span>;</span><br><span class="line">  ir.space = <span class="number">0</span>;</span><br><span class="line">  ir.count = <span class="number">0</span>;</span><br><span class="line">  ir.data = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> ssize_t <span class="title">ir_read</span><span class="params">(struct file *filp, <span class="keyword">char</span> __user *buf, <span class="keyword">size_t</span> len, <span class="keyword">loff_t</span> *off)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> rc = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((filp-&gt;f_flags &amp; O_NONBLOCK) &amp;&amp; ir.count &lt; <span class="number">32</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> -EAGAIN;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    DECLARE_WAITQUEUE(wq, current);</span><br><span class="line">    add_wait_queue(&amp;ir.rwait, &amp;wq);</span><br><span class="line">    wait_event(ir.rwait, ir.count == <span class="number">32</span>);</span><br><span class="line">    remove_wait_queue(&amp;ir.rwait, &amp;wq);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  rc = copy_to_user(buf, &amp;ir.data, <span class="keyword">sizeof</span>(u32));</span><br><span class="line">  <span class="keyword">if</span> (rc &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ir.count = <span class="number">0</span>;</span><br><span class="line">  *off += <span class="keyword">sizeof</span>(u32);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">sizeof</span>(u32);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">file_operations</span> <span class="title">fops</span> = &#123;</span></span><br><span class="line">  .owner = THIS_MODULE,</span><br><span class="line">  .read = ir_read,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">miscdevice</span> <span class="title">irdev</span> = &#123;</span></span><br><span class="line">  .minor = MISC_DYNAMIC_MINOR,</span><br><span class="line">  .name = <span class="string">"IR1838-NEC"</span>,</span><br><span class="line">  .fops = &amp;fops,</span><br><span class="line">  .nodename = <span class="string">"ir0"</span>,</span><br><span class="line">  .mode = <span class="number">0744</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">ir_init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> rc = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化脉冲处理函数</span></span><br><span class="line">  init_waitqueue_head(&amp;ir.rwait);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化定时器，用于断帧</span></span><br><span class="line">  timer_setup(&amp;ir.timer, clear_flag, <span class="number">0</span>);</span><br><span class="line">  add_timer(&amp;ir.timer);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 申请GPIO及其双边沿中断</span></span><br><span class="line">  ir.gpio = <span class="number">18</span>;</span><br><span class="line">  <span class="keyword">if</span> ((rc = gpio_request_one(ir.gpio, GPIOF_IN, <span class="string">"IR"</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">"ERROR%d: can not request gpio%d\n"</span>, rc, ir.gpio);</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ir.irq = gpio_to_irq(ir.gpio);</span><br><span class="line">  <span class="keyword">if</span> ((rc = request_irq(ir.irq, ir_rx,</span><br><span class="line">              IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,</span><br><span class="line">              <span class="string">"IR"</span>, <span class="literal">NULL</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">"ERROR%d: can not request irq\n"</span>, ir.irq);</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> ((rc = misc_register(&amp;irdev)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> rc;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(ir_init);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">ir_exit</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">  misc_deregister(&amp;irdev);</span><br><span class="line">  free_irq(ir.irq, <span class="literal">NULL</span>);</span><br><span class="line">  gpio_free(ir.gpio);</span><br><span class="line">  del_timer(&amp;ir.timer);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(ir_exit);</span><br></pre></td></tr></table></figure>
+
+<p>以下是应用层的测试代码，有关CAR-MP3遥控器的指令码网上一搜一大把，如果你不嫌烦，也可以一个一个的试出来。</p>
+<p>由于驱动层是直接把原始数据的&lt;地址&gt;&lt;地址取反&gt;&lt;指令&gt;&lt;指令取反&gt;高低位反转后，直接给到进程，所以进程read出来的数据，指令码应该在第3段(16-24位)。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/fcntl.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// car-mp3遥控器指令码</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span>* keyname[] = &#123;</span><br><span class="line">  [<span class="number">0x45</span>] = <span class="string">"Channel-"</span>,  [<span class="number">0x46</span>] = <span class="string">"Channel"</span>, [<span class="number">0x47</span>] = <span class="string">"Channel+"</span>,</span><br><span class="line">  [<span class="number">0x44</span>] = <span class="string">"Speed-"</span>,    [<span class="number">0x40</span>] = <span class="string">"Speed+"</span>,  [<span class="number">0x43</span>] = <span class="string">"Play/Pause"</span>,</span><br><span class="line">  [<span class="number">0x15</span>] = <span class="string">"Vol+"</span>,      [<span class="number">0x07</span>] = <span class="string">"Vol-"</span>,    [<span class="number">0x09</span>] = <span class="string">"EQ"</span>,</span><br><span class="line">  [<span class="number">0x16</span>] = <span class="string">"No.0"</span>,      [<span class="number">0x19</span>] = <span class="string">"100+"</span>,    [<span class="number">0x0d</span>] = <span class="string">"200+"</span>,</span><br><span class="line">  [<span class="number">0x0c</span>] = <span class="string">"No.1"</span>,      [<span class="number">0x18</span>] = <span class="string">"No.2"</span>,    [<span class="number">0x5e</span>] = <span class="string">"No.3"</span>,</span><br><span class="line">  [<span class="number">0x08</span>] = <span class="string">"No.4"</span>,      [<span class="number">0x1c</span>] = <span class="string">"No.5"</span>,    [<span class="number">0x5a</span>] = <span class="string">"No.6"</span>,</span><br><span class="line">  [<span class="number">0x42</span>] = <span class="string">"No.7"</span>,      [<span class="number">0x52</span>] = <span class="string">"No.8"</span>,    [<span class="number">0x4a</span>] = <span class="string">"No.9"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ir = open(<span class="string">"/dev/ir0"</span>, O_RDONLY);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">int</span> frame = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (read(ir, &amp;frame, <span class="keyword">sizeof</span>(<span class="keyword">int</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      perror(<span class="string">"read ir"</span>);</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> cmd = (frame &gt;&gt; <span class="number">16</span>) &amp; <span class="number">0xFF</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, keyname[cmd]);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  close(ir);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>NEC协议采用PWM编码，一个完整的脉冲周期表示一个bit</li>
+<li>1838红外接收头状态取反</li>
+<li>别看我写的这么轻松，前几天刚接触红外时简直被搞疯😫</li>
+</ul>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/ARM/">ARM</a>
+                
+                    <a href="/tags/Linux/">Linux</a>
+                
+                    <a href="/tags/驱动开发/">驱动开发</a>
+                
+                    <a href="/tags/嵌入式/">嵌入式</a>
+                
+                    <a href="/tags/树莓派/">树莓派</a>
+                
+                    <a href="/tags/红外/">红外</a>
+                
+                    <a href="/tags/编解码/">编解码</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/58/">写给未来的消息</a>
+            
+            
+            <a class="next" rel="next" href="/books/七堂极简物理课/">《七堂极简物理课》读书笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

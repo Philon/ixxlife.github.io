@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>《从一到无穷大》读书笔记 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/12/31">
+            
+            
+                <a class="post-category" href="/categories/读书/">读书</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/12/31</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">《从一到无穷大》读书笔记</h1>
+        </header>
+
+        <div class="post-content">
+            <h2 id="如何证明地球是圆的？"><a href="#如何证明地球是圆的？" class="headerlink" title="如何证明地球是圆的？"></a>如何证明地球是圆的？</h2><p>也许有人会说：飞到天上去看一眼不就行了。</p>
+<p>这是个好方法，但这是三维世界生物的思考方式，如果是一个二维世界的生物，它又如何知道自己的世界是平的还是圆的呢？</p>
+<p>三角形的内角之和为180°，这是中学生都知道的理论。现在想象一下，你在一张平铺的A4纸上画了一个三角形，又在一个大西瓜上画了一个三角形。毋庸置疑，A4纸上的三角形内角和为180°，那么西瓜上的三角形呢？😁</p>
+<p>是的，球形曲面上的三角形内角和大于或小于180°，反过来说，如果你画了一个三角形并测量它的内角和不等于180°，那这个三角形必然处于曲面中。</p>
+<p>好了，理论上我们可以在北极取一个顶点，在赤道上取两个顶点，绘制出一个超大三角形，从而证明地球不是方的。</p>
+<p><strong>问：如何证明三维空间被扭曲了？</strong></p>
+<p>生活在三维世界的人类，用三角形证明地球是圆的，可能没什么意义。但我们却可以用此方法来检测空间是否被扭曲了。</p>
+<p>我们的太阳如此庞大，从理论上来说，它对周围的空间必然产生了强大的扭曲，怎么证明呢？</p>
+<p>我们可以在3月份和8月份观测太阳“身后”某一颗遥远的星星，再把地球两次观测时间点的轨道位置作为两个顶点，与星星绘制成一个很大很大很大的三角形，然后计算其内角和。</p>
+<p>事实证明，这个内角和小于180°——星光经过太阳附近时，和时空一同被扭曲了。</p>
+<h2 id="世界有多小"><a href="#世界有多小" class="headerlink" title="世界有多小"></a>世界有多小</h2><p>我们曾觉得细菌很小，殊不知细菌由更渺小的细胞构成；<br>我们曾觉得细胞很小，殊不知细胞内还有更小的DNA；<br>我们曾觉得DNA很小，殊不知DNA由更小的分子结合而来；<br>我们曾觉得分子很小，殊不知分子由原子构成；<br>我们曾觉得原子已经最小了，没想到还有原子核、电子…</p>
+<p>中学化学物理课中学到过，电子带有负电荷，原子核带有等量的正电荷，电子围绕的原子核转圈圈，彼此平衡。可事实的真相却是…</p>
+<p>原子核内部有一部分带电，另一部分不带电，经过实验得知原子核内核其实还分为：带正电的质子，和不带电的中子。</p>
+<p>后来科学家们又发现，宇宙中还存在带正电荷的正电子，和带负电荷的负质子，以及不带电的中微子。</p>
+<p>换句话说，我们人类存在的于绝大多数都是“质子+电子”元素组成的世界。同样也会存在一个由“负质子+正电子”元素组成的地方，那里的东西表面上看起来和我们这儿的没什么区别。比如刚好有一个“反你”，你激动地和它来个拥抱，噗～正负抵消，你们两就这么消失了。</p>
+<h2 id="生命的本质——逆熵"><a href="#生命的本质——逆熵" class="headerlink" title="生命的本质——逆熵"></a>生命的本质——逆熵</h2><p>宇宙在膨胀，它将走向何方？科学家给出了一种假说——热寂！</p>
+<p>日月星辰，时光流逝，在浩瀚的时空中，万事万物都按照自身规律在运作着。可不论渺小的沙粒，或是伟大的太阳，它们都有终结的那天。这里所说的终结，便是自身无法维持规律而走向无序。</p>
+<p>熵，表示无序的程度，宇宙目前处于熵增当中（越来越无序），让所有天崩地裂过后，万物无序，熵趋于无穷大，这便是热寂。</p>
+<p>可是地球上却偏偏出现了有机生命，它的运作方式非常另类。</p>
+<p>生命的源起是DNA，它会主动吸收周围的介质，并将其同化为自身的化学结构。我们把这种现象称为“自我复制”。至少目前为止，我们还未发现一粒沙子、一滴水、一种金属存在这种自我复制的现象。</p>
+<p>如果地球或者太阳最终走向无序而告终，你就会发现，生命的自我复制行为，其实就是源源不断把周围无序的元素重新排序。</p>
+<p>我们不断繁衍，生生不息，生命系统越发复杂，在热寂这一大命运前，生命似乎在呐喊，就是要逆熵而行！</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/科普/">科普</a>
+                
+                    <a href="/tags/物理/">物理</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/贫穷的本质/">越穷越见鬼</a>
+            
+            
+            <a class="next" rel="next" href="/books/现实不似你所见/">《现实不似你所见》读书笔记</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

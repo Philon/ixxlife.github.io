@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>浮点数不是实数 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/03/20">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/03/20</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">浮点数不是实数</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_33/" target="_blank" rel="noopener">Floating-point Numbers Aren’t Real</a></p>
+<p>在数学科学种，浮点数不是“实数(real)”，尽管他们在很多编程语言中被称为<code>real</code>，比如Pascal和Fortran。实数是无限精度并连续无损的；浮点数被限制了精度，所以它们是有限的，类似于“表现不好”的整数，因为它们在整个范围没有均匀间隔。</p>
+<p>举个例子，把2147483647(32位int的最大值)分配给一个32位float变量(名为x)，然后打印。你会得到2147483648。现在打印<code>x - 64</code>，仍然是2147483648。现在打印<code>x - 65</code>你将得到2147483520！为什么？因为这两个浮点数之间的间隔是128，浮点运算会舍入到最近的浮点数。</p>
+<p>(译注：类似于分辨率，128是浮点类型在内存中能表现的最小单位——间隔)</p>
+<p>IEEE浮点数是基于基数为2的科学记数法的固定精度数：1.d1d2…d(p-1)x2^e，p代表精度(float是24，double是53)。两个连续的数之间的间隔应为2^(1-p+e)，可以安全近似于ε|x|，ε表示机器的epsilon(2^(1-p))。</p>
+<p>知道相邻浮点数的间隔可以帮你避免数字类型的错误。比如，你要处理迭代计算，例如搜索方程的根，要求找出比超过系统能表达精度更高的数字是没有意义的。确保你要求得的差值没回比间隔更小，否则会进入死循环。</p>
+<p>自从浮点数成了实数的近似值以来，就存在不可避免的错误。这种错误被称作<em>四舍五入</em>，会导致意外的结果。当你去减一个近似值时，例如高位数相互抵消，所以在浮点运算的结果，低位的有效数字(被四舍五入的那部分)被提升到了高位，本质上污染了进一步的相关计算(被称作涂抹)。你需要细致地观察你的算法，以阻止这种灾难性的消除。为了说明，考虑用二次公式求解方程x²-100000x+1=0。由于表达式-b+sqrt(b²-4)中的操作数近似相等，你可以先计算出r1=-b+sqrt(b²-4)，再求得r2=1/r1，因此任何二次方程，ax2+bx+c=0，这个结果满足r1r2=c/a。</p>
+<p>涂抹可以以更精妙的方式运行。假设一个库通过1+x+x²/2+x³/3!+…的公式计算e^x，这只适用于x是正数，但想想当x为一个很大的负数时会发生什么。偶数次方结果是大的正数，减去奇数次方的幅度甚至不会影响结果。这里的问题是，正项在数字中的地位要比真实答案影响更大。结果就是趋向于无穷大！这里的解决方案也很简单：给一个负x，计算e^x=1/e^|x|。</p>
+<p>不言而喻，你不应该将浮点数用于金融类应用——就是像python和C#语言中的十进制类。浮点数用于高效的科学计算。但失去了精度，性能就毫无价值，所以请记住舍入错误的来源及相应的代码。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/ArmLinuxDriver/chapter1/">一：环境准备</a>
+            
+            
+            <a class="next" rel="next" href="/books/激荡十年水大鱼大/">那一年我没买房-《激荡十年，水大鱼大》书评</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

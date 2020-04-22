@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>五：类型系统 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/02/18">
+            
+            
+                <a class="post-category" href="/categories/《GO语言实战》学习笔记/">《GO语言实战》学习笔记</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/02/18</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">五：类型系统</h1>
+        </header>
+
+        <div class="post-content">
+            <p>类型——比“类”多了一个字而已，如果懂面向对象的话，类型的很多内容其实和面向对象<strong>语言</strong>如出一辙，但不同于面向对象<strong>思想</strong>。换而言之，Java/C#等常见的类的属性、方法、接口、继承等等形式，在GO的类型系统里都能找到身影，但其实现过程和思路却截然不同。</p>
+<p>为了巩固本章的知识点，我仿照传统的MVC架构来实现一个“账户管理”的业务，作为GO与Java在实现面向对象方面的思想类比。在源码的<code>account</code>包中包含：</p>
+<ul>
+<li><code>user</code>——用户类型，基础模型</li>
+<li><code>admin</code>——管理员类型，“继承”于user</li>
+<li><code>show</code>——视图，用户信息打印，用接口实现user和admin多态</li>
+<li><code>manage</code>——服务，负责用户的增删改查</li>
+</ul>
+<h2 id="类型的定义"><a href="#类型的定义" class="headerlink" title="类型的定义"></a>类型的定义</h2><p>在GO语言中定义一个类是非常简单的：<code>type user struct {}</code>，当然，它不叫类，而是结构类型，很像C语言中的结构体。</p>
+<p>在<code>user.go</code>里声明了两个类型：<code>Password</code>和<code>User</code>，高手一看便知Password其实就是内置的string类型，感觉两者是可以互换的。然而一旦做了这样的声明之后，GO的编译器就会吧Password和string严格当作两种独立的类型来处理。换句话说，不能把string定义的变量直接赋值给Password类型的对象，只能在初始化时接收纯字符串。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Password <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">  ID       <span class="keyword">int</span>      <span class="comment">// 包外可见</span></span><br><span class="line">  Name     <span class="keyword">string</span>   <span class="comment">// 包外可见</span></span><br><span class="line">  password Password <span class="comment">// 包内可见</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外，需要注意GO语言的符号可见性。以下情况适用于函数、变量、方法、属性等：</p>
+<ul>
+<li>首字母大写的符号——包外可见</li>
+<li>首字母小写的符号——仅包内可见</li>
+</ul>
+<p>结构类型的使用也非常简单：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义并初始化一个结构</span></span><br><span class="line">user := User&#123;</span><br><span class="line">  ID:   <span class="number">112233</span>,</span><br><span class="line">  Name: <span class="string">"philon"</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line">user := User&#123;<span class="number">112233</span>, <span class="string">"philon"</span>, <span class="string">"123456"</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改属性</span></span><br><span class="line">user.password = <span class="string">"56789"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="类型的方法"><a href="#类型的方法" class="headerlink" title="类型的方法"></a>类型的方法</h2><p>根据面向对象的套路，定义了类型的属性，自然少不了要定义方法，但GO语言不允许直接把一个类型的方法定义在其内部，而是可以将其定义在任何其他地方。如果习惯了Java这种方式，可能会觉得十分别扭，但这正是GO类型灵活的地方。如果你觉得某个“业务对象”需要某个特殊的方法来处理，那就直接加上好了，不影响它的继承、耦合等问题。</p>
+<p>给类型添加一个方法的基本语法为：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// u表示接收者，可以理解为面向对象中的一个对象</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u User)</span> <span class="title">method_name</span><span class="params">()</span></span> &#123;</span><br><span class="line">  u.name = <span class="string">"philon"</span></span><br><span class="line">  u.email = <span class="string">"xxx@xxx.com"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过添加方法时需要注意“接受者”的区别，主要有两种：</p>
+<ul>
+<li><code>值接收者</code>的方法在其内部修改对象的值，不改变外部调用者</li>
+<li><code>指针接收者</code>的方法在其内部修改对象的值，改变外部调用者</li>
+</ul>
+<p>还是以代码为例：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 值接受者方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u User)</span> <span class="title">Auth</span><span class="params">(p Password)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">  u.password = <span class="string">"123456"</span> <span class="comment">// 👈此行并不影响外部调用对象</span></span><br><span class="line">  <span class="keyword">return</span> u.password == p</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指针接受者方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *User)</span> <span class="title">SetPassword</span><span class="params">(p Password)</span></span> &#123;</span><br><span class="line">  u.password = p <span class="comment">// 👈同时修改了外部调用对象的属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果理解函数调用的内存管理，那这两种形式非常容易理解。调用函数的时候，传入的参数将拷贝一个副本并压栈，函数通过访问栈区来获取参数值。换句话说：<strong>所有传入函数的参数其实都只是副本</strong>，在函数内部修改副本的值，不会影响原始参数值。</p>
+<p>✍️<strong>但务必注意</strong>✍️</p>
+<p>Go语言里的引用类型：切片、映射、通道、接口和函数是比较特殊的，前几章已经说明了它们作为参数在函数间传递时，本身就是以引用形式传递，所以<strong>引用类型的方法，值接受者其实是个引用(指针)副本</strong>。千万小心。</p>
+<h2 id="嵌入类型-继承"><a href="#嵌入类型-继承" class="headerlink" title="嵌入类型(继承)"></a>嵌入类型(继承)</h2><p><code>User</code>类型的属性和方法都实现了，在面向对象里面自然少不了继承，例如管理员账户<code>Administrator</code>类型一般而言都会继承User。GO语言对继承的形式如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Administrator 管理员用户</span></span><br><span class="line"><span class="keyword">type</span> Administrator <span class="keyword">struct</span> &#123;</span><br><span class="line">  User  <span class="comment">// 通过嵌套，继承“父类”</span></span><br><span class="line">  Level <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方式</span></span><br><span class="line">a := Administrator&#123;</span><br><span class="line">  User: &#123; <span class="number">1</span>, <span class="string">"root"</span>, <span class="string">"password"</span> &#125;,</span><br><span class="line">  Level: <span class="number">123</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">var</span> a Administrator</span><br><span class="line">a.ID = <span class="number">1</span></span><br><span class="line">a.Name = <span class="string">"root"</span></span><br><span class="line">a.Level = <span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>接口在第二章中其实总结了很多了，GO语言的接口属于<code>鸭子类型</code>——也就是一个类型只要实现了接口的方法，不管它们是否存在继承关系，都能够以多态的形式调用。</p>
+<p>这里以<code>Shower</code>接口为例，该接口要求实现一个<code>show</code>方法，用于打印一个类型的内部信息。和面向对象的思路一样，各个类型实现自己的show方法，而Shower只负责调用。</p>
+<p>首先是接口的定义：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Shower 显示接口的定义</span></span><br><span class="line"><span class="comment">// 根据GO的规则，如果一个接口只有一个方法，那就叫方法名+er</span></span><br><span class="line"><span class="keyword">type</span> Shower <span class="keyword">interface</span> &#123;</span><br><span class="line">  show()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ShowInfo 任何实现了show的类型都可以传入该函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">ShowInfo</span><span class="params">(s Shower)</span></span> &#123;</span><br><span class="line">  s.show()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面是<code>User</code>和<code>Administrator</code>的不同show实现：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// User类型实现show接口</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u User)</span> <span class="title">show</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Printf(<span class="string">"User %s&lt;%d&gt;\n"</span>, u.Name, u.ID)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Administrator实现show接口</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a Administrator)</span> <span class="title">show</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Printf(<span class="string">"Administrator %s(%d): Level-%d\n"</span>, a.Name, a.ID, a.Level)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 假设我们定义了两个类型的变量，并通过ShowInfo调用</span></span><br><span class="line">ShowInfo(user)  <span class="comment">// User philon&lt;112233&gt;</span></span><br><span class="line">ShowInfo(admin) <span class="comment">// Administrator root(0): Level-123</span></span><br></pre></td></tr></table></figure>
+
+<p>从上边的例子可以看到，user和admin虽然是不同的类型，但是由于都实现了show这个接口方法，因此都可以传入<code>ShowInfo</code>函数，并且也实际调用到了它们各自的实现。</p>
+<h2 id="小结一下"><a href="#小结一下" class="headerlink" title="小结一下"></a>小结一下</h2><ul>
+<li>type xxx struct 定义一个结构类型</li>
+<li>type xxx interface 定义一个接口</li>
+<li>不管是类型、函数还是成员变量，首字母大写表示包外可见，否则包内可见</li>
+<li>type xxx struct { OtherType }即可继承其它结构类型</li>
+<li>func (t Type) foo() 定义一个类型的方法</li>
+<li>值接受者定义的类型方法，调用者传入副本，方法内修改对象不影响外部</li>
+<li>指针接受者定义的类型方法，调用者传入地址，方法内修改对象影响外部</li>
+<li>接口是实现多态的类型，只要实现了接口方法，任何类型都可以调用</li>
+<li>标识符首字母大写是包外公开，小写仅包内公开</li>
+</ul>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/GO语言/">GO语言</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/自私的基因/">《自私的基因》读书笔记</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/27/">不要只是学语言，要理解它的文化</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

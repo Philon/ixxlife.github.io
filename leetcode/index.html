@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>LeetCode刷题 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title">LeetCode刷题</h2>
+        
+        <section class="post-content">
+            <table>
+<thead>
+<tr>
+<th>#</th>
+<th>Title</th>
+<th align="center">Beats</th>
+<th align="center">Difficulty</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/001-two_sum" target="_blank" rel="noopener">Two Sum</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>002</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/002-add_two_numbers" target="_blank" rel="noopener">Add Two Numbers</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>003</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/003-longest_substring_without_repeating_characters" target="_blank" rel="noopener">Longest Substring Without Repeating Characters</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>004</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/004-median_of_two_sorted_arrays" target="_blank" rel="noopener">Median of Two Sorted Arrays</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>005</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/005-longest_palindromic_substring" target="_blank" rel="noopener">Longest Palindromic Substring</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>006</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/006-zig_zag_conversion" target="_blank" rel="noopener">ZigZag Conversion</a></td>
+<td align="center">55.3%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>007</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/007-reverse_integer" target="_blank" rel="noopener">Reverse Integer</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>008</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/008-string_to_integer" target="_blank" rel="noopener">String to Integer(atoi)</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>009</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/009-palindrome_number" target="_blank" rel="noopener">Palindrome Number</a></td>
+<td align="center">88.3%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>010</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/010-regular_expression_matching" target="_blank" rel="noopener">Regular Expression Matching</a></td>
+<td align="center">-</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>011</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/011-container_with_most_water" target="_blank" rel="noopener">Container With Most Water</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>012</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/012-integer_to_roman" target="_blank" rel="noopener">Integer to Roman</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>013</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/013-roman_to_integer" target="_blank" rel="noopener">Roman to Integer</a></td>
+<td align="center">21%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>014</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/014-longest_common_prefix" target="_blank" rel="noopener">Longest Common Prefix</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>015</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/015-3sum" target="_blank" rel="noopener">3Sum</a></td>
+<td align="center">39%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>016</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/016-3sum_closest" target="_blank" rel="noopener">3Sum Closest</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>017</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/017-letter_combinations_of_a_phone_number" target="_blank" rel="noopener">Letter Combinations of a Phone Number</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>018</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/018-4sum" target="_blank" rel="noopener">4Sum</a></td>
+<td align="center">66.4%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>019</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/019-remove_nth_node_from_end_of_list" target="_blank" rel="noopener">Remove Nth Node From End of List</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>020</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/020-valid_parentheses" target="_blank" rel="noopener">Valid Parentheses</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>021</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/021-merge_two_sorted_lists" target="_blank" rel="noopener">Merge Two Sorted Lists</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>022</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/022-generate_parentheses" target="_blank" rel="noopener">Generate Parentheses</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>023</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/023-merge_k_sorted_lists" target="_blank" rel="noopener">Merge K Sorted Lists</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>024</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/024-swap_nodes_in_pairs" target="_blank" rel="noopener">Swap Nodes in Pairs</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>025</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/025-reverse_nodes_in_k-group" target="_blank" rel="noopener">Reverse Nodes in K-Group</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>026</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/026-remove_duplicates_from-sorted_array" target="_blank" rel="noopener">Remove Duplicates From Sorted Array</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>027</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/027-remove_element" target="_blank" rel="noopener">Remove Element</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>028</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/028-implement_strstr" target="_blank" rel="noopener">Implement strStr</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>029</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/029-divide_two_integers" target="_blank" rel="noopener">Divide Two Integers</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>030</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/030-substring_with_concatenation_of_all_words" target="_blank" rel="noopener">Substring with Concatenation of All Words</a></td>
+<td align="center">❌</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>031</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/031-next_permutation" target="_blank" rel="noopener">Next Permutation</a></td>
+<td align="center">18.6%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>032</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/032-longest_valid_parentheses" target="_blank" rel="noopener">Longest Valid Parentheses</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>033</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/033-search_in_rotated_sorted_array" target="_blank" rel="noopener">Search in Rotated Sorted Array</a></td>
+<td align="center">88.3%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>034</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/034-find_first_and_last_position_of_element_in_sorted_array" target="_blank" rel="noopener">Find First and Last Position of Element in Sorted Array</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>035</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/035-search_insert_position" target="_blank" rel="noopener">Search Insert Position</a></td>
+<td align="center">74.8%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>036</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/036-valid_sudoku" target="_blank" rel="noopener">Valid Sudoku</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>037</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/037-sudoku_solver" target="_blank" rel="noopener">Sudoku Solver</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>038</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/038-count_and_say" target="_blank" rel="noopener">Count and Say</a></td>
+<td align="center">75.7%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>039</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/039-combination_sum" target="_blank" rel="noopener">Combination Sum</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>040</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/040-combination_sum_II" target="_blank" rel="noopener">Combination Sum II</a></td>
+<td align="center">100%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>041</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/040-first_missing_positive" target="_blank" rel="noopener">First Missing Positive</a></td>
+<td align="center">100%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>042</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/042-trapping_rain_water" target="_blank" rel="noopener">Trapping Rain Water</a></td>
+<td align="center">98%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>043</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/043-mutiply_strings" target="_blank" rel="noopener">Multiply Strings</a></td>
+<td align="center">92.6%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>044</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/044-wildcard_matching" target="_blank" rel="noopener">Wildcard Matching</a></td>
+<td align="center">40.3%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>045</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/045-jump_game_ii" target="_blank" rel="noopener">Jump Game II</a></td>
+<td align="center">99.8%</td>
+<td align="center">hard</td>
+</tr>
+<tr>
+<td>046</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/046-permutations" target="_blank" rel="noopener">Permutations</a></td>
+<td align="center">99.8%</td>
+<td align="center">medium</td>
+</tr>
+<tr>
+<td>053</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/053-maximum_subarray" target="_blank" rel="noopener">Maximum Subarray</a></td>
+<td align="center">82%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>058</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/058-length_of_last_word" target="_blank" rel="noopener">Length of Last Word</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>066</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/066-plus_one" target="_blank" rel="noopener">Plus One</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>067</td>
+<td><a href="https://github.com/philon/arts/tree/master/algorithm/067-add_binary" target="_blank" rel="noopener">Add Binary</a></td>
+<td align="center">87.3%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>069</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/069-sqrtx" target="_blank" rel="noopener">Sqrt(x)</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>070</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/070-climbing_stairs" target="_blank" rel="noopener">Climbing Stairs</a></td>
+<td align="center">52.3%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>083</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/083-remove_duplicates_from_sorted_list" target="_blank" rel="noopener">Remove Duplicates from Sorted List</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>088</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/088-merge_stored_array" target="_blank" rel="noopener">Merge Stored Array</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>100</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/100-same_tree" target="_blank" rel="noopener">Same Tree</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>101</td>
+<td><a href="https://github.com/Philon/arts/tree/master/algorithm/101-symmetric_tree" target="_blank" rel="noopener">Symmertric Tree</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>104</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/104-maximum_depth_of_binary_tree" target="_blank" rel="noopener">Maximux Depth of Binary Tree</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>107</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/107-binary_tree_level_order_traversal_ii" target="_blank" rel="noopener">Binary Tree Level Order Traversal II</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>108</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/108-convert_sorted_array_to_binary_search_tree" target="_blank" rel="noopener">Convert Sorted Array to Binary Search Tree</a></td>
+<td align="center">86%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>110</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/110-balanced_binary_tree" target="_blank" rel="noopener">Balanced Binary Tree</a></td>
+<td align="center">55%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>111</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/111-minimum_depth_of_binary_tree" target="_blank" rel="noopener">Minimum Depth of Binary Tree</a></td>
+<td align="center">100%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>112</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/112-path_sum" target="_blank" rel="noopener">Path Sum</a></td>
+<td align="center">74%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>118</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/118-pascals_triangle" target="_blank" rel="noopener">Pascals Triangle</a></td>
+<td align="center">82.8%</td>
+<td align="center">easy</td>
+</tr>
+<tr>
+<td>119</td>
+<td><a href="https://github.com/Philon/arts/blob/master/algorithm/119-pascals_triangle_ii" target="_blank" rel="noopener">PAscals Triangle II</a></td>
+<td align="center">76%</td>
+<td align="center">easy</td>
+</tr>
+</tbody></table>
+
+        </section>
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>做一名职业程序员 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/01">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/01</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">做一名职业程序员</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_67/" target="_blank" rel="noopener">The Professional Programmer</a></p>
+<p>何为职业程序员？</p>
+<p>职业程序员最重要的一个特点就是<em>个人责任感</em>。职业程序员会为他们的事业、估算、承诺、错误、技能等负责到底。职业程序员不会将这些责任推诿给其他人。</p>
+<ul>
+<li><em>如果你是职业的，你就会对自己的事业负责。</em>你有责任阅读和学习。你有责任了解最新的行业技术。很多程序员觉得应该是他们的雇主来培养他们。抱歉，这是大错特错。你会认为医生是这样过来的吗？你会认为律师是这样过来的吗？非也，他们都是利用自己时间和精力来自我培养。他们会花大量的业余时间来阅读期刊和决策，让自己保持最前沿。所以我们也必须如此。你和你雇主的关系在劳动合同里有很好的阐述：雇主承诺付给你薪水，而你承诺做好一份工作。</li>
+<li><em>专业人士为他们所写的代码负责。</em>除非他们确认运行正常，否则就不会发布他们的代码。试想一下，如果你愿意发布一份自己都不确定的代码，你又怎么敢认为自己的职业的呢？职业程序员会希望QA团队找不出任何问题，因为在他们没有完成测试过代码之前是不会发布它们的。当然，QA总能找出些问题，毕竟人非圣贤。但作为一个职业者，我们的态度是必须消除QA找出的一切问题。</li>
+<li><em>专业人士是团队的玩家。</em>他们为整个团队的输出负责，而不仅限于自己的工作范围。他们帮助他人、教导他人、从他人身上学习，甚至在必要时替他人掩护。当某个队友栽跟头时，其他人就介入进来，因为他们知道自己有一天也会变成需要被掩护的那一个。</li>
+<li><em>专业人士不会容忍大bug表。</em>一个庞大的bug列表就是草率的。在问题跟踪库里包含了数千条问题的系统就是粗心大意的悲剧。确实，对多数项目而言，极度依赖问题跟踪系统就是一种粗心的态度。只有最庞大的系统才应该配备问题列表，以便于自动化管理它们。</li>
+<li><em>专业人士不会去捣乱。</em>他们以自己的技能为傲。他们保持代码的简洁、良好的结构、以及可读性。他们遵循公认的标准和最佳实践。他们从不焦躁。想象一下你元神出窍来观察一名心脏外科医生在给你做手术。这名医生有了一个deadline（就是字面意思）。他必须在心扉旁路仪损耗你过多血红细胞之前完成手术。那你希望他怎么做？你会希望他像一个典型的软件开发者一样，焦躁并乱搞一通？你会希望他说：“我过会儿再来修复”？还是说你会希望他恪守纪律，抓紧时间，确信自己的方案时他可以做到的最佳方案。那么，你是希望他捣蛋，还是职业化。</li>
+</ul>
+<p>职业是一种责任感。他们为自己的事业负责。他们会为自己的代码正常工作负责。他们会为自己的技能质量负责。他们不会在截止时间逼近就亲言放弃。确实，当压力越来越大时，专业人士会纪律严明地坚持自己学识的正确性。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/职业/">职业</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/68/">把每件事都放入版本控制</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/66/">阻止错误</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>00：HelloWorld | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/07/14">
+            
+            
+                <a class="post-category" href="/categories/树莓派驱动开发实战/">树莓派驱动开发实战</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/07/14</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">00：HelloWorld</h1>
+        </header>
+
+        <div class="post-content">
+            <p>本文源码：<a href="https://github.com/philon/rpi-drivers/tree/master/00-hello" target="_blank" rel="noopener">https://github.com/philon/rpi-drivers/tree/master/00-hello</a></p>
+<p>最近打算利用手里的树莓派3B+及各种丰富的扩展模块学些一下嵌入式Linux驱动开发。我计划实现LED、温湿度传感器、陀螺仪、PS遥感、红外模组、超声波模组、光敏传感器等驱动，其目的是为了学习嵌入式Linux驱动开发的思想，以及常见的接口及模块的原理。我会把整个学习过程整理为《树莓派驱动开发实战》。当然，我的初衷是学习ARM-Linux驱动开发，如果不是必须，我不会可以强调硬件平台，而是更侧重于驱动编程和电路设计。</p>
+<p><img src="https://i.loli.net/2019/07/12/5d28aa437927829767.jpg" alt></p>
+<p>我的开发环境如下：</p>
+<ol>
+<li>宿主机：华硕A55VM | Ubuntu18.04</li>
+<li>开发板：Raspberry 3 Model B+ 2017</li>
+<li>编辑器：Visual Studio Code | C/C++扩展</li>
+</ol>
+<p>由于文章中会存在大量命令脚本的引用，先做个声明：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">philon@a55v:~$ <span class="comment"># 表示在宿主机敲出的命令</span></span><br><span class="line"></span><br><span class="line">philon@rpi:~$  <span class="comment"># 表示在开发板敲出的命令</span></span><br></pre></td></tr></table></figure>
+
+<p>此外，如果不是必须，我不会拿串口调试开发板，一律ssh！</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>Linux驱动开发需要准备几样东西：</p>
+<ul>
+<li><code>Datasheet</code>：硬件手册，用于了解目标平台的规格/寄存器/内存地址/引脚定义等</li>
+<li><code>编译器</code>：用于编译目标平台的驱动源码，嵌入式开发，一般用交叉编译器</li>
+<li><code>内核源码</code>：编译驱动依赖于内核，<strong>且必须与目标平台系统内核版本一致</strong></li>
+<li><code>外围电路原理图</code>：连怎么走线都不知道，还开发个球啊！</li>
+</ul>
+<p>本文不涉及真实的模块驱动开发，因此具体的外围电路等实际开发的时候再看吧，先把前三样搞到手。</p>
+<h2 id="树莓派3B-硬件资料"><a href="#树莓派3B-硬件资料" class="headerlink" title="树莓派3B+硬件资料"></a>树莓派3B+硬件资料</h2><p>由于官网没有配套的树莓派3B+Datasheet，我只能尽可能从官网其他地方把硬件资料凑齐。任何有关硬件的资料都优先从官网找：<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/" target="_blank" rel="noopener">https://www.raspberrypi.org/documentation/hardware/raspberrypi/</a></p>
+<p>树莓派3B+硬件介绍  </p>
+<ul>
+<li>处理器是BCM2837B0，64bit四核1.4GHz的Cortex-A53架构</li>
+<li>双频80211ac无线和蓝牙4.2</li>
+<li>千兆有线网卡，且支持PoE(网线供电)</li>
+</ul>
+<p>电路原理图下载：<a href="https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" target="_blank" rel="noopener">https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf</a></p>
+<h2 id="宿主机安装交叉编译器"><a href="#宿主机安装交叉编译器" class="headerlink" title="宿主机安装交叉编译器"></a>宿主机安装交叉编译器</h2><p>交叉编译器选择是有套路的：<code>&lt;arch&gt;-&lt;vendor&gt;-&lt;target&gt;</code></p>
+<p>例如：</p>
+<ul>
+<li>arm-linux-gnueabi-gcc 表示arm32位架构，目标可执行文件依赖Linux+glibc</li>
+<li>arm-linux-gnueabihf-gcc 表示arm32位/硬浮点数处理架构，其他同上</li>
+<li>aarch64-linux-gnueabi-gcc 表示arm64位架构，其他同上</li>
+</ul>
+<p>所以在选择交叉编译器之前要先确定开发板的处理器及操作系统环境：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~ $ uname -a</span><br><span class="line">Linux rpi 4.19.42-v7+ <span class="comment">#1219 SMP Tue May 14 21:20:58 BST 2019 armv7l GNU/Linux</span></span><br></pre></td></tr></table></figure>
+
+<p>注意最后的<strong>armv7</strong>，尽管RPi-3B+的处理器平台是64位4核，不过它的操作系统是32位的，所以应该安装arm32位glibc的交叉编译器。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">philon@a55v:~$ sudo apt install gcc-arm-linux-gnueabihf</span><br></pre></td></tr></table></figure>
+
+<h2 id="宿主机构建内核源码"><a href="#宿主机构建内核源码" class="headerlink" title="宿主机构建内核源码"></a>宿主机构建内核源码</h2><p>Linux驱动模块的编译依赖于内核源码，而且要注意版本问题。之前在开发板上查看Linux版本时已经知道其运行的内核是<code>Linux rpi 4.19.42-v7+</code>。所以最好是去官网下载对应版本号的内核源码。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载内核源码</span></span><br><span class="line">philon@a55v:~$ wget https://github.com/raspberrypi/linux/archive/rpi-4.19.y.tar.gz</span><br><span class="line"><span class="comment"># 解压，进入内核目录</span></span><br><span class="line">philon@a55v:~$ tar xvf rpi-4.19.y.tar.gz &amp;&amp; <span class="built_in">cd</span> linux-rpi-4.19.y</span><br><span class="line"><span class="comment"># 清理内核</span></span><br><span class="line">philon@a55v:~/linux-rpi-4.19.y$ make mrproper</span><br><span class="line"><span class="comment"># 加载RPi-3B+的配置</span></span><br><span class="line">philon@a55v:~/linux-rpi-4.19.y$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig</span><br><span class="line"><span class="comment"># 预编译</span></span><br><span class="line">philon@a55v:~/linux-rpi-4.19.y$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_prepare -j8</span><br></pre></td></tr></table></figure>
+
+<p>【题外话】：很多教程都是先把内核完整编译一遍，再拷贝各种头/库文件到目标平台，其实没必要，预编译内核即可。从<a href="https://www.kernel.org/doc/Documentation/kbuild/modules.txt" target="_blank" rel="noopener">内核官方文档</a>可以看到这样一段话：</p>
+<blockquote>
+<p>=== 2. How to Build External Modules<br>To build external modules, you must have a prebuilt kernel available<br>that contains the configuration and header files used in the build.<br>…<br>An alternative is to use the “make” target “modules_prepare.” This will<br>make sure the kernel contains the information required. The target<br>exists solely as a simple way to prepare a kernel source tree for<br>building external modules.<br>NOTE: “modules_prepare” will not build Module.symvers even if<br>CONFIG_MODVERSIONS is set; therefore, a full kernel build needs to be<br>executed to make module versioning work.</p>
+</blockquote>
+<p>简而言之，如果要构建外部驱动模块，内核必须有相关的配置及头文件。可以用“modules_prepare”准备内核源码树，这也仅仅用于构建外部驱动模块，但不会生成“Module.symvers”。</p>
+<h1 id="第一个树莓派驱动"><a href="#第一个树莓派驱动" class="headerlink" title="第一个树莓派驱动"></a>第一个树莓派驱动</h1><p>入门例子当然是留给HelloWorld啦！</p>
+<p>创建工程目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建目录，进入</span></span><br><span class="line">philon@a55v:~$ mkdir -p drivers/00-hello &amp;&amp; <span class="built_in">cd</span> drivers/00-hello</span><br><span class="line"><span class="comment"># 创建驱动模块源码及Makefile</span></span><br><span class="line">philon@a55v:~/drivers/00-hello$ touch hello.c Makefile</span><br></pre></td></tr></table></figure>
+
+<p>hello.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/init.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">hello_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  printk(<span class="string">"hello kernel\n"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(hello_init);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">hello_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  printk(<span class="string">"bye kernel\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(hello_exit);</span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">"GPL v2"</span>); <span class="comment">// 开源许可证</span></span><br><span class="line">MODULE_DESCRIPTION(<span class="string">"hello module for RPi 3B+"</span>); <span class="comment">// 模块描述</span></span><br><span class="line">MODULE_ALIAS(<span class="string">"Hello"</span>); <span class="comment">// 模块别名</span></span><br><span class="line">MODULE_AUTHOR(<span class="string">"Philon"</span>); <span class="comment">// 模块作者</span></span><br></pre></td></tr></table></figure>
+
+<p>Makefile</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模块驱动，必须以obj-m=xxx形式编写</span></span><br><span class="line">obj-m = hello.o</span><br><span class="line"></span><br><span class="line">KDIR = ../linux-rpi-4.19.y</span><br><span class="line">CROSS = ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-</span><br><span class="line"></span><br><span class="line"><span class="section">all:</span></span><br><span class="line">true<span class="variable">$(MAKE)</span> -C <span class="variable">$(KDIR)</span> M=<span class="variable">$(PWD)</span> <span class="variable">$(CROSS)</span> modules</span><br><span class="line"></span><br><span class="line"><span class="section">clean:</span></span><br><span class="line">true<span class="variable">$(MAKE)</span> -C <span class="variable">$(KDIR)</span> M=`pwd` <span class="variable">$(CROSS)</span> clean</span><br><span class="line">`</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译内核</span></span><br><span class="line">philon@a55v:~/drivers/00-hello$ make</span><br><span class="line"><span class="comment"># 将内核模块ko远程复制到开发板</span></span><br><span class="line">philon@a55v:~/drivers/00-hello$ scp hello.ko rpi.local:/home/philon/modules/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开发板加载hello模块</span></span><br><span class="line">philon@rpi:~/modules $ sudo insmod hello.ko</span><br><span class="line"><span class="comment"># 卸载内核</span></span><br><span class="line">philon@rpi:~/modules $ sudo rmmod hello</span><br><span class="line"><span class="comment"># 查看内核打印信息</span></span><br><span class="line">philon@rpi:~/modules $ dmesg | tail -5</span><br><span class="line">[ 1176.602268] Under-voltage detected! (0x00050005)</span><br><span class="line">[ 1182.842326] Voltage normalised (0x00000000)</span><br><span class="line">[ 4731.671023] hello: no symbol version <span class="keyword">for</span> module_layout</span><br><span class="line">[ 4731.671042] hello: loading out-of-tree module taints kernel.</span><br><span class="line">[ 4731.672307] hello kernel  👈看到没，就是它了！</span><br><span class="line">[ 5010.908453] <span class="built_in">bye</span> kernel</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/ARM/">ARM</a>
+                
+                    <a href="/tags/Linux/">Linux</a>
+                
+                    <a href="/tags/驱动开发/">驱动开发</a>
+                
+                    <a href="/tags/嵌入式/">嵌入式</a>
+                
+                    <a href="/tags/树莓派/">树莓派</a>
+                
+                    <a href="/tags/实战/">实战</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/48/">大型互联数据属于数据库</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/47/">知道你的下次提交</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>阻止错误 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/01">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/01</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">阻止错误</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_66/" target="_blank" rel="noopener">Prevent Errors</a></p>
+<p>错误消息是用户和系统其余部分之间的最关键交互。它们往往发生在用户和系统间的通信快要断开时。</p>
+<p>由用户输入错误而引起的错误是很容易理解的。不过人们犯错是可预测的，是有规律的。因此，就像调试系统和其他组件一样，“调试”用户与系统间的通信也是有可能的。</p>
+<p>例如，假设你想让用户输入一个合法范围的日期。相对于让用户输入任意日期，不如提供一个仅显示合法日期的列表或日历的设备。这就消除了用户范围之外的日期的可能性。</p>
+<p>格式化错误也是另一种常见问题。例如，用户使用“日期”文本字段输入了一个明确的日期“2012年7月29日”，结果被简单粗暴的给拒绝了，就因为它不是首选格式（如DD/MM/YYYY）。更糟糕的是还会拒绝“29 / 07 / 2012”，因为它们当中包含了空格——这种问题简直让用户怀疑人生，因为他们给的日期似乎在所需格式里呀。</p>
+<p>发生这种错误是因为，相对于解析三四种常见日期格式，直接拒绝这些日期要更容易。这些错误会让用户觉得烦躁，继而失去专注导致更多错误。所以，尊重用户的输入习惯，而非数据本身。</p>
+<p>另一种避免格式错误的方法是给出提示——例如，在字段标示上展示所需格式（“DD/MM/YYYY”）。另一种提示则是让字段分为2-2-4字符长度三个文本框。</p>
+<p>提示和说明是有区别的：提示更倾向于暗示；而说明则是一种详述。提示出现在交互时；而说明出现在交互前。提示仅用于上下文，而说明则强调如何使用。</p>
+<p>一般来说，说明是无法阻止错误的。用户会假设界面将按照他们过去的经验工作（“难道每个人都明白‘July 29，2012’是什么意思？”）。因此使用说明从来不读，而提示才可以让用户远离错误。</p>
+<p>还有一种避免错误的方法是提供默认值。例如<em>今天、明天、我的生日、截止日期、我上次输入表格的时间</em>等，都是用户的典型输入。根据上下文。其中之一将会是明智的默认选项。</p>
+<p>无论什么原因，系统都应该有容错能力。你可以通过多级别的<em>撤销</em>来简化这些操作——尤其是可能破坏或修改用户数据的操作。</p>
+<p>记录并解析<em>撤销</em>操作也可以突出显示界面，将用户吸引到无意识的错误上。例如连续的点击“错误”按钮。这些错误通常是由于有误导性的提示或交互序列引起的，你可以重新设计以阻止它们。</p>
+<p>不论你选择何种方案，大部分错误都是系统性的——都是用户与软件之间误解的结果。理解用户的想法，对信息的解释，做出的决定，以及输入的数据都将帮助你更好地调试软件与用户间的交互方式。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/交互/">交互</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/67/">做一名职业程序员</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/65/">首选领域专用类型而非原始类型</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

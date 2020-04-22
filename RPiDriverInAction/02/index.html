@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>02：GPIO驱动之按键中断 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/08/12">
+            
+            
+                <a class="post-category" href="/categories/树莓派驱动开发实战/">树莓派驱动开发实战</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/08/12</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">02：GPIO驱动之按键中断</h1>
+        </header>
+
+        <div class="post-content">
+            <p>本文源码：<a href="https://github.com/Philon/rpi-drivers/tree/master/02-gpio_key" target="_blank" rel="noopener">https://github.com/Philon/rpi-drivers/tree/master/02-gpio_key</a></p>
+<p>在上一篇中主要学习了GPIO原理及Linux字符设备，其过程大致是这样子的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">电路图“看引脚” --&gt; 手册“看物理地址” --&gt; 寄存器手册“看GPIO逻辑控制” --&gt; 复用功能 --&gt; 地址操作</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，整个过程是非常繁琐的，驱动程序必须精确到处理器的每一根引脚的状态，如果所有驱动都这么写估计当场就跪了。因此，本文除了学习GPIO中断原理之外，更重要是掌握以下知识：</p>
+<ul>
+<li>混杂设备机制</li>
+<li>Linux内核GPIO接口</li>
+<li>ARM中断基础</li>
+<li>Linux内核中断接口</li>
+</ul>
+<h1 id="ARM中断基础"><a href="#ARM中断基础" class="headerlink" title="ARM中断基础"></a>ARM中断基础</h1><p>中断，就是由外部电路产生的一个电信号，强制CPU从当前执行代码区转移到中断处理函数。ARM架构的CPU中断硬件原理和这个差不多，注意这里说的是ARM的CPU，仅仅代表处理器当中的一个核，不要把CPU和SoC划等号。</p>
+<p>CPU能提供的中断资源是非常有限的，一般也就一两个“引脚”，但我们在看芯片手册的时候就会发现，几乎每个GPIO都具备中断功能，那可是几十上百个中断啊！这归功于内部继承的PIC——可编程中断控制器，它负责监听所有GPIO的中断信号，并在外设给出中断信号时真正去触发CPU中断，并告诉CPU是谁触发的。这种中断信号源被抽象为——中断号。</p>
+<p>在现代多核处理器架构下，ARM用的是GIC(通用中断控制器)，它能支持SGI(软件生成中断)、PPI(单核私有外设中断)、SPI(多核共享外设中断)。默认情况下，ARM处理器的外设中断总是先给到CPU0，如果其忙不过来才往后传递。</p>
+<p>那么CPU收到中断信号后又如何处理呢？ARM共有7种工作模式，常规情况下会运行于用户模式(用户代码区)，一旦中断触发，会立刻切换至中断模式(响应函数)，中断模式分为IRQ(中断)和FIQ(快速中断)，它们二者的区别是，FIQ可以进一步中断IRQ。</p>
+<p>由于是实战操作，过于理论的东西就不往上放了，如果要进一步了解ARM中断，可以参考这篇文章👉：<a href="https://my.oschina.net/u/914989/blog/121585" target="_blank" rel="noopener">https://my.oschina.net/u/914989/blog/121585</a></p>
+<p>这里只需要掌握两个重要概念：</p>
+<ol>
+<li>中断号本身可以看作一种独立的CPU资源，通过中断控制器监听真实的物理资源(引脚)状态</li>
+<li>CPU的外设中断会直接触发PC跳转到指定代码区</li>
+</ol>
+<h1 id="Linux-IRQ基础"><a href="#Linux-IRQ基础" class="headerlink" title="Linux/IRQ基础"></a>Linux/IRQ基础</h1><p>正如前文所说，中断是让CPU切换执行上下文，尽管Linux操作系统通过时间切片的方式实现多任务，但IRQ切换是硬件层级的，进入中断函数就意味着什么进程、调度、并发等软件概念将全部失效。举例来说，一个进程调用sleep只会让自身运行停止并让出CPU资源，但在内核中断函数当中sleep，那就真睡过去了——整个操作系统的调度机制都会崩溃掉。</p>
+<p>所以，Linux将中断处理分为“<code>顶半部</code>”和“<code>底半部</code>”，可以简单粗暴地理解：</p>
+<ul>
+<li>顶半部，硬件级响应，处理内容必须快准狠，尽快将CPU资源交还操作系统</li>
+<li>底半部，交由系统任务队列调度，处理耗时的响应业务</li>
+</ul>
+<p>打个比方，顶半部好比医院挂号，底半部好比排队就诊的过程。但不要死脑筋，如果响应业务本身并不耗时，就没必要再拆分为两个处理部分了，比如出院缴费，直接在顶半部搞定。</p>
+<p>带着这个原则，看一下Linux中断编程接口：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/interrupt.h&gt; </span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据GPIO引脚号获取对应中断号</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gpio_to_irq</span><span class="params">(<span class="keyword">unsigned</span> gpio)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 申请占用中断号，并绑定处理函数</span></span><br><span class="line"><span class="comment">//    - irq 中断号</span></span><br><span class="line"><span class="comment">//    - handler 顶半部中断处理函数</span></span><br><span class="line"><span class="comment">//    - flags 中断触发方式</span></span><br><span class="line"><span class="comment">//    - name  中断名称</span></span><br><span class="line"><span class="comment">//    - dev   中断参数传递</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">request_irq</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> irq, <span class="keyword">irq_handler_t</span> handler, <span class="keyword">unsigned</span> <span class="keyword">long</span> flags, <span class="keyword">const</span> <span class="keyword">char</span> *name, <span class="keyword">void</span> *dev)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 释放中断号</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">free_irq</span><span class="params">(<span class="keyword">unsigned</span> <span class="keyword">int</span> irq, <span class="keyword">void</span> *dev)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>下面来实际操作一把——Linux中断的顶半部处理实现。</p>
+<h1 id="最简单的GPIO中断"><a href="#最简单的GPIO中断" class="headerlink" title="最简单的GPIO中断"></a>最简单的GPIO中断</h1><p>先来看个接线图，为了更好地展示中断，“继承”了上一篇文章的三色LED接线，预期要实现是“每按一次键改变一种颜色”。按键Key的两个脚接到了树莓派的<code>GPIO17</code>和<code>3V3</code>上，换句话说，就是用GPIO17接收上升沿中断信号。而LED的控制电路保持之前的不变。</p>
+<p><img src="https://i.loli.net/2019/08/04/7EYIMusdiBWhv5Q.png" alt="接线图"><br><img src="https://i.loli.net/2019/08/04/JlXWK7bcs4Igjxv.png" alt="电路图"></p>
+<p>实现GPIO上升沿中断大体分为4步：</p>
+<ol>
+<li>设置GPIO复用功能为输入模式 <code>gpio_request()</code></li>
+<li>获取GPIO对应中断号 <code>gpio_to_irq()</code></li>
+<li>申请中断号、中断类型、绑定处理函数 <code>request_irq()</code></li>
+<li>释放中断(卸载驱动时) <code>free_irq()</code></li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/gpio.h&gt;       // 各种gpio的数据结构及函数</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/interrupt.h&gt;  // 内核中断相关接口</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">"Dual BSD/GPL"</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">"Philon | https://ixx.life"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 稍后由内核分配的按键中断号</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> key_irq = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义按键的GPIO引脚功能</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">gpio</span> <span class="title">key</span> = &#123;</span></span><br><span class="line">  .gpio = <span class="number">17</span>,         <span class="comment">// 引脚号为BCM - 17</span></span><br><span class="line">  .flags = GPIOF_IN,  <span class="comment">// 功能复用为输入</span></span><br><span class="line">  .label = <span class="string">"Key0"</span>     <span class="comment">// 标示为Key0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按键中断“顶半部”处理函数</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> irqreturn_t <span class="title">on_key_press</span><span class="params">(<span class="keyword">int</span> irq, <span class="keyword">void</span>* dev)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  printk(KERN_INFO <span class="string">"key pressed\n"</span>);</span><br><span class="line">  <span class="keyword">return</span> IRQ_HANDLED;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">gpiokey_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> rc = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 向内核申请GPIO</span></span><br><span class="line">  <span class="keyword">if</span> ((rc = gpio_request_one(key.gpio, key.flags, key.label)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      printk(KERN_ERR <span class="string">"ERROR%d: cannot request gpio\n"</span>, rc);</span><br><span class="line">      <span class="keyword">return</span> rc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取中断号</span></span><br><span class="line">  key_irq = gpio_to_irq(key.gpio);</span><br><span class="line">  <span class="keyword">if</span> (key_irq &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">"ERROR%d:cannot get irq num\n"</span>, key_irq);</span><br><span class="line">    <span class="keyword">return</span> key_irq;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 申请上升沿触发中断</span></span><br><span class="line">  <span class="keyword">if</span> (request_irq(key_irq, on_key_press, IRQF_TRIGGER_RISING, <span class="string">"onKeyPress"</span>, <span class="literal">NULL</span>) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">"cannot request irq\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> -EFAULT;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(gpiokey_init);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">gpiokey_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="comment">// 释放中断号及GPIO</span></span><br><span class="line">  free_irq(key_irq, <span class="literal">NULL</span>);</span><br><span class="line">  gpio_free(key.gpio);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(gpiokey_exit);</span><br></pre></td></tr></table></figure>
+
+<p>上述代码非常简单，就是在按下按键的时候，打印一条消息。可以通过<code>dmesg</code>命令查看内核打印消息：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">philon@rpi:~/modules $ sudo insmod gpiokey.ko </span><br><span class="line">philon@rpi:~/modules $ dmesg</span><br><span class="line">...</span><br><span class="line">[   77.238326] gpiokey: no symbol version <span class="keyword">for</span> module_layout</span><br><span class="line">[   77.238345] gpiokey: loading out-of-tree module taints kernel.</span><br><span class="line">[   79.310635] key pressed</span><br><span class="line">[   79.463206] key pressed</span><br><span class="line">[   79.463262] key pressed  <span class="comment"># 我摸着右边的鼻孔对天发誓，我只按了一下！</span></span><br></pre></td></tr></table></figure>
+
+<p>正如文章最开始所说，Linux对各种资源的调用是有相关API的，要尽量使用内核接口编写驱动程序，一能保证底层代码的质量，二能提高代码的移植性。关于GPIO资源的调用，要熟悉以下接口：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/gpio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">gpio</span> &#123;</span></span><br><span class="line">true<span class="keyword">unsigned</span>	gpio;       <span class="comment">// GPIO编号</span></span><br><span class="line">true<span class="keyword">unsigned</span> <span class="keyword">long</span>	flags;  <span class="comment">// GPIO复用功能配置</span></span><br><span class="line">true<span class="keyword">const</span> <span class="keyword">char</span>	*label;   <span class="comment">// GPIO标签名</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单个GPIO资源申请/释放</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gpio_request_one</span><span class="params">(<span class="keyword">unsigned</span> gpio, <span class="keyword">unsigned</span> <span class="keyword">long</span> flags, <span class="keyword">const</span> <span class="keyword">char</span> *label)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gpio_free</span><span class="params">(<span class="keyword">unsigned</span> gpio)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多个GPIO资源申请/释放</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gpio_request_array</span><span class="params">(<span class="keyword">const</span> struct gpio *<span class="built_in">array</span>, <span class="keyword">size_t</span> num)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gpio_free_array</span><span class="params">(<span class="keyword">const</span> struct gpio *<span class="built_in">array</span>, <span class="keyword">size_t</span> num)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// GPIO状态读写</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gpio_get_value</span><span class="params">(<span class="keyword">unsigned</span> gpio)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">gpio_set_value</span><span class="params">(<span class="keyword">unsigned</span> gpio, <span class="keyword">int</span> value)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="按键防抖，中断的底半部与定时器接口"><a href="#按键防抖，中断的底半部与定时器接口" class="headerlink" title="按键防抖，中断的底半部与定时器接口"></a>按键防抖，中断的底半部与定时器接口</h1><p>由于前边的代码没有做防抖，明明只按了一下按键，中断函数却被连续触发了3次。话说在单片机里实现按键防抖是非常简单的，无非就是睡个50毫秒，再确认是否真的按下即可。但是前文也明确说了，Linux是多任务系统，永远不要试图在中断函数里睡眠。因此，防抖只能放在Linux中断的底半部。</p>
+<p>此外，慎用睡眠函数！除非你很清楚它不是忙等待。在多任务系统下，按键防抖的逻辑应该是——触发中断后，让出CPU资源50毫秒，然后再确认是否真的按下。</p>
+<p>先来认识一下底半部机制，Linux内核提供的底半部机制主要有<code>软中断</code>、<code>tasklet</code>、<code>工作队列</code>、<code>线程IRQ</code>。</p>
+<ul>
+<li>软中断，是有内核软件模拟的一种中断机制，注意不要和ARM指令触发的中断混淆，后者本质上是硬中断</li>
+<li>tasklet，基于软中断实现的中断调度机制，本质上还是中断，不允许在处理函数中sleep</li>
+<li>工作队列，类似于tasklet，区别在于工作队列底层基于线程，可以在处理函数中sleep</li>
+<li>线程IRQ，不用解释了，就是个线程</li>
+</ul>
+<p>有关Linux底半部的知识不适合放在这里，建议参考此文：<a href="http://chinaunix.net/uid-20768928-id-5077401.html" target="_blank" rel="noopener">http://chinaunix.net/uid-20768928-id-5077401.html</a></p>
+<p>这里了解底半部机制的目的，仅仅是为了挑选一种何时的响应方式，首先可以明确，软中断和tasklet不能睡，pass。线程维护麻烦，pass。就只剩工作队列了。尽管工作队列可以睡，但内核提供的<code>usleep/msleep</code>等接口本质上是忙等待，依旧占用CPU资源，pass。怎么办呢——工作队列+定时器。当中断来临后：</p>
+<ol>
+<li>顶半部迅速定义个工作队列，交由内核调度</li>
+<li>当工作队列被调度时，迅速定义个定时器——延时50ms</li>
+<li>当定时器到时中断，才真的去做防抖判断</li>
+</ol>
+<p><strong>工作队列</strong>API：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/workqueue.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 工作队列原型</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">work_struct</span> &#123;</span></span><br><span class="line">true<span class="keyword">atomic_long_t</span> data;</span><br><span class="line">true<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">entry</span>;</span></span><br><span class="line">true<span class="keyword">work_func_t</span> func;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> CONFIG_LOCKDEP</span></span><br><span class="line">true<span class="class"><span class="keyword">struct</span> <span class="title">lockdep_map</span> <span class="title">lockdep_map</span>;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 工作队列回调函数原型</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">void</span> <span class="params">(*<span class="keyword">work_func_t</span>)</span><span class="params">(struct work_struct *work)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化一个工作队列，绑定回调</span></span><br><span class="line">INIT_WORK(work, func);</span><br><span class="line"><span class="comment">// 启动队列，之后会由内核完成调度</span></span><br><span class="line">schedule_work(&amp;my_wq);</span><br></pre></td></tr></table></figure>
+
+<p><strong>定时器</strong>API:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/timer.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 全局变量</span></span><br><span class="line"><span class="comment">// 记录上电后定时器中断次数，也就是开机时长，但不是微秒或纳秒的概念</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">volatile</span> jiffies;</span><br><span class="line"><span class="comment">// 表示CPU一秒钟有多少个定时器中断</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HZ 100</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 简单来说，如果要定义一个100ms的延时，相当于以下公式：</span></span><br><span class="line"><span class="comment">// jiffies + (HZ/10)</span></span><br><span class="line"><span class="comment">// 相当于以现在的jiffies做偏移，而1s的十分之一就是100ms</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定时器原型</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">timer_list</span> &#123;</span></span><br><span class="line">true<span class="class"><span class="keyword">struct</span> <span class="title">hlist_node</span>	<span class="title">entry</span>;</span></span><br><span class="line">true<span class="keyword">unsigned</span> <span class="keyword">long</span>		expires;</span><br><span class="line">true<span class="keyword">void</span>			(*function)(struct timer_list *);</span><br><span class="line">trueu32			flags;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> CONFIG_LOCKDEP</span></span><br><span class="line">true<span class="class"><span class="keyword">struct</span> <span class="title">lockdep_map</span>	<span class="title">lockdep_map</span>;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向内核注册一个定时器</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> timer_setup(timer, callback, flags)</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add_timer</span><span class="params">(struct timer_list *timer)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 向内核删除一个定时器</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">del_timer</span><span class="params">(struct timer_list *timer)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改定时器的下次的jiffies</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">mod_timer</span><span class="params">(struct timer_list *timer, <span class="keyword">unsigned</span> <span class="keyword">long</span> expires)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>下面是本文的完整代码，按一次按键，切换一次彩色led的颜色：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/module.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/fs.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/miscdevice.h&gt; // 混杂设备相关结构</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/gpio.h&gt;       // 各种gpio的数据结构及函数</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/interrupt.h&gt;  // 内核中断相关接口</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/workqueue.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;linux/timer.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">MODULE_LICENSE(<span class="string">"Dual BSD/GPL"</span>);</span><br><span class="line">MODULE_AUTHOR(<span class="string">"Philon | https://ixx.life"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义按键的GPIO引脚</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">gpio</span> <span class="title">key</span> = &#123;</span></span><br><span class="line">  .gpio = <span class="number">17</span>,         <span class="comment">// 引脚号为BCM - 17</span></span><br><span class="line">  .flags = GPIOF_IN,  <span class="comment">// 功能复用为输入</span></span><br><span class="line">  .label = <span class="string">"Key0"</span>     <span class="comment">// 标示为Key0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义三色LED的GPIO引脚</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">gpio</span> <span class="title">leds</span>[] = &#123;</span></span><br><span class="line">  &#123; <span class="number">2</span>, GPIOF_OUT_INIT_HIGH, <span class="string">"LED_RED"</span> &#125;,</span><br><span class="line">  &#123; <span class="number">3</span>, GPIOF_OUT_INIT_HIGH, <span class="string">"LED_GREEN"</span> &#125;,</span><br><span class="line">  &#123; <span class="number">4</span>, GPIOF_OUT_INIT_HIGH, <span class="string">"LED_BLUE"</span> &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">int</span> keyirq = <span class="number">0</span>;     <span class="comment">// GPIO按键中断号</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">work_struct</span> <span class="title">keywork</span>;</span>  <span class="comment">// 按键工作队列</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">timer_list</span> <span class="title">timer</span>;</span>     <span class="comment">// 定时器作为中断延时</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 按键中断“顶半部”处理函数，启用工作队列</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> irqreturn_t <span class="title">on_key_press</span><span class="params">(<span class="keyword">int</span> irq, <span class="keyword">void</span>* dev)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  schedule_work(&amp;keywork);</span><br><span class="line">  <span class="keyword">return</span> IRQ_HANDLED;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按键中断“底半部”工作队列，启动一个50ms的延时定时器</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">start_timer</span><span class="params">(struct work_struct *work)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  mod_timer(&amp;timer, jiffies + (HZ/<span class="number">20</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 按键防抖定时器，及处理函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">on_delay_50ms</span><span class="params">(struct timer_list *timer)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (gpio_get_value(key.gpio)) &#123;</span><br><span class="line">    gpio_set_value(leds[i].gpio, <span class="number">0</span>);</span><br><span class="line">    i = ++i == <span class="number">3</span> ? <span class="number">0</span> : i;</span><br><span class="line">    gpio_set_value(leds[i].gpio, <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> __<span class="function">init <span class="title">gpiokey_init</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> rc = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 向内核申请GPIO</span></span><br><span class="line">  <span class="keyword">if</span> ((rc = gpio_request_one(key.gpio, key.flags, key.label)) &lt; <span class="number">0</span></span><br><span class="line">    || (rc = gpio_request_array(leds, <span class="number">3</span>)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      printk(KERN_ERR <span class="string">"ERROR%d: cannot request gpio\n"</span>, rc);</span><br><span class="line">      <span class="keyword">return</span> rc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取中断号</span></span><br><span class="line">  keyirq = gpio_to_irq(key.gpio);</span><br><span class="line">  <span class="keyword">if</span> (keyirq &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">"can not get irq num.\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> -EFAULT;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 申请上升沿触发</span></span><br><span class="line">  <span class="keyword">if</span> (request_irq(keyirq, on_key_press, IRQF_TRIGGER_RISING, <span class="string">"onKeyPress"</span>, <span class="literal">NULL</span>) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    printk(KERN_ERR <span class="string">"can not request irq\n"</span>);</span><br><span class="line">    <span class="keyword">return</span> -EFAULT;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化按键中断底半部(工作队列)</span></span><br><span class="line">  INIT_WORK(&amp;keywork, start_timer);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 初始化定时器</span></span><br><span class="line">  timer_setup(&amp;timer, on_delay_50ms, <span class="number">0</span>);</span><br><span class="line">  add_timer(&amp;timer);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line">module_init(gpiokey_init);</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __<span class="function"><span class="built_in">exit</span> <span class="title">gpiokey_exit</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  free_irq(keyirq, <span class="literal">NULL</span>);</span><br><span class="line">  gpio_free_array(leds, <span class="number">3</span>);</span><br><span class="line">  gpio_free(key.gpio);</span><br><span class="line">  del_timer(&amp;timer);</span><br><span class="line">&#125;</span><br><span class="line">module_exit(gpiokey_exit);</span><br></pre></td></tr></table></figure>
+
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
+<li>ARM有7种工作模式，其中IRQ和FIQ为中断模式，会导致CPU跳转到指定代码区</li>
+<li>Linux/IRQ分为顶半部和底半部机制</li>
+<li>顶半部处理要快且不是睡眠</li>
+<li>底半部又分为4种机制，软中断、tasklet、工作队列、线程IRQ</li>
+<li>我们可以通过gpio_xxx函数访问CPU资源，而无需地操作底层寄存器</li>
+<li>如果有延时需求，最好采用内核提供的定时器接口</li>
+</ul>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/ARM/">ARM</a>
+                
+                    <a href="/tags/Linux/">Linux</a>
+                
+                    <a href="/tags/驱动开发/">驱动开发</a>
+                
+                    <a href="/tags/嵌入式/">嵌入式</a>
+                
+                    <a href="/tags/树莓派/">树莓派</a>
+                
+                    <a href="/tags/实战/">实战</a>
+                
+                    <a href="/tags/GPIO/">GPIO</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/books/坏血/">创业，从入门到放弃-《坏血》读后感</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/50/">学会预估</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>自然而然——《创始人手记》读书感悟 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list"></div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/04/07">
+            
+            
+                <a class="post-category" href="/categories/读书/">读书</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/04/07</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">自然而然——《创始人手记》读书感悟</h1>
+        </header>
+
+        <div class="post-content">
+            <p>本周到杭州出差，第一次住全季酒店，在附近一家给人仿佛穿越到80年代的如家酒店的衬托下，全季简直闪瞎了我的狗眼。那装修、那格调、那门面，只能用两个字来形容——内敛😂，但是，全季不是我住过最奢华的酒店，但一定是我目前住过最舒服的连锁酒店，也许如它的老板所说，这是面向新中产的中档型酒店，所以对我等打工一族而言，全季的逼格，很是受用。</p>
+<p>说到逼格，我还是第一次见有连锁酒店会在客人的床头柜前放一本书的，端起一看《创始人手记，一个企业家的思想、工作和生活》作者季琦，再看封面：“这特么谁啊？”翻看一下：“哦，这家酒店的老总，难怪…”反正闲来无事，就随便翻了翻，别说，写得挺好！这就是本周我读此书的全部原因。</p>
+<a id="more"></a> 
+
+<h2 id="简短的书评"><a href="#简短的书评" class="headerlink" title="简短的书评"></a>简短的书评</h2><p>季琦，本书作者，也是携程、如家、华住三家知名企业的创始人，目前三家公司全部上市，而他本人也成为了亲手缔造多家百亿级企业的连续创业者，不论古今中外，都算得上是奇迹了。所以人家叫“迹奇”嘛。</p>
+<p>本书更像是一部散文集，多为作者10多年来的人生感悟、日记、心得等零散的汇总，其中不乏许多深刻的见解，加之作者文笔流畅，读起来比较轻松愉悦。作者以天、地、人三大主题将这些“散文”归类，阐述了自己有关宇宙万物、企业经营、人生哲理的总结，文章之间没有具体的时间跨度和“剧情”逻辑，而且基本都是千字左右，随便翻开任何一页都可以无障碍阅读。</p>
+<p>书中前半部分的文章比较不多，或者说多为思想、商业总结等内容；而后半部分有很多是旅行日记、想当年等个人叙事，甚至还有大篇幅关于他们企业的文化“宣传”。我个人觉得放到此书里并不会带来太多加分，当然，毕竟是《手记》，也就不要挑三拣四了。</p>
+<p>好了，以下在谈谈读完此书的一些感悟。</p>
+<h2 id="格局"><a href="#格局" class="headerlink" title="格局"></a>格局</h2><p>我从去年开始坚持每周读一本书至今，也读了二十来本书了，有人文社科、历史、思想、传记等等，现在唯一让我坚持下去的理由也只剩下“习惯”了吧。我读书的初衷是为了自我提高，三十岁对像我这样的男人来说，还挺憋屈的，真的是上有老下有小背后有房贷，精力还比不过刚毕业的大学生，资历跟不上社会发展，有种随时会被淘汰的危机感，焦虑也源于此。怎么办呢？一不做二不休——读书吧！</p>
+<p>刚开始，读书真的很枯燥，毕竟我读的又不是武侠小说或网络爽文，读起来没快感，时不时也会冒出个年头：“读书何用？”但随着“阅历”的增加，“见识”了各种大神的经历与思想，这朵疑云也逐渐消散，而本书也进一步巩固了我读书的信念——提升个人的思维与格局。</p>
+<p>读书是我有几个深切体会：</p>
+<ol>
+<li>陶冶性情，不再那么焦虑</li>
+<li>提升个人的心智，看问题不在那么偏激</li>
+<li>开阔视野</li>
+</ol>
+<p>其实还有一些我自己说不清的感受，但浓缩为一个词的话，就是书中的“格局”。作者说，一个人格局要高，我很赞同，这并不仅仅是志向远大的意思，骑自行车的例子很生动，人体极限、空气阻力、自行车本身，一系列的因素导致骑车的时速无法超越40公里/小时，哪怕是下坡又顺风的顺境也如此。如果换成汽车呢，一脚油门就可以轻松超过100公里。格局不一样，结果就大不相同，不是你努力不努力的问题。</p>
+<p>格局高并不意味着好高骛远，而是一个人的思想、见识、理想。就好比工作，我们普通人的格局无非是升职加薪，思维方式也只能停留在如何多挣几百块；而我从书中看到很多成就一番事业的人，大多不是以赚钱而工作的，说得装X一点，好像就是为了造福社会，赚钱是顺带的、自然而然的过程。</p>
+<p>不论如何，不论在什么领域，格局都很重要。平庸的创业者只想着上市套现和财务自由；平庸的艺术家只会围着自己的作品自嗨；平庸的程序员认为这个行业就是写代码。尽管，平庸的人可能也很辛苦、很拼命、很忙碌，但是，瓶颈就在那里，不是努力的问题。</p>
+<p>这就是我从新拿起书本后的最大感受，努力是必须的，但也要注意提升自己的格局。</p>
+<h2 id="唯心"><a href="#唯心" class="headerlink" title="唯心"></a>唯心</h2><p>我读过很多名人传记，发现他们都比较崇尚一些宗教理念或习惯，当然这不是宣扬迷信，只是个人信仰问题。在书中很多作者都表示自己喜欢打坐、坐禅、正念等等，不同的信仰有不同的方式，但归根结底都是为了理性的“释放”自我，就好像一个人喝醉了，底层的自我就会被释放出来，但这是无法克制的释放，而前者是保持理性的，更像是一种自我回归，能够真正看清自己和世界，想清楚很多东西。我从来没尝试过，没有过那种体验，也不知道自己理解的对不对。</p>
+<p>人嘛，偶尔唯心一点没什么不好。</p>
+<p>我想，全季酒店能装修出那种简约大气的格调，一定不仅仅是通过科学公式计算出来的，更重要的是那些最虚无缥缈的情怀、审美、感性的东西。</p>
+<p>人到底该务实地还是浪漫地活着？到底要选择六便士，还是遥不可及的月亮？其实，这并非鱼和熊掌，二者可兼得，关键看你怎么平衡。就像当今中国，挣钱没什么不对，但所有人都向钱看齐，摒弃传统，通过物质攀比、炫富来刷存在感，难道就一定是我们追求的么？我个人觉得能够找到一个能让自己为之奋斗一生的事情，他必然是幸福的。</p>
+<p>至少，我目前去工作，更多是被金钱驱动，但我也在努力调整，比如我喜欢写代码，喜欢创造，喜欢交付项目后的成就感，我就会刻意暗示自己这种幸福感才是我工作的真正目的。业余时间不断地自我提高，是为了探索自己的未知，发现自己“真无知”的感觉是很奇妙的，你会责备过去的自己为什么不够努力，又会因为知道还有那么多东西等着自己去探索而感到兴奋。不论如何，我重拾自我奋斗的状态，真的不再或者说不仅仅是为了钱，我就是单纯地不想浪费掉这辈子。</p>
+<p>2019年4月7日</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/心智/">心智</a>
+                
+                    <a href="/tags/创业/">创业</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/36/">大师神话</a>
+            
+            
+            <a class="next" rel="next" href="/ArmLinuxDriver/chapter3/">三：rootfs启动过程详解</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>链接器并不是一个神奇程序 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/09/02">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/09/02</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">链接器并不是一个神奇程序</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_53/" target="_blank" rel="noopener">The Linker Is not a Magical Program</a></p>
+<p><strong>DEPRESSINGLY OFTEN</strong>(在我写这篇文章之前又发生了)，很多程序员的观念中，将源码编译到静态链接的可执行文件的主要过程是：</p>
+<ol>
+<li>编辑源码</li>
+<li>将源码编译为目标文件(obj文件)</li>
+<li>然后发生了一些神奇的事情</li>
+<li>可以跑了</li>
+</ol>
+<p>第3步，即链接这一步。为毛我要将其说得如此荒诞？想当年，我还是个技术支持，就一次又一次地关注这些内容：</p>
+<ol>
+<li>链接器说<code>def</code>表示多次定义；</li>
+<li>链接器说<code>abc</code>表示某个符号未解析；</li>
+<li>为何最终执行文件会那么大？</li>
+</ol>
+<p>紧接着会告诉你“我接下来做什么？”，它们通常都融合了“seems to(貌似)”或者“somehow(某种程度)”的短句，一看就自带光环属性。所谓的“貌似”和“某种程度”会让人觉得链接处理是一个非常神奇的过程，只有巫师和术士才能理解。编译过程不会详细说明这些短句类型，这就意味着程序员要自己理解编译器是如何工作的，或者至少明白它们在做什么。</p>
+<p>链接器又笨、又乏味、又简单粗暴的程序。它所做的事情就是把目标文件的代码区和数据区串联起来，把引用连接到它们定义的地方，把未解析的符号推到库之外，然后输出一个可执行文件。仅此而已，没有咒语！没有魔法！链接器繁琐的地方是需要解码或生成极其复杂的文件格式，当然这并没有改变链接器的本质。</p>
+<p>所以，我们才说链接器提示<code>def</code>就是告诉你多次定义。很多编程语言，如C、C++和D，都包含声明和定义。申明通常放在头文件里，就像这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="keyword">int</span> iii;</span><br></pre></td></tr></table></figure>
+
+<p>用于生成<code>iii</code>符号给外部调用。此外，定义通常是为了给符号留出空间，它通常在实现文件中，就像这样：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> iii = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<p>那么每个符号可以被定义多少次呢？就像电影<em>Highlander</em>一样，它们只允许一次。所以，如果<code>iii</code>定义在多个实现文件中出现？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// file a.c</span></span><br><span class="line"><span class="keyword">int</span> iii = <span class="number">3</span>;</span><br><span class="line"><span class="comment">// file b.c</span></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">iii</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123; <span class="keyword">return</span> <span class="number">3.7</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>链接器就会警告说iii被多次定义。</p>
+<p>不仅是只能定义一个，也必须被定义一个。如果iii仅被声明过，却从来没有定义，那编译器同样会警告说iii是一个未定义的符号。</p>
+<p>要搞清楚可执行文件为什么体积大，就要看链接器选了哪些映射文件生成。在可执行文件中映射文件只是一堆符号表，以及它们对应的地址。这能告诉你哪些模块会从库中被链接，以及每个模块的大小。现在你就能看到肥胖的根源了。很多时候，你根本不清楚为什么要链接库中的某个模块，为了搞清楚这点，暂时将模块从库中删除，重新链接，然后“未定义符号”的错误会告诉你到底谁在引用这些模块。</p>
+<p>尽管链接器弹出的提示消息并不那么直观，但它真的没什么神奇的。它的机制很简单，你必须要掌握每种情况下的细节。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/技术/">技术</a>
+                
+                    <a href="/tags/编程/">编程</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/RPiDriverInAction/04/">04：PWM呼吸灯</a>
+            
+            
+            <a class="next" rel="next" href="/books/追风筝的人/">《追风筝的人》读后感</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

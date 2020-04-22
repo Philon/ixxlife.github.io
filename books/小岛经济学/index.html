@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>为什么钱越来越不值钱 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/29">
+            
+            
+                <a class="post-category" href="/categories/读书/">读书</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/29</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">为什么钱越来越不值钱</h1>
+        </header>
+
+        <div class="post-content">
+            <p>似乎每个人都认为货币贬值是一种社会发展的自然规律。也不知道什么时候开始，我们对“钱”产生了认知偏差，混淆了钱与资本的概念，分不清价格与价值。大概也就是从那个时候起，我们手中的钱就开始贬值了。</p>
+<p>首先要强调一个众所周知但视而不见的道理，那就是钱仅仅是资本交换时的媒介，一个国家的经济水平应该取决于它资本的总量，而非有多少钱。否则政府干嘛不拼命印钱，每户人家发它一个亿，这不就共同富裕了么？</p>
+<p>那么，资本（或者说一件商品）它应该值多少钱呢？主要取决<strong>供需关系</strong>，估计这连小学生都知道。供需关系的不平衡会导致两种现象：<strong>通货膨胀</strong>和<strong>通货紧缩</strong>。（由于现在对这两种经济现象还没有统一的认识，我们姑且这么理解：通货膨胀就是指物价上涨；通货紧缩就是指物价下跌）</p>
+<p>很多国家政府偏爱通货膨胀，甚至认为这是经济向好的标志。你想，物价为什么上涨？说明供不应求呀，说明老百姓手里有钱了呀，这样企业就得扩大产能，创造更多岗位，大家又能挣更多的钱，良性循环，多好呀！</p>
+<p>反之，如果通货紧缩，意味着老百姓买不起东西，需求下降，企业倒闭，失业率增高，经济萎靡。所以政府机构讨厌它，甚至妖魔化它。</p>
+<p>可惜这种认识忽略了最根本的一点：有没有促进资本的增长？</p>
+<ul>
+<li>价格连年下跌的数码产品，并非人们对此的需求降低，而是行业产能的提升，带动了人们的消费，也促进了互联网及其周边行业的大发展；</li>
+<li>房价的连年上涨，并非人们需求较大，其中少不了投机成分，房贷透支了大量社会资本，未来的消费被遏制住，高房价近一步抬高企业成本。</li>
+<li>纸媒供应量连年下跌，人们对新闻媒体的需求并不小，却不见报刊杂志涨价，企业纷纷倒闭，结果释放了大量媒体人才（资本），诞生了新媒体行业。</li>
+</ul>
+<p>所以通胀和通缩没有绝对的好与坏，我们最好透过现象看本质，看看它是如何发生的，以及这到底是好是坏。</p>
+<p><strong>1. 我们贪婪与投机哄抬了物价</strong></p>
+<p>住在一线城市的朋友估计都有个感觉，小时候啥啥都便宜，啥啥都方便。如今，连去医院挂个号都要找关系。这是必然的，大城市意味着人口仅流入，地儿就那么大，人是越来越多，以前人均享有的资源配比肯定不如现在——这是真的供不应求。</p>
+<p>对此，抱怨两句就可以了，要不是那么多外来人口，哪儿来的美丽城市呀？换句话说，人口增加虽然导致教育、居住、交通、医疗等资源短缺，但却让城市的很多产业得到发展，财富得以积累，人们也享受了更多发展的好处，虽然生活成本增加，但总的来说是好事。</p>
+<p>此外，我们对品质的追求也在提升。以前几户村民有个公厕就不错了，现在的人，别说两厅两卫双阳，恨不得给他家狗都配个独立卫生间；以前每人每月二两肉，现在顿顿的少不了；以前一个家庭一部固定电话，现在一个人就两部手机，工作生活两不误！你说，这钱还够花么？</p>
+<p>当然，最绕不开的就是房子了，由于思维习惯，大家总觉得房价肯定会涨，现在不买就亏了！结果一拥而上，造成房源匮乏的假象，进一步抬高房价。每个人似乎都很喜欢这种“钱生钱”的游戏，可本质上并没有积累任何资本财富，所以它不是一件好事。</p>
+<p><strong>2. 政府行为稀释了货币</strong></p>
+<p>人们非理性哄抢行为是显而易见，我们也习惯于把物价上涨归咎于房地产开发商。但这只是原因之一，还有个原因非常隐性——印钞机！</p>
+<p>一个国家是不能随意发行货币的，最理想的情况当然是发行的货币恰好够兑该国的全部家当。如果超发，就意味着市面上流通的钱会贬值。可是！如果我只超发一点点呢？</p>
+<p>比如该国实际有100万亿的财富，作为政府的我发行了101万亿的货币，也就超发了1%而已，什么概念呢？你原本100块钱能买到的东西，现在要101块才能买到，你会对此抓狂么？</p>
+<p>可对于政府来说，那可是1万亿啊！可以用于支付公务员工资，财政拨款，或者还债。什么都不用做就有钱拿，好爽！</p>
+<p>还是那句话，资本和钱不是一回事，这种行为并没有为社会创造实际价值，相反，其代价会转嫁到每个人头上。</p>
+<p>每年多印一点点钱，久而久之，感觉就很明显了。</p>
+<p><strong>3. 国际金融关系</strong></p>
+<p>由于国际关系过于复杂，为了便于理解，我们把这种关系浓缩在“地球村”里，每个国家都是一户村民。不用怀疑，美国就是这个村的村长。主要得益于他爷爷辈的勤劳，创造了很大的家业，在村里树立了极高的威信。所以大家有事没有都会和美国往来，一是增进感情，二是多少想分一杯羹。</p>
+<p>地球村很大，每户人家相互之间有生意来往，用米换油，鸡蛋换布料。长此以往也不是办法，村民需要一种统一的货币。显然，美国家大业大最靠谱，在村长的撮合下，大家一致同意以“美券”作为统一结算货币。以后的生意就方便多了。</p>
+<p>到了孙子辈的美国并没有传承老一辈的吃苦耐劳精神，他不愿干农活，也不想干工人，又脏又累。好在后来这些脏活累活都被中国给包了，村民的温饱问题得以保障。美国则守着自家的银行和印钞机，想着如何用钱赚更多的钱。</p>
+<p>中国倒是勤勤恳恳，田里和工地里来回跑，没日没夜的干，挨家挨户的卖，赚了很多美券。可随着时间推移，他发现美券有些猫腻，以前两张券可以买一桶油，现在要花四张券。其他村民也同样注意到这个问题。</p>
+<p>2008年，美国家的屋顶被大风掀开，吹散了一捆又一捆的借条、赊账，还有开足马力印着美券的机器。大家惊恐万分地看着美国，他不在是那个为美国梦而自豪的美国了，现在的他为了贪图享乐，偷奸耍滑，不顾他人死活。</p>
+<p>可环顾四周，除了美国貌似别无他选，加之碍于情面，还是继续用美券吧。就这样，美国接着执行他“印券还债”的计划，小日子还算舒坦。但远方的中国不乐意了。</p>
+<p>“妈的，老子汗滴禾下土，被你空手套白狼，滚蛋！”</p>
+<p>为避免手中的美券一夜成废纸，中国三管齐下，开始采取应对措施：</p>
+<ol>
+<li>与其把你养得白白胖胖，还不如先喂饱我家里十几张嘴，拉动内需！</li>
+<li>都给我出门买买买，在村里见啥买啥，就是不要美券！</li>
+<li>和别家做生意时疯狂推销自家的“人民券”，减少美券结算。</li>
+</ol>
+<p>美国见状一脸懵逼，以前的穷小子竞会如此猖狂，还有枉法吗！就这样，双方明争暗斗，你来我往，关系愈演愈烈…</p>
+<p><strong>结语</strong></p>
+<p>金融系统太复杂了，很感谢《小岛经济学》这本书，钱这玩意儿三两句话根本说不清楚，但本书还是大体讲明白了，受益匪浅！</p>
+<p>经济学家总喜欢在自由市场经济和政府在其中的角色争论不休，书中对美国经济的现状以及政府接二连三的昏招是较为悲观的，我不懂这其中的道道。但我想，不论手中的钱是增值还是贬值，不论政府的经济刺激政策有多么高明，它都不应该背离一个原则：勤勤恳恳劳动，实实在在创造价值。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/经济学/">经济学</a>
+                
+                    <a href="/tags/科普/">科普</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/83/">测试是软件开发的工程严谨性</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/82/">在你睡觉（以及周末）时测试</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

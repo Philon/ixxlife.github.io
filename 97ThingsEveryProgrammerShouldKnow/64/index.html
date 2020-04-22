@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>结对编程并体会流 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/01/30">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/01/30</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">结对编程并体会流</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_64/" target="_blank" rel="noopener">Pair Program and Feel the Flow</a></p>
+<p><em>【译注】：根据我现有的认知，文中的“流”（flow）表示一种心理状态，比如近期比较火的“心流”是指极度冷静、沉稳、专注的做事情的状态。所以这里的流应该是要表达特别顺畅的意思。</em></p>
+<p>想象一下你完全被正在做的事情吸引住——专注、一心一意、全情投入。你会发现时光飞逝。那种感觉肯定很好。你正在经历体验流（experiencing flow<br>）。对于一个团队的开发者而言，要达到并维持这种流是很困难的，因为它会被非常多的中断任务、交流、以及分心给轻易打破。</p>
+<p>如果你有过结对编程的经验，那么你很可能熟知结对是多么有助于达到这种流状态。如果你还没试过，我们希望通过自己的经验促使你赶快行动起来！为使结对编程取得成功，团队中的个体以及团队本身都不得不付出一些努力。</p>
+<p>作为团队的一份子，你要对经验不足的开发者有耐心。也不要被比你强的开发者吓倒。要明白人所不同，各有千秋。意识到你自己以及团队其他人的长处和短处。你就会惊讶自己可以从同事身上获益良多。</p>
+<p>作为团队，引入结对编程来促进技能和知识在整个项目中的合理匹配。你应该配对任务，并经常轮换配对和任务。商讨出一个轮换规则，放一边，在必要时再进行调整。我们的经验是，在轮换到下一个结对前你也不是非要完成现有任务。中断当前任务将其留给下一组结对者听起来可能会反直觉，但我们发现这样做照样运转正常。</p>
+<p>流可能被很多情况打断，以下是一些保持流的方法：</p>
+<ul>
+<li><strong>降低“卡车因子”。</strong>这是个略微消极的观点，但是在团队无法完成最终交付之前，有多个成员不得不被卡车撞到呢？换而言之，你的交付有多依赖于团队中的某些成员？知识是私有的还是共享的？如果你采取结对方式轮换完成任务，那就总有人具备完成这项工作的知识。你的团队流也就不会受“卡车因子”的影响。</li>
+<li><strong>高效地解决问题。</strong>如果你在结对编程中遇到了挑战，总是有人可以和你一起探讨。相对于你一个人在那困扰，这样的对话更有解决的可能性。随着工作的轮换，你们的解决方案会被下一组结对回顾和反思，因此即使刚开始选择的不是最有解决方案也没关系。</li>
+<li><strong>平滑整合。</strong>如果你们当前的任务需要调用他人的代码片段，你当然希望其方法名、文档、以及测试都有充分的说明好让你掌握它。否则，直接与编写此代码的开发者结对工作，也能给你更好的概述并更快地整合到你的代码中。此外，你还能借这次讨论的机会改进命名、文档和测试。</li>
+<li><strong>缓解中断。</strong>如果其他人来问你问题，或者电话响起，或者不得不回复某个紧急邮件，又或者不得不去开会，与你结对编程的伙伴将继续编码。当你回来后，你的同伴仍然在流中，而你也能迅速地同他参与其中。</li>
+<li><strong>更快地培养新人。</strong>通过合理的轮换组队和任务的结对编程，新来的人能快速地掌握代码，以及认识团队成员。</li>
+</ul>
+<p>流，可以让你变得难以置信的高产。但它也非常脆弱。尽力达到这种状态并维持着！</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/开发/">开发</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/65/">首选领域专用类型而非原始类型</a>
+            
+            
+            <a class="next" rel="next" href="/books/人生海海/">人生海海，太难了！</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

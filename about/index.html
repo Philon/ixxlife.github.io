@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>一个程序员的成长足迹 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    <article class="post-wrap page">
+        
+        <h2 class="post-title">一个程序员的成长足迹</h2>
+        
+        <section class="post-content">
+            <h1 id="为何创建ixx-life"><a href="#为何创建ixx-life" class="headerlink" title="为何创建ixx.life"></a>为何创建ixx.life</h1><p>2018年，夏。我年满30，说不上为什么，我对这个年龄非常敏感，总认为而立之年必须有所作为——然而并没有。我和很多“上进”的年轻人一样，都很焦虑，都在拼命挣扎，每天仿佛都在对着镜子里那个蓬头垢面的自我喊上一万遍“我会成功！”。等热泪盈眶过后，留下的依然是那个丑陋的我。</p>
+<p>经过深刻反思，我大致总结了问题所在：</p>
+<ol>
+<li>浮躁，凡事追求一个“快”字，人生理想也不过是物欲和享乐，像我这种平头老百姓，不焦虑才怪！</li>
+<li>懒惰，总喜欢用我很忙、很累、压力大、没时间、没前途，来掩盖自己停止学习的事实！</li>
+<li>自嗨，喝着名人的励志鸡汤，听着付费知识的浓缩精华，幻想能平步青云走向人生巅峰，爽翻了！</li>
+</ol>
+<p>怎么解决这些问题呢——自律！</p>
+<p>所以，我开始每周读本书、写学习笔记、学英语、编程，这些交付物最全部都放在<a href="https://github.com/philon/arts" target="_blank" rel="noopener">github.com/philon/arts</a>。不知不觉半年时间，积累了一百多篇文章。就冒出个想法，要不还是搞个博客吧，然后就有了<code>ixx.life</code>。</p>
+<h1 id="ixx其实是i"><a href="#ixx其实是i" class="headerlink" title="ixx其实是i++"></a>ixx其实是i++</h1><p>如果你是一个程序员，想必听过c++，由于<code>+</code>不能用于文件命名，故替换为cpp或cxx。其实我想注册的就是i++.life，同样的++不能用于域名，所以退而求其次改用<code>ixx</code>。</p>
+<p>i++源自编程语言，<code>i</code>是单词index的首字母，表示索引，<code>++</code>表示每次增加一个单位。我偷换了概念，字母<code>I</code>在英文里表示“我”，所以<code>I++</code>的主要表达的就是自我增长。</p>
+<p>如何自我增长？——重复！</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 每周读本书并写感悟</span></span><br><span class="line"><span class="keyword">for</span> (i = week; i &lt; <span class="number">52</span>; i++) &#123;</span><br><span class="line">  reading(books[i]);</span><br><span class="line">  writing(post[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 每月跑100公里</span></span><br><span class="line"><span class="keyword">for</span> (i = month; i &lt; <span class="number">12</span>; i++) &#123;</span><br><span class="line">  run(<span class="number">100</span> * kilometer);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面两段代码基本表明了我所谓的“重复”——并非机械式重复，而是累加式重复。因为很多事情我们过分讲究“技巧、方法和策略”，而忽略了“积累”本身。就像减肥，一个没有毅力的人，学再多方法也等于零。有些时候其实没必要把简单的事情搞复杂，重复是一个非常痛苦的过程，幸好我每次总能有所收获。再说减肥，别人试遍百十种方法都反反复复以失败告终，我每次跑完步基本没什么变化，但时间一长居然成功了，哈哈，我估计是我命比别人好吧。</p>
+<h1 id="我会记录些什么？"><a href="#我会记录些什么？" class="headerlink" title="我会记录些什么？"></a>我会记录些什么？</h1><ul>
+<li><strong>读书</strong>：历史、人文、社科、传记、心理，什么都读，这事我会坚持一辈子，真的！</li>
+<li><strong>学习笔记</strong>：毫无疑问，这些都是和编程技术有关的东东。</li>
+<li><strong>英语翻译</strong>：我的英文太烂了，希望通过阅读和翻译来提高，同时还可以接触一手资料，何乐而不为。</li>
+<li><strong>随笔</strong>：个人感悟、日记之类的。</li>
+</ul>
+<p>如果不是太忙的话，我可以保证每周更新1、2篇文章。当然，我刚开始写了半年左右，文笔确实不好，但就这件事情上我也选择自增人生。</p>
+
+        </section>
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

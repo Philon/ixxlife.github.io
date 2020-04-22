@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>推理代码 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2019/01/08">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2019/01/08</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">推理代码</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_15/" target="_blank" rel="noopener">原文链接</a></p>
+<p>试图通过手动推理软件正确性的结果就是证明过程比代码本身还长，而且比代码共容易包含错误。自动化工具是首选，但并非每次都有效。有一条相对折中的方案：半正式化推理正确性。</p>
+<p>基本方案便是考虑把所有代码都分割成小段，从一行、一个功能调用、到每个块不超过10行，争论它们的正确性。这些论点要足够强大，才能说服你那魔鬼般的程序员同行。</p>
+<p>应该选择一个部分，便于在每个端点处的程序状态(即程序计数和处于生命周期内的对象值)都能满足易于描述的特性，并且该部分的功能(状态转换)很容易描述为一个单任务——这些可以让推理更简单。这些端点能够概括函数的前置和后置条件等概念，以及循环和类(的实例)的不变量。尽可能使各个部分相对独立，简化推理，当然，随时修改它们也是必不可少的。</p>
+<p>很多历经编程实战的知识(可能不够好)以及’好的’思想可以简化推理。因此，仅仅是想要推理你的代码，就说明你已经在考虑一种更好的代码风格和数据结构了。不必惊讶，这些实战大多是经得起静态代码分析器的检验的：</p>
+<ol>
+<li>避免使用goto语句，否则会与远处的部分高度耦合。</li>
+<li>避免使用可变的全局变量，这会让所有地方都依赖他们。</li>
+<li>每一个变量都应该尽可能让其作用域最小。例如，一个局部对象应该在它第一次使用的时候才声明。</li>
+<li>在关联时，让对象不可变。</li>
+<li>通过空白符让代码可读，不论水平还是垂直(排版)。例如，对其有关联的数据机构，以及用空行把两个小节分开。</li>
+<li>让代码自成文档，选择描述(但相对简短的)对象名、类型、函数等。</li>
+<li>如果你需要一个嵌套的部分，最好把它变成函数。</li>
+<li>让你的函数短小且聚焦于单一任务上。老旧的<em>24行限制</em>原则依然受用。尽管屏幕尺寸和分辨率一只在升级，但人类的认知能力从1960年后就没怎么变过。</li>
+<li>函数参数应尽量少(4个不能再多了)。这并不是限制了函数的数据传递能力：把有联系的参数分组到同一对象中，能得益于对象的不变性以及保存推理，确保他们的统一性和连贯性。</li>
+<li>更普遍的，每个代码单元，从代码块到库，都应该有一个<em>窄接口</em>。更少的通信可以降低必要的推理。这就意味着，返回内部状态的<em>getters</em>方法是一种责任——不要问一个对象拿到信息后如何工作。反之，应该问一个对象拿到信息后有没有开始工作。换句话说，封装的是全部，暴露的接口是窄的。</li>
+</ol>
+<p>除了要推理它的合理性，讨论你的代码可以让你进一步理解它。传达你的见解，让每个人受益。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/16/">注释的注释</a>
+            
+            
+            <a class="next" rel="next" href="/books/腾讯传/">我的青春Q史-《腾讯传》读后感</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

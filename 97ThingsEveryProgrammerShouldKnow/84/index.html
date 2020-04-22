@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>思考状态 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/03/03">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/03/03</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">思考状态</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_84/" target="_blank" rel="noopener">Thinking in States</a></p>
+<p>现实世界中的人们与状态有种奇怪的关系。那天一早，我在当地一家商店门口停了下来，为新一天将咖啡因转化为代码作准备。由于我喜欢喝点拿铁再干活，但我找不到牛奶，我就问店员。</p>
+<p>“抱歉，我们是大骗子，没有牛奶了。”</p>
+<p>对于程序员而言，这是中奇怪的说法。你到底是没有牛奶，还是不是。也许她想告诉我他们已经一星期没有牛奶了，但对我而言结果是一样的——浓缩咖啡的一天。</p>
+<p>现实世界中多数情况下，人们对状态持放松态度没什么问题。然而不幸的事，程序员对此也很模糊——这就是问题了。</p>
+<p>设想一个网店，只接受信用卡并且不向顾客提供发票，那么Order类会包含如下方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isComplete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">true<span class="keyword">return</span> isPaid() &amp;&amp; hasShipped();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>合情合理对吧？好，即使把该表达漂亮地提取到一个方法中，而非复制粘贴到其它地方，该表达式也不应该存在。事实上它有个明显的问题。为什么？因为一个订单在付款之前是不可能发货的。因此，除非isPaid为真，否则hasShipped不可能为真，这使得表达式冗余了。为了让代码清晰，你可能仍然想用isComplete，所以它应该会像下面这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isComplete</span><span class="params">()</span> </span>&#123;</span><br><span class="line">true<span class="keyword">return</span> hsaShipped();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在我的工作中，我总能看到缺失的检查和冗余的检查。这个例子太小了，但如果你再把取消和还款等功能加进去后，它就会变得更复杂，对良好的状态处理需求也会随之增加。在本案例中，一个订单仅仅包含三种案例：</p>
+<ul>
+<li><strong>处理中</strong>：可以添加或删除项目，但不能发货。</li>
+<li><strong>支付完成</strong>：不能添加或删除项目，可以发货</li>
+<li><strong>发货</strong>：结束。不再接受变更。</li>
+</ul>
+<p>这些状态很重要，在进行操作之前你需要检查是否处于期望的状态中，并只能从当前转移到一个合法状态。简而言之，你必须谨慎保护好你的目标对象，让它在该有的地方。</p>
+<p>但你是如何开始思考状态相关的呢？将表达式提取为一个有意义的方式是种非常好的开端，但也仅仅是开始。根本上是要理解状态机。我知道你可能还有一些CS类的糟糕记忆，但请把它们抛之脑后。状态机没有那么难。具象化它们以便于更好地理解和讨论。测试驱动你的代码，解耦有效和无效的状态和转换，保持它们的正确性。学习状态模式。当你感到舒适时，读一下合同设计。它通过每个公开方法在进入和退出时校验相关的数据，以确保一个合法的状态。</p>
+<p>如果你的状态不正确，那就有bug，如果不终止就会破坏数据。如果你发现状态检查变成了一种干扰，那就学者运用工具、代码生成器、编织器、或者从其它方面来隐藏它们。不管你选择何种方式，思考状态能让你的代码更简单和健壮。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/状态机/">状态机</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/85/">两个脑袋常常比一个好</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/83/">测试是软件开发的工程严谨性</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>编写领域语言 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2018/12/29">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2018/12/29</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">编写领域语言</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_11/" target="_blank" rel="noopener">原文链接</a></p>
+<p>两个代码库。其中一个是这样的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (portfolioIdsByTraderId.get(trader.getId())</span><br><span class="line">  .containsKey(portfolio.getId())) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>你抓破头皮，想要搞懂这段代码要做什么。看起来像是从trader对象中取出一个ID，通过一张表查找另一张表，好吧，上面代码就是表中表的玩法，但好像又是在比较portfolio对象是否存在这张表中。哎呀，抓耳挠腮呀。继续从portfolioIdsByTraderId中寻找线索:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;<span class="keyword">int</span>, Map&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; portfolioIdsByTraderId;</span><br></pre></td></tr></table></figure>
+
+<p>渐渐的你发现，这应该和trader对象是否要访问某个特定portfolio对象有关。毫无疑问，你会发现更多相同的代码片段，或者更多看着像但很隐蔽的不同的代码片段——不论什么时候都要注意trader是否在访问某个特殊portfolio。</p>
+<p>在另一个代码库：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (trader.canView(portfolio)) &#123;...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这次不用挠头了。有不需要知道trader内部在干嘛。或许里边就有藏着各种表。但那是trader的业务，和你没关系。</p>
+<p>现在，你更希望用哪个代码库完成工作？</p>
+<p>从前我们只有很基础的数据结构：bit和char(当然还有bytes，我们假装用于字母和标点符号)。小数点比较棘手，因为我们的10个数字在二进制中不好弄，所以我们又为浮点类型扩充了一些内存长度。这次有了array数组和string(其实就是不同的数组)。然后我们又增加了堆栈、队列、哈希、链表、跳表以及大量的根本不存在真实世界的数据结构。“计算机科学”就是花大量的时间把真实世界映射到我们限定的数据结构中。真正的大师甚至能够记住他们是如何做到的。</p>
+<p>我们有了user类型定义！OK，这不是什么新闻，但它的确改变了游戏规则。如果你的业务领域包含像traders和portfolios的概念，你可以对它们建模，称之为，Trader和Portfolio。但比这更重要的，你也要会给它们两者之间的关系进行建模。</p>
+<p>如果你不用领域术语编写代码，而是创建一个心照不宣(佛曰:不可说)的未知事物，就会出现同样是int，在这里表示trader，跑到那里有代表portfolio。最好是不要将它们混淆！如果你直接通过一套套算法去表达某种键表的存在关系(比如，“一些trader禁止去查看一些portfolios”——属于非法行为)，你并没有给审计人员带来任何好处。</p>
+<p>下次到来的程序员又不懂里边有什么猫腻，所以为何不直接把它表述清楚呢？用一个键去检查另一个键是否存在，太模糊了吧！怎能让其他人直观地理解，实现“利益冲突”的业务规则到底他妈的在哪？</p>
+<p>将一个领域概念清晰地在代码中表达出来，意味着其他人可以更容易地理解领域并在对应算法的地方加以改进。这也意味着如果一个领域模型需要迭代了——你对领域理解更深的时候，你可以更好地定位到对应的代码。加上良好的封装，业务规则很可能只会存在一个地方，你可以不依赖任务其他代码，直接修改它。</p>
+<p>下个到来的程序员会因为只花少量的时间就进入工作而感激你。下个到来的程序员也许就想成为你这样的人。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/成长/">成长</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/12/">代码即设计</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/10/">谨慎选择你的工具</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

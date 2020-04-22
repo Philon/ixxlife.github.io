@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Philon">
+
+
+    <meta name="subtitle" content="何以解忧，唯有 i++">
+
+
+    <meta name="description" content="一个程序员的成长足迹">
+
+
+    <meta name="keywords" content="自律 arts 编程 开发 c/c++ java web go 读书 写作">
+
+
+<title>退一步，然后自动化、自动化、自动化 | 自增人生</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo">
+                <div class="twolines-nav">
+  <div class="twolines-nav-menu" onclick="this.classList.toggle('open-menu')"></div>
+  <div class="twolines-nav-darkmode"></div>
+  <div class="twolines-nav-prev"></div>
+  <div class="twolines-nav-next"></div>
+  <div class="twolines-nav-backtop"></div>
+</div>
+
+<style>
+  .twolines-nav {
+    margin-top: 1em;
+    cursor: pointer;
+  }
+  .twolines-nav-menu {
+    position: relative;
+    top: 0em;
+    left: 1em;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .twolines-nav-menu::before, .twolines-nav-menu::after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: #aaaaaa;
+    margin-top: 12px;
+    transition: 0.3s;
+  }
+
+  .open-menu.twolines-nav-menu::before {
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  .open-menu.twolines-nav-menu::after {
+    transform: rotate(-45deg);
+  }
+</style>
+                <!-- <a href="/">自增人生</a> -->
+            </div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">自增人生</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/books">读书</a>
+                
+                    <a class="menu-item" href="/notes">技术</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header" title="发表于2020/02/20">
+            
+            
+                <a class="post-category" href="/categories/程序员应该知道的97件事/">程序员应该知道的97件事</a>
+            
+            <!-- 
+                <div class="post-meta">
+                    
+                        <span class="post-time">2020/02/20</span>
+                    
+                </div>
+             -->
+            
+            <h1 class="post-title">退一步，然后自动化、自动化、自动化</h1>
+        </header>
+
+        <div class="post-content">
+            <p><a href="https://97-things-every-x-should-know.gitbooks.io/97-things-every-programmer-should-know/content/en/thing_78/" target="_blank" rel="noopener">Step Back and Automate, Automate, Automate</a></p>
+<p>我和某一群程序员工作过，当被要求给出一个模块的代码行数时，就是将文件粘贴到word编辑器里并利用它的“行数统计”功能。他们下一周也是这么干的。再下一周还是这样。真是太糟糕了。</p>
+<p>还有一次我参与到一个部署流程繁琐的项目，需要将代码签名并将结果移交到一台服务器中，需要点击很多次鼠标。有的人就把这个过程自动化了，该脚本被执行了上百次，一直经受着考验，效果远超预期。真是太棒了。</p>
+<p>所以，为什么有的人愿意一遍又一遍做着重复的事，而不会退一步花点时间把它自动化呢。</p>
+<p><em>常见误区#1：自动化只适合测试用</em></p>
+<p>当然，自动化测试事伟大的，但就止于此了？重复的任务会存在于任何项目中：版本控制、编译、构建JAR文件、文档生成、部署、以及报告。对于这些任务，脚本要比鼠标强大多了好么。执行起单调乏味的任务也更快更可靠。</p>
+<p><em>常见误区#2：我有一个IDE，所以我不需要自动化</em></p>
+<p>你有没有和你队友发生过类似“你在我电脑上（签出、构建、测试）过它么？”的争论呢？现代IDE有数以千计的潜在配置，本质上是不可能保证团队中所有人都采用了完全相同配置。诸如Ant或Autotools的构建自动化系统可以为你提供可控性与重复性。</p>
+<p><em>常见误区#3:为了自动化我还得学习新语言</em></p>
+<p>纯正的shell语言（如bash或powershell）都能助你一臂之力来构建自动化系统。如果你需要通过网页交互，可以采用像是iMacros或Selenium等工具。</p>
+<p><em>常见误区#4:我不能自动化这些任务，因为我无法处理这些文件格式</em></p>
+<p>如果你必须处理word文档、表格或图片部分，对自动化来说确实是挑战。但这真的有必要吗？你可以用纯文本吗？逗号分隔符？XML？一个可以在文本文件里生成绘画的工具？通常，略微调整这份处理就能产生好的结果，并极大地减少枯燥乏味。</p>
+<p><em>常见误区#5:我没空去想办法</em></p>
+<p>你无需学会所有的bash或Ant才能上手。边走边学。当你认为某个任务可以也应该被自动化时，只需要把工具学到足够它能工作即可。在项目中越是早点这么干，就越容易发现这一点。一旦你成功了，你（和你的老板）就能看到对自动化投资的意义。</p>
+
+        </div>
+
+        
+        <section class="post-tags">
+            <span class="tag">
+                
+                
+                    <a href="/tags/翻译/">翻译</a>
+                
+                    <a href="/tags/程序员/">程序员</a>
+                
+                    <a href="/tags/思维/">思维</a>
+                
+                    
+            </span>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/97ThingsEveryProgrammerShouldKnow/79/">运用代码分析工具</a>
+            
+            
+            <a class="next" rel="next" href="/97ThingsEveryProgrammerShouldKnow/77/">从Yes开始</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Philon | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
